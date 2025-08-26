@@ -7,8 +7,8 @@
                 double radius = 5
             }
             dictionary Perspective = {
-                double3 position = (0.07483660493429606, 0.02411863642869077, 0.023598663385505425)
-                double3 target = (-0.15576378950323727, -0.03996791323473849, 0.008961410407406913)
+                double3 position = (0.08179751414620735, 0.02605315460243404, 0.024040503866051187)
+                double3 target = (-0.15576378950323755, -0.03996791323473857, 0.0089614104074069)
             }
             dictionary Right = {
                 double3 position = (0, -5, 0)
@@ -21,7 +21,7 @@
             string boundCamera = "/OmniverseKit_Persp"
         }
         dictionary omni_layer = {
-            string authoring_layer = "./BipedSim_250818.usd"
+            string authoring_layer = "./Biped_Simulation_stage.usda"
             dictionary locked = {
             }
             dictionary muteness = {
@@ -1246,7 +1246,10 @@ def Xform "biped" (
         prepend apiSchemas = ["PhysicsRigidBodyAPI", "IsaacLinkAPI", "PhysicsMassAPI"]
     )
     {
-        string isaac:nameOverride
+        string isaac:nameOverride (
+            displayName = "Name Override"
+            doc = "Name override for prim lookup in base name search"
+        )
         point3f physics:centerOfMass = (-5.322339e-12, -4.9231673e-12, 0.002042646)
         float3 physics:diagonalInertia = (0, 0, 0)
         float physics:mass = 0.00013186767
@@ -1297,6 +1300,269 @@ def Xform "biped" (
             prepend references = </colliders/back_1>
         )
         {
+        }
+    }
+
+    def OmniGraph "ActionGraph"
+    {
+        token evaluationMode = "Automatic"
+        token evaluator:type = "execution"
+        token fabricCacheBacking = "StageWithoutHistory"
+        int2 fileFormatVersion = (1, 9)
+        token pipelineStage = "pipelineStageSimulation"
+
+        def OmniGraphNode "on_playback_tick" (
+            prepend apiSchemas = ["NodeGraphNodeAPI"]
+        )
+        {
+            token node:type = "omni.graph.action.OnPlaybackTick"
+            int node:typeVersion = 2
+            custom double outputs:deltaSeconds
+            custom double outputs:frame
+            custom uint outputs:tick (
+                customData = {
+                    bool isExecution = 1
+                }
+            )
+            custom double outputs:time
+            uniform token ui:nodegraph:node:expansionState = "open"
+            uniform float2 ui:nodegraph:node:pos = (-1191.862, 74.3701)
+        }
+
+        def OmniGraphNode "ros2_context" (
+            prepend apiSchemas = ["NodeGraphNodeAPI"]
+        )
+        {
+            custom uchar inputs:domain_id = 1
+            custom bool inputs:useDomainIDEnvVar
+            token node:type = "isaacsim.ros2.bridge.ROS2Context"
+            int node:typeVersion = 2
+            custom uint64 outputs:context
+            uniform token ui:nodegraph:node:expansionState = "open"
+            uniform float2 ui:nodegraph:node:pos = (-1165.3273, 239.28653)
+        }
+
+        def OmniGraphNode "make_array" (
+            prepend apiSchemas = ["NodeGraphNodeAPI"]
+        )
+        {
+            custom int inputs:arraySize = 12
+            custom token inputs:arrayType = "token[]" (
+                allowedTokens = ["auto", "bool[]", "double[]", "float[]", "half[]", "int[]", "int64[]", "token[]", "uchar[]", "uint[]", "uint64[]", "double[2][]", "double[3][]", "double[4][]", "matrixd[2][]", "matrixd[3][]", "matrixd[4][]", "float[2][]", "float[3][]", "float[4][]", "half[2][]", "half[3][]", "half[4][]", "int[2][]", "int[3][]", "int[4][]", "timecode[]", "frame[4][]", "colord[3][]", "colorf[3][]", "colorh[3][]", "colord[4][]", "colorf[4][]", "colorh[4][]", "normald[3][]", "normalf[3][]", "normalh[3][]", "pointd[3][]", "pointf[3][]", "pointh[3][]", "quatd[4][]", "quatf[4][]", "quath[4][]", "texcoordd[2][]", "texcoordf[2][]", "texcoordh[2][]", "texcoordd[3][]", "texcoordf[3][]", "texcoordh[3][]", "vectord[3][]", "vectorf[3][]", "vectorh[3][]"]
+            )
+            custom token inputs:input0 = "back" (
+                customData = {
+                    dictionary omni = {
+                        dictionary graph = {
+                            token attrValue = "back"
+                            string resolvedType = "token"
+                        }
+                    }
+                }
+            )
+            custom token inputs:input1 = "sacrum" (
+                customData = {
+                    string ExtendedAttributeType = "Union-->bool,colord[3],colord[4],colorf[3],colorf[4],colorh[3],colorh[4],double,double[2],double[3],double[4],float,float[2],float[3],float[4],frame[4],half,half[2],half[3],half[4],int,int64,int[2],int[3],int[4],matrixd[2],matrixd[3],matrixd[4],normald[3],normalf[3],normalh[3],pointd[3],pointf[3],pointh[3],quatd[4],quatf[4],quath[4],texcoordd[2],texcoordd[3],texcoordf[2],texcoordf[3],texcoordh[2],texcoordh[3],timecode,token,transform[4],uchar,uint,uint64,vectord[3],vectorf[3],vectorh[3]"
+                    dictionary omni = {
+                        dictionary graph = {
+                            string attrType = "Union-->bool,colord[3],colord[4],colorf[3],colorf[4],colorh[3],colorh[4],double,double[2],double[3],double[4],float,float[2],float[3],float[4],frame[4],half,half[2],half[3],half[4],int,int64,int[2],int[3],int[4],matrixd[2],matrixd[3],matrixd[4],normald[3],normalf[3],normalh[3],pointd[3],pointf[3],pointh[3],quatd[4],quatf[4],quath[4],texcoordd[2],texcoordd[3],texcoordf[2],texcoordf[3],texcoordh[2],texcoordh[3],timecode,token,transform[4],uchar,uint,uint64,vectord[3],vectorf[3],vectorh[3]"
+                            token attrValue = "sacrum"
+                            string resolvedType = "token"
+                        }
+                    }
+                }
+            )
+            custom token inputs:input2 = "l_hip" (
+                customData = {
+                    string ExtendedAttributeType = "Union-->bool,colord[3],colord[4],colorf[3],colorf[4],colorh[3],colorh[4],double,double[2],double[3],double[4],float,float[2],float[3],float[4],frame[4],half,half[2],half[3],half[4],int,int64,int[2],int[3],int[4],matrixd[2],matrixd[3],matrixd[4],normald[3],normalf[3],normalh[3],pointd[3],pointf[3],pointh[3],quatd[4],quatf[4],quath[4],texcoordd[2],texcoordd[3],texcoordf[2],texcoordf[3],texcoordh[2],texcoordh[3],timecode,token,transform[4],uchar,uint,uint64,vectord[3],vectorf[3],vectorh[3]"
+                    dictionary omni = {
+                        dictionary graph = {
+                            string attrType = "Union-->bool,colord[3],colord[4],colorf[3],colorf[4],colorh[3],colorh[4],double,double[2],double[3],double[4],float,float[2],float[3],float[4],frame[4],half,half[2],half[3],half[4],int,int64,int[2],int[3],int[4],matrixd[2],matrixd[3],matrixd[4],normald[3],normalf[3],normalh[3],pointd[3],pointf[3],pointh[3],quatd[4],quatf[4],quath[4],texcoordd[2],texcoordd[3],texcoordf[2],texcoordf[3],texcoordh[2],texcoordh[3],timecode,token,transform[4],uchar,uint,uint64,vectord[3],vectorf[3],vectorh[3]"
+                            token attrValue = "l_hip"
+                            string resolvedType = "token"
+                        }
+                    }
+                }
+            )
+            custom token inputs:input3 = "r_hip" (
+                customData = {
+                    string ExtendedAttributeType = "Union-->bool,colord[3],colord[4],colorf[3],colorf[4],colorh[3],colorh[4],double,double[2],double[3],double[4],float,float[2],float[3],float[4],frame[4],half,half[2],half[3],half[4],int,int64,int[2],int[3],int[4],matrixd[2],matrixd[3],matrixd[4],normald[3],normalf[3],normalh[3],pointd[3],pointf[3],pointh[3],quatd[4],quatf[4],quath[4],texcoordd[2],texcoordd[3],texcoordf[2],texcoordf[3],texcoordh[2],texcoordh[3],timecode,token,transform[4],uchar,uint,uint64,vectord[3],vectorf[3],vectorh[3]"
+                    dictionary omni = {
+                        dictionary graph = {
+                            string attrType = "Union-->bool,colord[3],colord[4],colorf[3],colorf[4],colorh[3],colorh[4],double,double[2],double[3],double[4],float,float[2],float[3],float[4],frame[4],half,half[2],half[3],half[4],int,int64,int[2],int[3],int[4],matrixd[2],matrixd[3],matrixd[4],normald[3],normalf[3],normalh[3],pointd[3],pointf[3],pointh[3],quatd[4],quatf[4],quath[4],texcoordd[2],texcoordd[3],texcoordf[2],texcoordf[3],texcoordh[2],texcoordh[3],timecode,token,transform[4],uchar,uint,uint64,vectord[3],vectorf[3],vectorh[3]"
+                            token attrValue = "r_hip"
+                            string resolvedType = "token"
+                        }
+                    }
+                }
+            )
+            custom token inputs:input4 = "l_thigh" (
+                customData = {
+                    string ExtendedAttributeType = "Union-->bool,colord[3],colord[4],colorf[3],colorf[4],colorh[3],colorh[4],double,double[2],double[3],double[4],float,float[2],float[3],float[4],frame[4],half,half[2],half[3],half[4],int,int64,int[2],int[3],int[4],matrixd[2],matrixd[3],matrixd[4],normald[3],normalf[3],normalh[3],pointd[3],pointf[3],pointh[3],quatd[4],quatf[4],quath[4],texcoordd[2],texcoordd[3],texcoordf[2],texcoordf[3],texcoordh[2],texcoordh[3],timecode,token,transform[4],uchar,uint,uint64,vectord[3],vectorf[3],vectorh[3]"
+                    dictionary omni = {
+                        dictionary graph = {
+                            string attrType = "Union-->bool,colord[3],colord[4],colorf[3],colorf[4],colorh[3],colorh[4],double,double[2],double[3],double[4],float,float[2],float[3],float[4],frame[4],half,half[2],half[3],half[4],int,int64,int[2],int[3],int[4],matrixd[2],matrixd[3],matrixd[4],normald[3],normalf[3],normalh[3],pointd[3],pointf[3],pointh[3],quatd[4],quatf[4],quath[4],texcoordd[2],texcoordd[3],texcoordf[2],texcoordf[3],texcoordh[2],texcoordh[3],timecode,token,transform[4],uchar,uint,uint64,vectord[3],vectorf[3],vectorh[3]"
+                            token attrValue = "l_thigh"
+                            string resolvedType = "token"
+                        }
+                    }
+                }
+            )
+            custom token inputs:input5 = "r_thigh" (
+                customData = {
+                    string ExtendedAttributeType = "Union-->bool,colord[3],colord[4],colorf[3],colorf[4],colorh[3],colorh[4],double,double[2],double[3],double[4],float,float[2],float[3],float[4],frame[4],half,half[2],half[3],half[4],int,int64,int[2],int[3],int[4],matrixd[2],matrixd[3],matrixd[4],normald[3],normalf[3],normalh[3],pointd[3],pointf[3],pointh[3],quatd[4],quatf[4],quath[4],texcoordd[2],texcoordd[3],texcoordf[2],texcoordf[3],texcoordh[2],texcoordh[3],timecode,token,transform[4],uchar,uint,uint64,vectord[3],vectorf[3],vectorh[3]"
+                    dictionary omni = {
+                        dictionary graph = {
+                            string attrType = "Union-->bool,colord[3],colord[4],colorf[3],colorf[4],colorh[3],colorh[4],double,double[2],double[3],double[4],float,float[2],float[3],float[4],frame[4],half,half[2],half[3],half[4],int,int64,int[2],int[3],int[4],matrixd[2],matrixd[3],matrixd[4],normald[3],normalf[3],normalh[3],pointd[3],pointf[3],pointh[3],quatd[4],quatf[4],quath[4],texcoordd[2],texcoordd[3],texcoordf[2],texcoordf[3],texcoordh[2],texcoordh[3],timecode,token,transform[4],uchar,uint,uint64,vectord[3],vectorf[3],vectorh[3]"
+                            token attrValue = "r_thigh"
+                            string resolvedType = "token"
+                        }
+                    }
+                }
+            )
+            custom token inputs:input6 = "l_calf" (
+                customData = {
+                    string ExtendedAttributeType = "Union-->bool,colord[3],colord[4],colorf[3],colorf[4],colorh[3],colorh[4],double,double[2],double[3],double[4],float,float[2],float[3],float[4],frame[4],half,half[2],half[3],half[4],int,int64,int[2],int[3],int[4],matrixd[2],matrixd[3],matrixd[4],normald[3],normalf[3],normalh[3],pointd[3],pointf[3],pointh[3],quatd[4],quatf[4],quath[4],texcoordd[2],texcoordd[3],texcoordf[2],texcoordf[3],texcoordh[2],texcoordh[3],timecode,token,transform[4],uchar,uint,uint64,vectord[3],vectorf[3],vectorh[3]"
+                    dictionary omni = {
+                        dictionary graph = {
+                            string attrType = "Union-->bool,colord[3],colord[4],colorf[3],colorf[4],colorh[3],colorh[4],double,double[2],double[3],double[4],float,float[2],float[3],float[4],frame[4],half,half[2],half[3],half[4],int,int64,int[2],int[3],int[4],matrixd[2],matrixd[3],matrixd[4],normald[3],normalf[3],normalh[3],pointd[3],pointf[3],pointh[3],quatd[4],quatf[4],quath[4],texcoordd[2],texcoordd[3],texcoordf[2],texcoordf[3],texcoordh[2],texcoordh[3],timecode,token,transform[4],uchar,uint,uint64,vectord[3],vectorf[3],vectorh[3]"
+                            token attrValue = "l_calf"
+                            string resolvedType = "token"
+                        }
+                    }
+                }
+            )
+            custom token inputs:input7 = "r_calf" (
+                customData = {
+                    string ExtendedAttributeType = "Union-->bool,colord[3],colord[4],colorf[3],colorf[4],colorh[3],colorh[4],double,double[2],double[3],double[4],float,float[2],float[3],float[4],frame[4],half,half[2],half[3],half[4],int,int64,int[2],int[3],int[4],matrixd[2],matrixd[3],matrixd[4],normald[3],normalf[3],normalh[3],pointd[3],pointf[3],pointh[3],quatd[4],quatf[4],quath[4],texcoordd[2],texcoordd[3],texcoordf[2],texcoordf[3],texcoordh[2],texcoordh[3],timecode,token,transform[4],uchar,uint,uint64,vectord[3],vectorf[3],vectorh[3]"
+                    dictionary omni = {
+                        dictionary graph = {
+                            string attrType = "Union-->bool,colord[3],colord[4],colorf[3],colorf[4],colorh[3],colorh[4],double,double[2],double[3],double[4],float,float[2],float[3],float[4],frame[4],half,half[2],half[3],half[4],int,int64,int[2],int[3],int[4],matrixd[2],matrixd[3],matrixd[4],normald[3],normalf[3],normalh[3],pointd[3],pointf[3],pointh[3],quatd[4],quatf[4],quath[4],texcoordd[2],texcoordd[3],texcoordf[2],texcoordf[3],texcoordh[2],texcoordh[3],timecode,token,transform[4],uchar,uint,uint64,vectord[3],vectorf[3],vectorh[3]"
+                            token attrValue = "r_calf"
+                            string resolvedType = "token"
+                        }
+                    }
+                }
+            )
+            custom token inputs:input8 = "l_ankle" (
+                customData = {
+                    string ExtendedAttributeType = "Union-->bool,colord[3],colord[4],colorf[3],colorf[4],colorh[3],colorh[4],double,double[2],double[3],double[4],float,float[2],float[3],float[4],frame[4],half,half[2],half[3],half[4],int,int64,int[2],int[3],int[4],matrixd[2],matrixd[3],matrixd[4],normald[3],normalf[3],normalh[3],pointd[3],pointf[3],pointh[3],quatd[4],quatf[4],quath[4],texcoordd[2],texcoordd[3],texcoordf[2],texcoordf[3],texcoordh[2],texcoordh[3],timecode,token,transform[4],uchar,uint,uint64,vectord[3],vectorf[3],vectorh[3]"
+                    dictionary omni = {
+                        dictionary graph = {
+                            string attrType = "Union-->bool,colord[3],colord[4],colorf[3],colorf[4],colorh[3],colorh[4],double,double[2],double[3],double[4],float,float[2],float[3],float[4],frame[4],half,half[2],half[3],half[4],int,int64,int[2],int[3],int[4],matrixd[2],matrixd[3],matrixd[4],normald[3],normalf[3],normalh[3],pointd[3],pointf[3],pointh[3],quatd[4],quatf[4],quath[4],texcoordd[2],texcoordd[3],texcoordf[2],texcoordf[3],texcoordh[2],texcoordh[3],timecode,token,transform[4],uchar,uint,uint64,vectord[3],vectorf[3],vectorh[3]"
+                            token attrValue = "l_ankle"
+                            string resolvedType = "token"
+                        }
+                    }
+                }
+            )
+            custom token inputs:input9 = "r_ankle" (
+                customData = {
+                    string ExtendedAttributeType = "Union-->bool,colord[3],colord[4],colorf[3],colorf[4],colorh[3],colorh[4],double,double[2],double[3],double[4],float,float[2],float[3],float[4],frame[4],half,half[2],half[3],half[4],int,int64,int[2],int[3],int[4],matrixd[2],matrixd[3],matrixd[4],normald[3],normalf[3],normalh[3],pointd[3],pointf[3],pointh[3],quatd[4],quatf[4],quath[4],texcoordd[2],texcoordd[3],texcoordf[2],texcoordf[3],texcoordh[2],texcoordh[3],timecode,token,transform[4],uchar,uint,uint64,vectord[3],vectorf[3],vectorh[3]"
+                    dictionary omni = {
+                        dictionary graph = {
+                            string attrType = "Union-->bool,colord[3],colord[4],colorf[3],colorf[4],colorh[3],colorh[4],double,double[2],double[3],double[4],float,float[2],float[3],float[4],frame[4],half,half[2],half[3],half[4],int,int64,int[2],int[3],int[4],matrixd[2],matrixd[3],matrixd[4],normald[3],normalf[3],normalh[3],pointd[3],pointf[3],pointh[3],quatd[4],quatf[4],quath[4],texcoordd[2],texcoordd[3],texcoordf[2],texcoordf[3],texcoordh[2],texcoordh[3],timecode,token,transform[4],uchar,uint,uint64,vectord[3],vectorf[3],vectorh[3]"
+                            token attrValue = "r_ankle"
+                            string resolvedType = "token"
+                        }
+                    }
+                }
+            )
+            custom token inputs:input10 = "l_foot" (
+                customData = {
+                    string ExtendedAttributeType = "Union-->bool,colord[3],colord[4],colorf[3],colorf[4],colorh[3],colorh[4],double,double[2],double[3],double[4],float,float[2],float[3],float[4],frame[4],half,half[2],half[3],half[4],int,int64,int[2],int[3],int[4],matrixd[2],matrixd[3],matrixd[4],normald[3],normalf[3],normalh[3],pointd[3],pointf[3],pointh[3],quatd[4],quatf[4],quath[4],texcoordd[2],texcoordd[3],texcoordf[2],texcoordf[3],texcoordh[2],texcoordh[3],timecode,token,transform[4],uchar,uint,uint64,vectord[3],vectorf[3],vectorh[3]"
+                    dictionary omni = {
+                        dictionary graph = {
+                            string attrType = "Union-->bool,colord[3],colord[4],colorf[3],colorf[4],colorh[3],colorh[4],double,double[2],double[3],double[4],float,float[2],float[3],float[4],frame[4],half,half[2],half[3],half[4],int,int64,int[2],int[3],int[4],matrixd[2],matrixd[3],matrixd[4],normald[3],normalf[3],normalh[3],pointd[3],pointf[3],pointh[3],quatd[4],quatf[4],quath[4],texcoordd[2],texcoordd[3],texcoordf[2],texcoordf[3],texcoordh[2],texcoordh[3],timecode,token,transform[4],uchar,uint,uint64,vectord[3],vectorf[3],vectorh[3]"
+                            token attrValue = "l_foot"
+                            string resolvedType = "token"
+                        }
+                    }
+                }
+            )
+            custom token inputs:input11 = "r_foot" (
+                customData = {
+                    string ExtendedAttributeType = "Union-->bool,colord[3],colord[4],colorf[3],colorf[4],colorh[3],colorh[4],double,double[2],double[3],double[4],float,float[2],float[3],float[4],frame[4],half,half[2],half[3],half[4],int,int64,int[2],int[3],int[4],matrixd[2],matrixd[3],matrixd[4],normald[3],normalf[3],normalh[3],pointd[3],pointf[3],pointh[3],quatd[4],quatf[4],quath[4],texcoordd[2],texcoordd[3],texcoordf[2],texcoordf[3],texcoordh[2],texcoordh[3],timecode,token,transform[4],uchar,uint,uint64,vectord[3],vectorf[3],vectorh[3]"
+                    dictionary omni = {
+                        dictionary graph = {
+                            string attrType = "Union-->bool,colord[3],colord[4],colorf[3],colorf[4],colorh[3],colorh[4],double,double[2],double[3],double[4],float,float[2],float[3],float[4],frame[4],half,half[2],half[3],half[4],int,int64,int[2],int[3],int[4],matrixd[2],matrixd[3],matrixd[4],normald[3],normalf[3],normalh[3],pointd[3],pointf[3],pointh[3],quatd[4],quatf[4],quath[4],texcoordd[2],texcoordd[3],texcoordf[2],texcoordf[3],texcoordh[2],texcoordh[3],timecode,token,transform[4],uchar,uint,uint64,vectord[3],vectorf[3],vectorh[3]"
+                            token attrValue = "r_foot"
+                            string resolvedType = "token"
+                        }
+                    }
+                }
+            )
+            token node:type = "omni.graph.nodes.ConstructArray"
+            int node:typeVersion = 1
+            custom token outputs:array
+            uniform token ui:nodegraph:node:expansionState = "open"
+            uniform float2 ui:nodegraph:node:pos = (-951.6488, -199.85312)
+        }
+
+        def OmniGraphNode "ros2_subscriber" (
+            prepend apiSchemas = ["NodeGraphNodeAPI"]
+        )
+        {
+            custom uint64 inputs:context
+            prepend uint64 inputs:context.connect = </biped/ActionGraph/ros2_context.outputs:context>
+            custom uint inputs:execIn (
+                customData = {
+                    bool isExecution = 1
+                }
+            )
+            prepend uint inputs:execIn.connect = </biped/ActionGraph/on_playback_tick.outputs:tick>
+            custom string inputs:messageName = "Float64MultiArray"
+            custom string inputs:messagePackage = "std_msgs"
+            custom string inputs:messageSubfolder
+            custom string inputs:nodeNamespace
+            custom string inputs:qosProfile
+            custom uint64 inputs:queueSize
+            custom string inputs:topicName = "/biped/joint_target"
+            token node:type = "isaacsim.ros2.bridge.ROS2Subscriber"
+            int node:typeVersion = 1
+            custom double[] outputs:data
+            custom uint outputs:execOut (
+                customData = {
+                    bool isExecution = 1
+                }
+            )
+            custom uint outputs:layout:data_offset
+            custom token[] outputs:layout:dim
+            uniform token ui:nodegraph:node:expansionState = "open"
+            uniform float2 ui:nodegraph:node:pos = (-953.21704, 151.61885)
+        }
+
+        def OmniGraphNode "articulation_controller" (
+            prepend apiSchemas = ["NodeGraphNodeAPI"]
+        )
+        {
+            custom double[] inputs:effortCommand
+            custom uint inputs:execIn (
+                customData = {
+                    bool isExecution = 1
+                }
+            )
+            prepend uint inputs:execIn.connect = </biped/ActionGraph/on_playback_tick.outputs:tick>
+            custom int[] inputs:jointIndices
+            custom token[] inputs:jointNames
+            prepend token[] inputs:jointNames.connect = </biped/ActionGraph/make_array.outputs:array>
+            custom double[] inputs:positionCommand
+            prepend double[] inputs:positionCommand.connect = </biped/ActionGraph/ros2_subscriber.outputs:data>
+            custom string inputs:robotPath = "/biped/base_link"
+            custom rel inputs:targetPrim (
+                customData = {
+                    dictionary omni = {
+                        dictionary graph = {
+                            string relType = "target"
+                        }
+                    }
+                }
+            )
+            custom double[] inputs:velocityCommand
+            token node:type = "isaacsim.core.nodes.IsaacArticulationController"
+            int node:typeVersion = 1
+            uniform token ui:nodegraph:node:expansionState = "open"
+            uniform float2 ui:nodegraph:node:pos = (-674.7016, 66.546936)
         }
     }
 }
