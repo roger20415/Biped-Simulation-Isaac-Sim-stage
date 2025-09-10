@@ -7,8 +7,8 @@
                 double radius = 5
             }
             dictionary Perspective = {
-                double3 position = (0.08001857765627017, -0.030576085769276805, 0.026303907408516007)
-                double3 target = (-0.15892410874615254, 0.04875923874391546, 0.002097364912161885)
+                double3 position = (0.07151180777825294, -0.02775161200532609, 0.025442112935291895)
+                double3 target = (-0.15892410874615318, 0.04875923874391567, 0.0020973649121618122)
             }
             dictionary Right = {
                 double3 position = (0, -5, 0)
@@ -1311,7 +1311,10 @@ def Xform "biped" (
         prepend apiSchemas = ["PhysicsRigidBodyAPI", "IsaacLinkAPI", "PhysicsMassAPI"]
     )
     {
-        string isaac:nameOverride
+        string isaac:nameOverride (
+            displayName = "Name Override"
+            doc = "Name override for prim lookup in base name search"
+        )
         point3f physics:centerOfMass = (-4.2436835e-11, -0.0017, 0.0046052155)
         float3 physics:diagonalInertia = (0, 0, 0)
         float physics:mass = 0.0027553262
@@ -1627,10 +1630,8 @@ def Xform "biped" (
             )
             {
                 custom matrix4d inputs:matrix
-                prepend matrix4d inputs:matrix.connect = [
-                    </biped/Publishers/BaselinkPublisher/get_joint_xform.outputs:transform>,
-                    </biped/Publishers/BaselinkPublisher/get_xform.outputs:transform>,
-                ]
+                delete matrix4d inputs:matrix.connect = </biped/Publishers/BaselinkPublisher/get_xform.outputs:transform>
+                prepend matrix4d inputs:matrix.connect = </biped/Publishers/BaselinkPublisher/get_joint_xform.outputs:transform>
                 custom int inputs:rotateOrder = 0
                 token node:type = "omni.anim.DecomposeMatrix"
                 int node:typeVersion = 1
@@ -1733,7 +1734,7 @@ def Xform "biped" (
                 int node:typeVersion = 1
                 custom matrix4d outputs:transform = ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 0, 0, 1) )
                 uniform token ui:nodegraph:node:expansionState = "open"
-                uniform float2 ui:nodegraph:node:pos = (-1170.6967, 202.35645)
+                uniform float2 ui:nodegraph:node:pos = (-1192.722, 203.31407)
             }
 
             def OmniGraphNode "ros2_publisher_01" (
@@ -2395,6 +2396,517 @@ def Xform "biped" (
                 custom double3 outputs:translate
                 uniform token ui:nodegraph:node:expansionState = "open"
                 uniform float2 ui:nodegraph:node:pos = (-919.6734, 119.40233)
+            }
+        }
+    }
+
+    def Scope "COMPublisher"
+    {
+        def OmniGraph "COMPublisher"
+        {
+            token evaluationMode = "Automatic"
+            token evaluator:type = "execution"
+            token fabricCacheBacking = "Shared"
+            int2 fileFormatVersion = (1, 9)
+            token pipelineStage = "pipelineStageSimulation"
+
+            def OmniGraphNode "ros2_context" (
+                prepend apiSchemas = ["NodeGraphNodeAPI"]
+            )
+            {
+                custom uchar inputs:domain_id = 1
+                custom bool inputs:useDomainIDEnvVar
+                token node:type = "isaacsim.ros2.bridge.ROS2Context"
+                int node:typeVersion = 2
+                custom uint64 outputs:context
+                uniform token ui:nodegraph:node:expansionState = "minimized"
+                uniform float2 ui:nodegraph:node:pos = (-1167.7524, -54.117023)
+            }
+
+            def OmniGraphNode "on_playback_tick" (
+                prepend apiSchemas = ["NodeGraphNodeAPI"]
+            )
+            {
+                token node:type = "omni.graph.action.OnPlaybackTick"
+                int node:typeVersion = 2
+                custom double outputs:deltaSeconds
+                custom double outputs:frame
+                custom uint outputs:tick (
+                    customData = {
+                        bool isExecution = 1
+                    }
+                )
+                custom double outputs:time
+                uniform token ui:nodegraph:node:expansionState = "minimized"
+                uniform float2 ui:nodegraph:node:pos = (-1169.4777, -150.0331)
+            }
+
+            def OmniGraphNode "ros2_publisher_01" (
+                prepend apiSchemas = ["NodeGraphNodeAPI"]
+            )
+            {
+                custom uint64 inputs:context
+                prepend uint64 inputs:context.connect = [
+                    </biped/Publishers/BaselinkPublisher/ros2_context.outputs:context>,
+                    </biped/COMPublisher/COMPublisher/ros2_context.outputs:context>,
+                ]
+                custom double[] inputs:data
+                prepend double[] inputs:data.connect = [
+                    </biped/COMPublisher/COMPublisher/script_node.outputs:data>,
+                    </biped/COMPublisher/COMPublisher/script_node.outputs:com_array>,
+                ]
+                custom uint inputs:execIn (
+                    customData = {
+                        bool isExecution = 1
+                    }
+                )
+                prepend uint inputs:execIn.connect = [
+                    </biped/Publishers/BaselinkPublisher/on_playback_tick.outputs:tick>,
+                    </biped/COMPublisher/COMPublisher/on_playback_tick.outputs:tick>,
+                ]
+                custom uint inputs:layout:data_offset
+                custom token[] inputs:layout:dim
+                custom string inputs:messageName = "Float64MultiArray"
+                custom string inputs:messagePackage = "std_msgs"
+                custom string inputs:messageSubfolder
+                custom string inputs:nodeNamespace
+                custom string inputs:qosProfile
+                custom uint64 inputs:queueSize
+                custom string inputs:topicName = "/com"
+                token node:type = "isaacsim.ros2.bridge.ROS2Publisher"
+                int node:typeVersion = 1
+                custom uint outputs:execOut (
+                    customData = {
+                        bool isExecution = 1
+                    }
+                )
+                uniform token ui:nodegraph:node:expansionState = "minimized"
+                uniform float2 ui:nodegraph:node:pos = (-465.771, -76.33843)
+            }
+
+            def OmniGraphNode "get_rigid_body_properties" (
+                prepend apiSchemas = ["NodeGraphNodeAPI"]
+            )
+            {
+                custom rel inputs:prim = </biped/back_1> (
+                    customData = {
+                        dictionary omni = {
+                            dictionary graph = {
+                                string relType = "target"
+                            }
+                        }
+                    }
+                )
+                custom int inputs:timeout
+                custom bool inputs:use_local_frame
+                token node:type = "omni.physx.graph.PropertyQueryRigidBody"
+                int node:typeVersion = 1
+                custom float3 outputs:AABBMax
+                custom float3 outputs:AABBMin
+                custom float3 outputs:centerOfMass
+                custom float3 outputs:diagonalInertia
+                custom float outputs:mass
+                custom float4 outputs:principalAxes
+                uniform token ui:nodegraph:node:expansionState = "minimized"
+                uniform float2 ui:nodegraph:node:pos = (-1160.7285, 94.09153)
+            }
+
+            def OmniGraphNode "script_node" (
+                prepend apiSchemas = ["NodeGraphNodeAPI"]
+            )
+            {
+                custom float3 inputs:back_com
+                prepend float3 inputs:back_com.connect = </biped/COMPublisher/COMPublisher/get_rigid_body_properties.outputs:centerOfMass>
+                custom float3 inputs:baselink_com
+                prepend float3 inputs:baselink_com.connect = </biped/COMPublisher/COMPublisher/get_rigid_body_properties_01.outputs:centerOfMass>
+                custom uint inputs:execIn (
+                    customData = {
+                        bool isExecution = 1
+                    }
+                )
+                prepend uint inputs:execIn.connect = </biped/COMPublisher/COMPublisher/on_playback_tick.outputs:tick>
+                custom float3 inputs:l_ankle_com
+                prepend float3 inputs:l_ankle_com.connect = </biped/COMPublisher/COMPublisher/get_rigid_body_properties_09.outputs:centerOfMass>
+                custom float3 inputs:l_calf_com
+                prepend float3 inputs:l_calf_com.connect = </biped/COMPublisher/COMPublisher/get_rigid_body_properties_07.outputs:centerOfMass>
+                custom float3 inputs:l_foot_com
+                prepend float3 inputs:l_foot_com.connect = </biped/COMPublisher/COMPublisher/get_rigid_body_properties_11.outputs:centerOfMass>
+                custom float3 inputs:l_hip_com
+                prepend float3 inputs:l_hip_com.connect = </biped/COMPublisher/COMPublisher/get_rigid_body_properties_03.outputs:centerOfMass>
+                custom float3 inputs:l_thigh_com
+                prepend float3 inputs:l_thigh_com.connect = </biped/COMPublisher/COMPublisher/get_rigid_body_properties_05.outputs:centerOfMass>
+                custom float3 inputs:r_ankle_com
+                prepend float3 inputs:r_ankle_com.connect = </biped/COMPublisher/COMPublisher/get_rigid_body_properties_10.outputs:centerOfMass>
+                custom float3 inputs:r_calf_com
+                prepend float3 inputs:r_calf_com.connect = </biped/COMPublisher/COMPublisher/get_rigid_body_properties_08.outputs:centerOfMass>
+                custom float3 inputs:r_foot_com
+                prepend float3 inputs:r_foot_com.connect = </biped/COMPublisher/COMPublisher/get_rigid_body_properties_12.outputs:centerOfMass>
+                custom float3 inputs:r_hip_com
+                prepend float3 inputs:r_hip_com.connect = </biped/COMPublisher/COMPublisher/get_rigid_body_properties_04.outputs:centerOfMass>
+                custom float3 inputs:r_thigh_com
+                prepend float3 inputs:r_thigh_com.connect = </biped/COMPublisher/COMPublisher/get_rigid_body_properties_06.outputs:centerOfMass>
+                custom float3 inputs:sacrum_com
+                prepend float3 inputs:sacrum_com.connect = </biped/COMPublisher/COMPublisher/get_rigid_body_properties_02.outputs:centerOfMass>
+                custom string inputs:script = """# This script is executed the first time the script node computes, or the next time
+# it computes after this script is modified or the 'Reset' button is pressed.
+#
+# The following callback functions may be defined in this script:
+#     setup(db): Called immediately after this script is executed
+#     compute(db): Called every time the node computes (should always be defined)
+#     cleanup(db): Called when the node is deleted or the reset button is pressed
+# Available variables:
+#    db: og.Database The node interface - attributes are exposed in a namespace like db.inputs.foo and db.outputs.bar.
+#                    Use db.log_error, db.log_warning to report problems in the compute function.
+#    og: The omni.graph.core module
+
+
+def setup(db: og.Database):
+    pass
+
+
+def cleanup(db: og.Database):
+    pass
+
+
+def compute(db: og.Database):
+    return True"""
+                custom token inputs:scriptPath = "../../scripts/make_com_array_node.py"
+                custom bool inputs:usePath = 1
+                token node:type = "omni.graph.scriptnode.ScriptNode"
+                int node:typeVersion = 2
+                custom double[] outputs:com_array
+                custom uint outputs:execOut (
+                    customData = {
+                        bool isExecution = 1
+                    }
+                )
+                custom bool state:omni_initialized
+                uniform token ui:nodegraph:node:expansionState = "open"
+                uniform float2 ui:nodegraph:node:pos = (-843.6463, 46.172153)
+            }
+
+            def OmniGraphNode "get_rigid_body_properties_01" (
+                prepend apiSchemas = ["NodeGraphNodeAPI"]
+            )
+            {
+                custom rel inputs:prim = </biped/base_link> (
+                    customData = {
+                        dictionary omni = {
+                            dictionary graph = {
+                                string relType = "target"
+                            }
+                        }
+                    }
+                )
+                custom int inputs:timeout
+                custom bool inputs:use_local_frame
+                token node:type = "omni.physx.graph.PropertyQueryRigidBody"
+                int node:typeVersion = 1
+                custom float3 outputs:AABBMax
+                custom float3 outputs:AABBMin
+                custom float3 outputs:centerOfMass
+                custom float3 outputs:diagonalInertia
+                custom float outputs:mass
+                custom float4 outputs:principalAxes
+                uniform token ui:nodegraph:node:expansionState = "minimized"
+                uniform float2 ui:nodegraph:node:pos = (-1162.1256, 13.582518)
+            }
+
+            def OmniGraphNode "get_rigid_body_properties_02" (
+                prepend apiSchemas = ["NodeGraphNodeAPI"]
+            )
+            {
+                custom rel inputs:prim = </biped/sacrum_1> (
+                    customData = {
+                        dictionary omni = {
+                            dictionary graph = {
+                                string relType = "target"
+                            }
+                        }
+                    }
+                )
+                custom int inputs:timeout
+                custom bool inputs:use_local_frame
+                token node:type = "omni.physx.graph.PropertyQueryRigidBody"
+                int node:typeVersion = 1
+                custom float3 outputs:AABBMax
+                custom float3 outputs:AABBMin
+                custom float3 outputs:centerOfMass
+                custom float3 outputs:diagonalInertia
+                custom float outputs:mass
+                custom float4 outputs:principalAxes
+                uniform token ui:nodegraph:node:expansionState = "minimized"
+                uniform float2 ui:nodegraph:node:pos = (-1160.044, 151.9449)
+            }
+
+            def OmniGraphNode "get_rigid_body_properties_03" (
+                prepend apiSchemas = ["NodeGraphNodeAPI"]
+            )
+            {
+                custom rel inputs:prim = </biped/l_hip_1> (
+                    customData = {
+                        dictionary omni = {
+                            dictionary graph = {
+                                string relType = "target"
+                            }
+                        }
+                    }
+                )
+                custom int inputs:timeout
+                custom bool inputs:use_local_frame
+                token node:type = "omni.physx.graph.PropertyQueryRigidBody"
+                int node:typeVersion = 1
+                custom float3 outputs:AABBMax
+                custom float3 outputs:AABBMin
+                custom float3 outputs:centerOfMass
+                custom float3 outputs:diagonalInertia
+                custom float outputs:mass
+                custom float4 outputs:principalAxes
+                uniform token ui:nodegraph:node:expansionState = "minimized"
+                uniform float2 ui:nodegraph:node:pos = (-1168.9407, 210.49556)
+            }
+
+            def OmniGraphNode "get_rigid_body_properties_04" (
+                prepend apiSchemas = ["NodeGraphNodeAPI"]
+            )
+            {
+                custom rel inputs:prim = </biped/r_hip_1> (
+                    customData = {
+                        dictionary omni = {
+                            dictionary graph = {
+                                string relType = "target"
+                            }
+                        }
+                    }
+                )
+                custom int inputs:timeout
+                custom bool inputs:use_local_frame
+                token node:type = "omni.physx.graph.PropertyQueryRigidBody"
+                int node:typeVersion = 1
+                custom float3 outputs:AABBMax
+                custom float3 outputs:AABBMin
+                custom float3 outputs:centerOfMass
+                custom float3 outputs:diagonalInertia
+                custom float outputs:mass
+                custom float4 outputs:principalAxes
+                uniform token ui:nodegraph:node:expansionState = "minimized"
+                uniform float2 ui:nodegraph:node:pos = (-1167.9569, 258.3283)
+            }
+
+            def OmniGraphNode "get_rigid_body_properties_05" (
+                prepend apiSchemas = ["NodeGraphNodeAPI"]
+            )
+            {
+                custom rel inputs:prim = </biped/l_thigh_1> (
+                    customData = {
+                        dictionary omni = {
+                            dictionary graph = {
+                                string relType = "target"
+                            }
+                        }
+                    }
+                )
+                custom int inputs:timeout
+                custom bool inputs:use_local_frame
+                token node:type = "omni.physx.graph.PropertyQueryRigidBody"
+                int node:typeVersion = 1
+                custom float3 outputs:AABBMax
+                custom float3 outputs:AABBMin
+                custom float3 outputs:centerOfMass
+                custom float3 outputs:diagonalInertia
+                custom float outputs:mass
+                custom float4 outputs:principalAxes
+                uniform token ui:nodegraph:node:expansionState = "minimized"
+                uniform float2 ui:nodegraph:node:pos = (-1137.5045, 275.23932)
+            }
+
+            def OmniGraphNode "get_rigid_body_properties_06" (
+                prepend apiSchemas = ["NodeGraphNodeAPI"]
+            )
+            {
+                custom rel inputs:prim = </biped/r_thigh_1> (
+                    customData = {
+                        dictionary omni = {
+                            dictionary graph = {
+                                string relType = "target"
+                            }
+                        }
+                    }
+                )
+                custom int inputs:timeout
+                custom bool inputs:use_local_frame
+                token node:type = "omni.physx.graph.PropertyQueryRigidBody"
+                int node:typeVersion = 1
+                custom float3 outputs:AABBMax
+                custom float3 outputs:AABBMin
+                custom float3 outputs:centerOfMass
+                custom float3 outputs:diagonalInertia
+                custom float outputs:mass
+                custom float4 outputs:principalAxes
+                uniform token ui:nodegraph:node:expansionState = "minimized"
+                uniform float2 ui:nodegraph:node:pos = (-1152.8175, 304.2239)
+            }
+
+            def OmniGraphNode "get_rigid_body_properties_07" (
+                prepend apiSchemas = ["NodeGraphNodeAPI"]
+            )
+            {
+                custom rel inputs:prim = </biped/l_calf_1> (
+                    customData = {
+                        dictionary omni = {
+                            dictionary graph = {
+                                string relType = "target"
+                            }
+                        }
+                    }
+                )
+                custom int inputs:timeout
+                custom bool inputs:use_local_frame
+                token node:type = "omni.physx.graph.PropertyQueryRigidBody"
+                int node:typeVersion = 1
+                custom float3 outputs:AABBMax
+                custom float3 outputs:AABBMin
+                custom float3 outputs:centerOfMass
+                custom float3 outputs:diagonalInertia
+                custom float outputs:mass
+                custom float4 outputs:principalAxes
+                uniform token ui:nodegraph:node:expansionState = "minimized"
+                uniform float2 ui:nodegraph:node:pos = (-1161.9214, 344.30978)
+            }
+
+            def OmniGraphNode "get_rigid_body_properties_08" (
+                prepend apiSchemas = ["NodeGraphNodeAPI"]
+            )
+            {
+                custom rel inputs:prim = </biped/r_calf_1> (
+                    customData = {
+                        dictionary omni = {
+                            dictionary graph = {
+                                string relType = "target"
+                            }
+                        }
+                    }
+                )
+                custom int inputs:timeout
+                custom bool inputs:use_local_frame
+                token node:type = "omni.physx.graph.PropertyQueryRigidBody"
+                int node:typeVersion = 1
+                custom float3 outputs:AABBMax
+                custom float3 outputs:AABBMin
+                custom float3 outputs:centerOfMass
+                custom float3 outputs:diagonalInertia
+                custom float outputs:mass
+                custom float4 outputs:principalAxes
+                uniform token ui:nodegraph:node:expansionState = "minimized"
+                uniform float2 ui:nodegraph:node:pos = (-1167.3903, 382.42923)
+            }
+
+            def OmniGraphNode "get_rigid_body_properties_09" (
+                prepend apiSchemas = ["NodeGraphNodeAPI"]
+            )
+            {
+                custom rel inputs:prim = </biped/l_ankle_1> (
+                    customData = {
+                        dictionary omni = {
+                            dictionary graph = {
+                                string relType = "target"
+                            }
+                        }
+                    }
+                )
+                custom int inputs:timeout
+                custom bool inputs:use_local_frame
+                token node:type = "omni.physx.graph.PropertyQueryRigidBody"
+                int node:typeVersion = 1
+                custom float3 outputs:AABBMax
+                custom float3 outputs:AABBMin
+                custom float3 outputs:centerOfMass
+                custom float3 outputs:diagonalInertia
+                custom float outputs:mass
+                custom float4 outputs:principalAxes
+                uniform token ui:nodegraph:node:expansionState = "minimized"
+                uniform float2 ui:nodegraph:node:pos = (-1174.5726, 413.6226)
+            }
+
+            def OmniGraphNode "get_rigid_body_properties_10" (
+                prepend apiSchemas = ["NodeGraphNodeAPI"]
+            )
+            {
+                custom rel inputs:prim = </biped/r_ankle_1> (
+                    customData = {
+                        dictionary omni = {
+                            dictionary graph = {
+                                string relType = "target"
+                            }
+                        }
+                    }
+                )
+                custom int inputs:timeout
+                custom bool inputs:use_local_frame
+                token node:type = "omni.physx.graph.PropertyQueryRigidBody"
+                int node:typeVersion = 1
+                custom float3 outputs:AABBMax
+                custom float3 outputs:AABBMin
+                custom float3 outputs:centerOfMass
+                custom float3 outputs:diagonalInertia
+                custom float outputs:mass
+                custom float4 outputs:principalAxes
+                uniform token ui:nodegraph:node:expansionState = "minimized"
+                uniform float2 ui:nodegraph:node:pos = (-1181.5059, 451.9434)
+            }
+
+            def OmniGraphNode "get_rigid_body_properties_11" (
+                prepend apiSchemas = ["NodeGraphNodeAPI"]
+            )
+            {
+                custom rel inputs:prim = </biped/l_foot_1> (
+                    customData = {
+                        dictionary omni = {
+                            dictionary graph = {
+                                string relType = "target"
+                            }
+                        }
+                    }
+                )
+                custom int inputs:timeout
+                custom bool inputs:use_local_frame
+                token node:type = "omni.physx.graph.PropertyQueryRigidBody"
+                int node:typeVersion = 1
+                custom float3 outputs:AABBMax
+                custom float3 outputs:AABBMin
+                custom float3 outputs:centerOfMass
+                custom float3 outputs:diagonalInertia
+                custom float outputs:mass
+                custom float4 outputs:principalAxes
+                uniform token ui:nodegraph:node:expansionState = "minimized"
+                uniform float2 ui:nodegraph:node:pos = (-1165.1995, 561.60626)
+            }
+
+            def OmniGraphNode "get_rigid_body_properties_12" (
+                prepend apiSchemas = ["NodeGraphNodeAPI"]
+            )
+            {
+                custom rel inputs:prim = </biped/r_foot_1> (
+                    customData = {
+                        dictionary omni = {
+                            dictionary graph = {
+                                string relType = "target"
+                            }
+                        }
+                    }
+                )
+                custom int inputs:timeout
+                custom bool inputs:use_local_frame
+                token node:type = "omni.physx.graph.PropertyQueryRigidBody"
+                int node:typeVersion = 1
+                custom float3 outputs:AABBMax
+                custom float3 outputs:AABBMin
+                custom float3 outputs:centerOfMass
+                custom float3 outputs:diagonalInertia
+                custom float outputs:mass
+                custom float4 outputs:principalAxes
+                uniform token ui:nodegraph:node:expansionState = "minimized"
+                uniform float2 ui:nodegraph:node:pos = (-1166.3784, 634.6739)
             }
         }
     }
