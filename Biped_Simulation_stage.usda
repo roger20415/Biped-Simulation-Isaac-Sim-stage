@@ -7,8 +7,8 @@
                 double radius = 5
             }
             dictionary Perspective = {
-                double3 position = (0.07151180777825294, -0.02775161200532609, 0.025442112935291895)
-                double3 target = (-0.15892410874615318, 0.04875923874391567, 0.0020973649121618122)
+                double3 position = (0.09711770864077503, -0.0008266421922492759, 0.02791815641710352)
+                double3 target = (-0.16852890854911823, 0.012122259337844549, 0.01848985717340567)
             }
             dictionary Right = {
                 double3 position = (0, -5, 0)
@@ -1631,7 +1631,10 @@ def Xform "biped" (
             {
                 custom matrix4d inputs:matrix
                 delete matrix4d inputs:matrix.connect = </biped/Publishers/BaselinkPublisher/get_xform.outputs:transform>
-                prepend matrix4d inputs:matrix.connect = </biped/Publishers/BaselinkPublisher/get_joint_xform.outputs:transform>
+                prepend matrix4d inputs:matrix.connect = [
+                    </biped/Publishers/BaselinkPublisher/get_joint_xform.outputs:transform>,
+                    </biped/Publishers/BaselinkPublisher/get_xform.outputs:transform>,
+                ]
                 custom int inputs:rotateOrder = 0
                 token node:type = "omni.anim.DecomposeMatrix"
                 int node:typeVersion = 1
@@ -1734,7 +1737,7 @@ def Xform "biped" (
                 int node:typeVersion = 1
                 custom matrix4d outputs:transform = ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 0, 0, 1) )
                 uniform token ui:nodegraph:node:expansionState = "open"
-                uniform float2 ui:nodegraph:node:pos = (-1192.722, 203.31407)
+                uniform float2 ui:nodegraph:node:pos = (-1174.3524, 202.2335)
             }
 
             def OmniGraphNode "ros2_publisher_01" (
@@ -1770,7 +1773,7 @@ def Xform "biped" (
                     }
                 )
                 uniform token ui:nodegraph:node:expansionState = "open"
-                uniform float2 ui:nodegraph:node:pos = (-363.38727, 194.19466)
+                uniform float2 ui:nodegraph:node:pos = (-364.46783, 195.27522)
             }
 
             def OmniGraphNode "break_3_vector" (
@@ -2420,7 +2423,7 @@ def Xform "biped" (
                 int node:typeVersion = 2
                 custom uint64 outputs:context
                 uniform token ui:nodegraph:node:expansionState = "minimized"
-                uniform float2 ui:nodegraph:node:pos = (-1167.7524, -54.117023)
+                uniform float2 ui:nodegraph:node:pos = (-836.9676, -341.32584)
             }
 
             def OmniGraphNode "on_playback_tick" (
@@ -2438,7 +2441,7 @@ def Xform "biped" (
                 )
                 custom double outputs:time
                 uniform token ui:nodegraph:node:expansionState = "minimized"
-                uniform float2 ui:nodegraph:node:pos = (-1169.4777, -150.0331)
+                uniform float2 ui:nodegraph:node:pos = (-1135.2356, -311.388)
             }
 
             def OmniGraphNode "ros2_publisher_01" (
@@ -2481,7 +2484,7 @@ def Xform "biped" (
                     }
                 )
                 uniform token ui:nodegraph:node:expansionState = "minimized"
-                uniform float2 ui:nodegraph:node:pos = (-465.771, -76.33843)
+                uniform float2 ui:nodegraph:node:pos = (-465.771, -77.6067)
             }
 
             def OmniGraphNode "get_rigid_body_properties" (
@@ -2508,7 +2511,7 @@ def Xform "biped" (
                 custom float outputs:mass
                 custom float4 outputs:principalAxes
                 uniform token ui:nodegraph:node:expansionState = "minimized"
-                uniform float2 ui:nodegraph:node:pos = (-1160.7285, 94.09153)
+                uniform float2 ui:nodegraph:node:pos = (-1330.0148, -164.23859)
             }
 
             def OmniGraphNode "script_node" (
@@ -2556,21 +2559,8 @@ def Xform "biped" (
 #     cleanup(db): Called when the node is deleted or the reset button is pressed
 # Available variables:
 #    db: og.Database The node interface - attributes are exposed in a namespace like db.inputs.foo and db.outputs.bar.
-#                    Use db.log_error, db.log_warning to report problems in the compute function.
-#    og: The omni.graph.core module
-
-
-def setup(db: og.Database):
-    pass
-
-
-def cleanup(db: og.Database):
-    pass
-
-
-def compute(db: og.Database):
-    return True"""
-                custom token inputs:scriptPath = "../../scripts/make_com_array_node.py"
+#                    Use db.log_error, db.log_warning to report problems in the"""
+                custom token inputs:scriptPath = "./scripts/make_com_array_node.py"
                 custom bool inputs:usePath = 1
                 token node:type = "omni.graph.scriptnode.ScriptNode"
                 int node:typeVersion = 2
@@ -2582,7 +2572,7 @@ def compute(db: og.Database):
                 )
                 custom bool state:omni_initialized
                 uniform token ui:nodegraph:node:expansionState = "open"
-                uniform float2 ui:nodegraph:node:pos = (-843.6463, 46.172153)
+                uniform float2 ui:nodegraph:node:pos = (-818.9298, -105.581955)
             }
 
             def OmniGraphNode "get_rigid_body_properties_01" (
@@ -2609,7 +2599,7 @@ def compute(db: og.Database):
                 custom float outputs:mass
                 custom float4 outputs:principalAxes
                 uniform token ui:nodegraph:node:expansionState = "minimized"
-                uniform float2 ui:nodegraph:node:pos = (-1162.1256, 13.582518)
+                uniform float2 ui:nodegraph:node:pos = (-1297.615, -72.69683)
             }
 
             def OmniGraphNode "get_rigid_body_properties_02" (
@@ -2636,7 +2626,7 @@ def compute(db: og.Database):
                 custom float outputs:mass
                 custom float4 outputs:principalAxes
                 uniform token ui:nodegraph:node:expansionState = "minimized"
-                uniform float2 ui:nodegraph:node:pos = (-1160.044, 151.9449)
+                uniform float2 ui:nodegraph:node:pos = (-1232.5648, 327.91394)
             }
 
             def OmniGraphNode "get_rigid_body_properties_03" (
@@ -2663,7 +2653,7 @@ def compute(db: og.Database):
                 custom float outputs:mass
                 custom float4 outputs:principalAxes
                 uniform token ui:nodegraph:node:expansionState = "minimized"
-                uniform float2 ui:nodegraph:node:pos = (-1168.9407, 210.49556)
+                uniform float2 ui:nodegraph:node:pos = (-1317.7312, 35.53469)
             }
 
             def OmniGraphNode "get_rigid_body_properties_04" (
@@ -2690,7 +2680,7 @@ def compute(db: og.Database):
                 custom float outputs:mass
                 custom float4 outputs:principalAxes
                 uniform token ui:nodegraph:node:expansionState = "minimized"
-                uniform float2 ui:nodegraph:node:pos = (-1167.9569, 258.3283)
+                uniform float2 ui:nodegraph:node:pos = (-1190.3531, 174.07646)
             }
 
             def OmniGraphNode "get_rigid_body_properties_05" (
@@ -2717,7 +2707,7 @@ def compute(db: og.Database):
                 custom float outputs:mass
                 custom float4 outputs:principalAxes
                 uniform token ui:nodegraph:node:expansionState = "minimized"
-                uniform float2 ui:nodegraph:node:pos = (-1137.5045, 275.23932)
+                uniform float2 ui:nodegraph:node:pos = (-1365.5896, 61.88304)
             }
 
             def OmniGraphNode "get_rigid_body_properties_06" (
@@ -2879,7 +2869,7 @@ def compute(db: og.Database):
                 custom float outputs:mass
                 custom float4 outputs:principalAxes
                 uniform token ui:nodegraph:node:expansionState = "minimized"
-                uniform float2 ui:nodegraph:node:pos = (-1165.1995, 561.60626)
+                uniform float2 ui:nodegraph:node:pos = (-1197.9027, 456.55978)
             }
 
             def OmniGraphNode "get_rigid_body_properties_12" (
@@ -2906,7 +2896,7 @@ def compute(db: og.Database):
                 custom float outputs:mass
                 custom float4 outputs:principalAxes
                 uniform token ui:nodegraph:node:expansionState = "minimized"
-                uniform float2 ui:nodegraph:node:pos = (-1166.3784, 634.6739)
+                uniform float2 ui:nodegraph:node:pos = (-1199.0817, 529.62744)
             }
         }
     }
