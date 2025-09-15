@@ -7,8 +7,8 @@
                 double radius = 5
             }
             dictionary Perspective = {
-                double3 position = (0.09711770864077503, -0.0008266421922492759, 0.02791815641710352)
-                double3 target = (-0.16852890854911823, 0.012122259337844549, 0.01848985717340567)
+                double3 position = (-0.014452393842067696, 0.08017061758126166, 0.012275502724790997)
+                double3 target = (0.0038476504015306032, -0.1908415804305424, 0.042919617637638706)
             }
             dictionary Right = {
                 double3 position = (0, -5, 0)
@@ -845,9 +845,9 @@ def Xform "biped" (
             prepend apiSchemas = ["PhysicsJointStateAPI:linear", "PhysxJointAPI", "PhysicsDriveAPI:linear", "IsaacJointAPI"]
         )
         {
-            float drive:linear:physics:damping = 0.1
+            float drive:linear:physics:damping = 1
             float drive:linear:physics:maxForce = 100
-            float drive:linear:physics:stiffness = 1
+            float drive:linear:physics:stiffness = 10
             float drive:linear:physics:targetPosition = 0
             uniform token drive:linear:physics:type = "force"
             string isaac:nameOverride (
@@ -1362,7 +1362,7 @@ def Xform "biped" (
             )
             custom double outputs:time
             uniform token ui:nodegraph:node:expansionState = "open"
-            uniform float2 ui:nodegraph:node:pos = (-1191.862, 74.3701)
+            uniform float2 ui:nodegraph:node:pos = (-1192.7631, 73.469086)
         }
 
         def OmniGraphNode "ros2_context" (
@@ -1375,52 +1375,28 @@ def Xform "biped" (
             int node:typeVersion = 2
             custom uint64 outputs:context
             uniform token ui:nodegraph:node:expansionState = "open"
-            uniform float2 ui:nodegraph:node:pos = (-1165.3273, 239.28653)
+            uniform float2 ui:nodegraph:node:pos = (-1195.0604, 242.8906)
         }
 
         def OmniGraphNode "make_array" (
             prepend apiSchemas = ["NodeGraphNodeAPI"]
         )
         {
-            custom int inputs:arraySize = 12
+            custom int inputs:arraySize = 10
             custom token inputs:arrayType = "token[]" (
                 allowedTokens = ["auto", "bool[]", "double[]", "float[]", "half[]", "int[]", "int64[]", "token[]", "uchar[]", "uint[]", "uint64[]", "double[2][]", "double[3][]", "double[4][]", "matrixd[2][]", "matrixd[3][]", "matrixd[4][]", "float[2][]", "float[3][]", "float[4][]", "half[2][]", "half[3][]", "half[4][]", "int[2][]", "int[3][]", "int[4][]", "timecode[]", "frame[4][]", "colord[3][]", "colorf[3][]", "colorh[3][]", "colord[4][]", "colorf[4][]", "colorh[4][]", "normald[3][]", "normalf[3][]", "normalh[3][]", "pointd[3][]", "pointf[3][]", "pointh[3][]", "quatd[4][]", "quatf[4][]", "quath[4][]", "texcoordd[2][]", "texcoordf[2][]", "texcoordh[2][]", "texcoordd[3][]", "texcoordf[3][]", "texcoordh[3][]", "vectord[3][]", "vectorf[3][]", "vectorh[3][]"]
             )
-            custom token inputs:input0 = "back" (
+            custom token inputs:input0 = "l_hip" (
                 customData = {
                     dictionary omni = {
                         dictionary graph = {
-                            token attrValue = "back"
-                            string resolvedType = "token"
-                        }
-                    }
-                }
-            )
-            custom token inputs:input1 = "sacrum" (
-                customData = {
-                    string ExtendedAttributeType = "Union-->bool,colord[3],colord[4],colorf[3],colorf[4],colorh[3],colorh[4],double,double[2],double[3],double[4],float,float[2],float[3],float[4],frame[4],half,half[2],half[3],half[4],int,int64,int[2],int[3],int[4],matrixd[2],matrixd[3],matrixd[4],normald[3],normalf[3],normalh[3],pointd[3],pointf[3],pointh[3],quatd[4],quatf[4],quath[4],texcoordd[2],texcoordd[3],texcoordf[2],texcoordf[3],texcoordh[2],texcoordh[3],timecode,token,transform[4],uchar,uint,uint64,vectord[3],vectorf[3],vectorh[3]"
-                    dictionary omni = {
-                        dictionary graph = {
-                            string attrType = "Union-->bool,colord[3],colord[4],colorf[3],colorf[4],colorh[3],colorh[4],double,double[2],double[3],double[4],float,float[2],float[3],float[4],frame[4],half,half[2],half[3],half[4],int,int64,int[2],int[3],int[4],matrixd[2],matrixd[3],matrixd[4],normald[3],normalf[3],normalh[3],pointd[3],pointf[3],pointh[3],quatd[4],quatf[4],quath[4],texcoordd[2],texcoordd[3],texcoordf[2],texcoordf[3],texcoordh[2],texcoordh[3],timecode,token,transform[4],uchar,uint,uint64,vectord[3],vectorf[3],vectorh[3]"
-                            token attrValue = "sacrum"
-                            string resolvedType = "token"
-                        }
-                    }
-                }
-            )
-            custom token inputs:input2 = "l_hip" (
-                customData = {
-                    string ExtendedAttributeType = "Union-->bool,colord[3],colord[4],colorf[3],colorf[4],colorh[3],colorh[4],double,double[2],double[3],double[4],float,float[2],float[3],float[4],frame[4],half,half[2],half[3],half[4],int,int64,int[2],int[3],int[4],matrixd[2],matrixd[3],matrixd[4],normald[3],normalf[3],normalh[3],pointd[3],pointf[3],pointh[3],quatd[4],quatf[4],quath[4],texcoordd[2],texcoordd[3],texcoordf[2],texcoordf[3],texcoordh[2],texcoordh[3],timecode,token,transform[4],uchar,uint,uint64,vectord[3],vectorf[3],vectorh[3]"
-                    dictionary omni = {
-                        dictionary graph = {
-                            string attrType = "Union-->bool,colord[3],colord[4],colorf[3],colorf[4],colorh[3],colorh[4],double,double[2],double[3],double[4],float,float[2],float[3],float[4],frame[4],half,half[2],half[3],half[4],int,int64,int[2],int[3],int[4],matrixd[2],matrixd[3],matrixd[4],normald[3],normalf[3],normalh[3],pointd[3],pointf[3],pointh[3],quatd[4],quatf[4],quath[4],texcoordd[2],texcoordd[3],texcoordf[2],texcoordf[3],texcoordh[2],texcoordh[3],timecode,token,transform[4],uchar,uint,uint64,vectord[3],vectorf[3],vectorh[3]"
                             token attrValue = "l_hip"
                             string resolvedType = "token"
                         }
                     }
                 }
             )
-            custom token inputs:input3 = "r_hip" (
+            custom token inputs:input1 = "r_hip" (
                 customData = {
                     string ExtendedAttributeType = "Union-->bool,colord[3],colord[4],colorf[3],colorf[4],colorh[3],colorh[4],double,double[2],double[3],double[4],float,float[2],float[3],float[4],frame[4],half,half[2],half[3],half[4],int,int64,int[2],int[3],int[4],matrixd[2],matrixd[3],matrixd[4],normald[3],normalf[3],normalh[3],pointd[3],pointf[3],pointh[3],quatd[4],quatf[4],quath[4],texcoordd[2],texcoordd[3],texcoordf[2],texcoordf[3],texcoordh[2],texcoordh[3],timecode,token,transform[4],uchar,uint,uint64,vectord[3],vectorf[3],vectorh[3]"
                     dictionary omni = {
@@ -1432,7 +1408,7 @@ def Xform "biped" (
                     }
                 }
             )
-            custom token inputs:input4 = "l_thigh" (
+            custom token inputs:input2 = "l_thigh" (
                 customData = {
                     string ExtendedAttributeType = "Union-->bool,colord[3],colord[4],colorf[3],colorf[4],colorh[3],colorh[4],double,double[2],double[3],double[4],float,float[2],float[3],float[4],frame[4],half,half[2],half[3],half[4],int,int64,int[2],int[3],int[4],matrixd[2],matrixd[3],matrixd[4],normald[3],normalf[3],normalh[3],pointd[3],pointf[3],pointh[3],quatd[4],quatf[4],quath[4],texcoordd[2],texcoordd[3],texcoordf[2],texcoordf[3],texcoordh[2],texcoordh[3],timecode,token,transform[4],uchar,uint,uint64,vectord[3],vectorf[3],vectorh[3]"
                     dictionary omni = {
@@ -1444,7 +1420,7 @@ def Xform "biped" (
                     }
                 }
             )
-            custom token inputs:input5 = "r_thigh" (
+            custom token inputs:input3 = "r_thigh" (
                 customData = {
                     string ExtendedAttributeType = "Union-->bool,colord[3],colord[4],colorf[3],colorf[4],colorh[3],colorh[4],double,double[2],double[3],double[4],float,float[2],float[3],float[4],frame[4],half,half[2],half[3],half[4],int,int64,int[2],int[3],int[4],matrixd[2],matrixd[3],matrixd[4],normald[3],normalf[3],normalh[3],pointd[3],pointf[3],pointh[3],quatd[4],quatf[4],quath[4],texcoordd[2],texcoordd[3],texcoordf[2],texcoordf[3],texcoordh[2],texcoordh[3],timecode,token,transform[4],uchar,uint,uint64,vectord[3],vectorf[3],vectorh[3]"
                     dictionary omni = {
@@ -1456,7 +1432,7 @@ def Xform "biped" (
                     }
                 }
             )
-            custom token inputs:input6 = "l_calf" (
+            custom token inputs:input4 = "l_calf" (
                 customData = {
                     string ExtendedAttributeType = "Union-->bool,colord[3],colord[4],colorf[3],colorf[4],colorh[3],colorh[4],double,double[2],double[3],double[4],float,float[2],float[3],float[4],frame[4],half,half[2],half[3],half[4],int,int64,int[2],int[3],int[4],matrixd[2],matrixd[3],matrixd[4],normald[3],normalf[3],normalh[3],pointd[3],pointf[3],pointh[3],quatd[4],quatf[4],quath[4],texcoordd[2],texcoordd[3],texcoordf[2],texcoordf[3],texcoordh[2],texcoordh[3],timecode,token,transform[4],uchar,uint,uint64,vectord[3],vectorf[3],vectorh[3]"
                     dictionary omni = {
@@ -1468,7 +1444,7 @@ def Xform "biped" (
                     }
                 }
             )
-            custom token inputs:input7 = "r_calf" (
+            custom token inputs:input5 = "r_calf" (
                 customData = {
                     string ExtendedAttributeType = "Union-->bool,colord[3],colord[4],colorf[3],colorf[4],colorh[3],colorh[4],double,double[2],double[3],double[4],float,float[2],float[3],float[4],frame[4],half,half[2],half[3],half[4],int,int64,int[2],int[3],int[4],matrixd[2],matrixd[3],matrixd[4],normald[3],normalf[3],normalh[3],pointd[3],pointf[3],pointh[3],quatd[4],quatf[4],quath[4],texcoordd[2],texcoordd[3],texcoordf[2],texcoordf[3],texcoordh[2],texcoordh[3],timecode,token,transform[4],uchar,uint,uint64,vectord[3],vectorf[3],vectorh[3]"
                     dictionary omni = {
@@ -1480,7 +1456,7 @@ def Xform "biped" (
                     }
                 }
             )
-            custom token inputs:input8 = "l_ankle" (
+            custom token inputs:input6 = "l_ankle" (
                 customData = {
                     string ExtendedAttributeType = "Union-->bool,colord[3],colord[4],colorf[3],colorf[4],colorh[3],colorh[4],double,double[2],double[3],double[4],float,float[2],float[3],float[4],frame[4],half,half[2],half[3],half[4],int,int64,int[2],int[3],int[4],matrixd[2],matrixd[3],matrixd[4],normald[3],normalf[3],normalh[3],pointd[3],pointf[3],pointh[3],quatd[4],quatf[4],quath[4],texcoordd[2],texcoordd[3],texcoordf[2],texcoordf[3],texcoordh[2],texcoordh[3],timecode,token,transform[4],uchar,uint,uint64,vectord[3],vectorf[3],vectorh[3]"
                     dictionary omni = {
@@ -1492,7 +1468,7 @@ def Xform "biped" (
                     }
                 }
             )
-            custom token inputs:input9 = "r_ankle" (
+            custom token inputs:input7 = "r_ankle" (
                 customData = {
                     string ExtendedAttributeType = "Union-->bool,colord[3],colord[4],colorf[3],colorf[4],colorh[3],colorh[4],double,double[2],double[3],double[4],float,float[2],float[3],float[4],frame[4],half,half[2],half[3],half[4],int,int64,int[2],int[3],int[4],matrixd[2],matrixd[3],matrixd[4],normald[3],normalf[3],normalh[3],pointd[3],pointf[3],pointh[3],quatd[4],quatf[4],quath[4],texcoordd[2],texcoordd[3],texcoordf[2],texcoordf[3],texcoordh[2],texcoordh[3],timecode,token,transform[4],uchar,uint,uint64,vectord[3],vectorf[3],vectorh[3]"
                     dictionary omni = {
@@ -1504,7 +1480,7 @@ def Xform "biped" (
                     }
                 }
             )
-            custom token inputs:input10 = "l_foot" (
+            custom token inputs:input8 = "l_foot" (
                 customData = {
                     string ExtendedAttributeType = "Union-->bool,colord[3],colord[4],colorf[3],colorf[4],colorh[3],colorh[4],double,double[2],double[3],double[4],float,float[2],float[3],float[4],frame[4],half,half[2],half[3],half[4],int,int64,int[2],int[3],int[4],matrixd[2],matrixd[3],matrixd[4],normald[3],normalf[3],normalh[3],pointd[3],pointf[3],pointh[3],quatd[4],quatf[4],quath[4],texcoordd[2],texcoordd[3],texcoordf[2],texcoordf[3],texcoordh[2],texcoordh[3],timecode,token,transform[4],uchar,uint,uint64,vectord[3],vectorf[3],vectorh[3]"
                     dictionary omni = {
@@ -1516,7 +1492,7 @@ def Xform "biped" (
                     }
                 }
             )
-            custom token inputs:input11 = "r_foot" (
+            custom token inputs:input9 = "r_foot" (
                 customData = {
                     string ExtendedAttributeType = "Union-->bool,colord[3],colord[4],colorf[3],colorf[4],colorh[3],colorh[4],double,double[2],double[3],double[4],float,float[2],float[3],float[4],frame[4],half,half[2],half[3],half[4],int,int64,int[2],int[3],int[4],matrixd[2],matrixd[3],matrixd[4],normald[3],normalf[3],normalh[3],pointd[3],pointf[3],pointh[3],quatd[4],quatf[4],quath[4],texcoordd[2],texcoordd[3],texcoordf[2],texcoordf[3],texcoordh[2],texcoordh[3],timecode,token,transform[4],uchar,uint,uint64,vectord[3],vectorf[3],vectorh[3]"
                     dictionary omni = {
@@ -1565,7 +1541,7 @@ def Xform "biped" (
             custom uint outputs:layout:data_offset
             custom token[] outputs:layout:dim
             uniform token ui:nodegraph:node:expansionState = "open"
-            uniform float2 ui:nodegraph:node:pos = (-953.21704, 151.61885)
+            uniform float2 ui:nodegraph:node:pos = (-943.30585, 154.3219)
         }
 
         def OmniGraphNode "articulation_controller" (
@@ -1598,7 +1574,7 @@ def Xform "biped" (
             token node:type = "isaacsim.core.nodes.IsaacArticulationController"
             int node:typeVersion = 1
             uniform token ui:nodegraph:node:expansionState = "open"
-            uniform float2 ui:nodegraph:node:pos = (-674.7016, 66.546936)
+            uniform float2 ui:nodegraph:node:pos = (-632.3539, 65.64592)
         }
     }
 
