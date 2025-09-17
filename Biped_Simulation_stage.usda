@@ -7,8 +7,8 @@
                 double radius = 5
             }
             dictionary Perspective = {
-                double3 position = (0.10716018359921237, 0.03310173740933572, 0.025650387534676435)
-                double3 target = (-0.1557637895032376, -0.03996791323473859, 0.008961410407406903)
+                double3 position = (0.08130210046572968, 0.020712100266009694, 0.028385294614475913)
+                double3 target = (-0.2705844249086445, -0.007190085305996005, -0.015874253699528537)
             }
             dictionary Right = {
                 double3 position = (0, -5, 0)
@@ -845,9 +845,9 @@ def Xform "biped" (
             prepend apiSchemas = ["PhysicsJointStateAPI:linear", "PhysxJointAPI", "PhysicsDriveAPI:linear", "IsaacJointAPI"]
         )
         {
-            float drive:linear:physics:damping = 0.1
+            float drive:linear:physics:damping = 1
             float drive:linear:physics:maxForce = 100
-            float drive:linear:physics:stiffness = 1
+            float drive:linear:physics:stiffness = 10
             float drive:linear:physics:targetPosition = 0
             uniform token drive:linear:physics:type = "force"
             string isaac:nameOverride (
@@ -991,7 +991,10 @@ def Xform "biped" (
         prepend apiSchemas = ["PhysicsRigidBodyAPI", "IsaacLinkAPI", "PhysicsMassAPI"]
     )
     {
-        string isaac:nameOverride
+        string isaac:nameOverride (
+            displayName = "Name Override"
+            doc = "Name override for prim lookup in base name search"
+        )
         point3f physics:centerOfMass = (-2.2352837e-11, -0.002, -0.003)
         float3 physics:diagonalInertia = (0, 0, 0)
         float physics:mass = 0.00050237536
@@ -1020,7 +1023,10 @@ def Xform "biped" (
         prepend apiSchemas = ["PhysicsRigidBodyAPI", "IsaacLinkAPI", "PhysicsMassAPI"]
     )
     {
-        string isaac:nameOverride
+        string isaac:nameOverride (
+            displayName = "Name Override"
+            doc = "Name override for prim lookup in base name search"
+        )
         point3f physics:centerOfMass = (3.0593885e-11, -0.002, -0.0039142882)
         float3 physics:diagonalInertia = (0, 0, 0)
         float physics:mass = 0.0002911083
@@ -1049,7 +1055,10 @@ def Xform "biped" (
         prepend apiSchemas = ["PhysicsRigidBodyAPI", "IsaacLinkAPI", "PhysicsMassAPI"]
     )
     {
-        string isaac:nameOverride
+        string isaac:nameOverride (
+            displayName = "Name Override"
+            doc = "Name override for prim lookup in base name search"
+        )
         point3f physics:centerOfMass = (2.2351747e-11, -0.002, -0.0021499998)
         float3 physics:diagonalInertia = (0, 0, 0)
         float physics:mass = 0.000086341075
@@ -1078,7 +1087,10 @@ def Xform "biped" (
         prepend apiSchemas = ["PhysicsRigidBodyAPI", "IsaacLinkAPI", "PhysicsMassAPI"]
     )
     {
-        string isaac:nameOverride
+        string isaac:nameOverride (
+            displayName = "Name Override"
+            doc = "Name override for prim lookup in base name search"
+        )
         point3f physics:centerOfMass = (-0.0019999999, 0.0012260274, -0.00051986286)
         float3 physics:diagonalInertia = (0, 0, 0)
         float physics:mass = 0.00045844
@@ -1107,7 +1119,10 @@ def Xform "biped" (
         prepend apiSchemas = ["PhysicsRigidBodyAPI", "IsaacLinkAPI", "PhysicsMassAPI"]
     )
     {
-        string isaac:nameOverride
+        string isaac:nameOverride (
+            displayName = "Name Override"
+            doc = "Name override for prim lookup in base name search"
+        )
         point3f physics:centerOfMass = (-0.002, 7.2643155e-11, -0.00215)
         float3 physics:diagonalInertia = (0, 0, 0)
         float physics:mass = 0.000086341075
@@ -1136,7 +1151,10 @@ def Xform "biped" (
         prepend apiSchemas = ["PhysicsRigidBodyAPI", "IsaacLinkAPI", "PhysicsMassAPI"]
     )
     {
-        string isaac:nameOverride
+        string isaac:nameOverride (
+            displayName = "Name Override"
+            doc = "Name override for prim lookup in base name search"
+        )
         point3f physics:centerOfMass = (-2.2352838e-11, 0.002, -0.003)
         float3 physics:diagonalInertia = (0, 0, 0)
         float physics:mass = 0.00050237536
@@ -1165,7 +1183,10 @@ def Xform "biped" (
         prepend apiSchemas = ["PhysicsRigidBodyAPI", "IsaacLinkAPI", "PhysicsMassAPI"]
     )
     {
-        string isaac:nameOverride
+        string isaac:nameOverride (
+            displayName = "Name Override"
+            doc = "Name override for prim lookup in base name search"
+        )
         point3f physics:centerOfMass = (3.059388e-11, 0.002, -0.0039142882)
         float3 physics:diagonalInertia = (0, 0, 0)
         float physics:mass = 0.0002911083
@@ -1194,7 +1215,10 @@ def Xform "biped" (
         prepend apiSchemas = ["PhysicsRigidBodyAPI", "IsaacLinkAPI", "PhysicsMassAPI"]
     )
     {
-        string isaac:nameOverride
+        string isaac:nameOverride (
+            displayName = "Name Override"
+            doc = "Name override for prim lookup in base name search"
+        )
         point3f physics:centerOfMass = (2.235174e-11, 0.002, -0.0021499998)
         float3 physics:diagonalInertia = (0, 0, 0)
         float physics:mass = 0.000086341075
@@ -1223,7 +1247,10 @@ def Xform "biped" (
         prepend apiSchemas = ["PhysicsRigidBodyAPI", "IsaacLinkAPI", "PhysicsMassAPI"]
     )
     {
-        string isaac:nameOverride
+        string isaac:nameOverride (
+            displayName = "Name Override"
+            doc = "Name override for prim lookup in base name search"
+        )
         point3f physics:centerOfMass = (-0.0019999999, -0.0012260603, -0.0005198769)
         float3 physics:diagonalInertia = (0, 0, 0)
         float physics:mass = 0.00045842768
@@ -1284,7 +1311,10 @@ def Xform "biped" (
         prepend apiSchemas = ["PhysicsRigidBodyAPI", "IsaacLinkAPI", "PhysicsMassAPI"]
     )
     {
-        string isaac:nameOverride
+        string isaac:nameOverride (
+            displayName = "Name Override"
+            doc = "Name override for prim lookup in base name search"
+        )
         point3f physics:centerOfMass = (-4.2436835e-11, -0.0017, 0.0046052155)
         float3 physics:diagonalInertia = (0, 0, 0)
         float physics:mass = 0.0027553262
@@ -1309,453 +1339,1811 @@ def Xform "biped" (
         }
     }
 
-    def OmniGraph "JointAngleSubscriber"
+    def Scope "Publishers"
     {
-        token evaluationMode = "Automatic"
-        token evaluator:type = "execution"
-        token fabricCacheBacking = "StageWithoutHistory"
-        int2 fileFormatVersion = (1, 9)
-        token pipelineStage = "pipelineStageSimulation"
-
-        def OmniGraphNode "on_playback_tick" (
-            prepend apiSchemas = ["NodeGraphNodeAPI"]
-        )
+        def OmniGraph "BaselinkPublisher"
         {
-            token node:type = "omni.graph.action.OnPlaybackTick"
-            int node:typeVersion = 2
-            custom double outputs:deltaSeconds
-            custom double outputs:frame
-            custom uint outputs:tick (
-                customData = {
-                    bool isExecution = 1
-                }
+            token evaluationMode = "Automatic"
+            token evaluator:type = "execution"
+            token fabricCacheBacking = "Shared"
+            int2 fileFormatVersion = (1, 9)
+            token pipelineStage = "pipelineStageSimulation"
+
+            def OmniGraphNode "ros2_context" (
+                prepend apiSchemas = ["NodeGraphNodeAPI"]
             )
-            custom double outputs:time
-            uniform token ui:nodegraph:node:expansionState = "open"
-            uniform float2 ui:nodegraph:node:pos = (-1191.862, 74.3701)
+            {
+                custom uchar inputs:domain_id = 1
+                custom bool inputs:useDomainIDEnvVar
+                token node:type = "isaacsim.ros2.bridge.ROS2Context"
+                int node:typeVersion = 2
+                custom uint64 outputs:context
+                uniform token ui:nodegraph:node:expansionState = "open"
+                uniform float2 ui:nodegraph:node:pos = (-934.31696, -138.9979)
+            }
+
+            def OmniGraphNode "decompose_matrix" (
+                prepend apiSchemas = ["NodeGraphNodeAPI"]
+            )
+            {
+                custom matrix4d inputs:matrix
+                delete matrix4d inputs:matrix.connect = </biped/Publishers/BaselinkPublisher/get_xform.outputs:transform>
+                prepend matrix4d inputs:matrix.connect = [
+                    </biped/Publishers/BaselinkPublisher/get_joint_xform.outputs:transform>,
+                    </biped/Publishers/BaselinkPublisher/get_xform.outputs:transform>,
+                ]
+                custom int inputs:rotateOrder = 0
+                token node:type = "omni.anim.DecomposeMatrix"
+                int node:typeVersion = 1
+                custom double4 outputs:quaternion
+                custom double3 outputs:rotate
+                custom double3 outputs:scale
+                custom double3 outputs:translate
+                uniform token ui:nodegraph:node:expansionState = "open"
+                uniform float2 ui:nodegraph:node:pos = (-931.2966, 176.47081)
+            }
+
+            def OmniGraphNode "break_4_vector" (
+                prepend apiSchemas = ["NodeGraphNodeAPI"]
+            )
+            {
+                custom token inputs:tuple
+                prepend token inputs:tuple.connect = </biped/Publishers/BaselinkPublisher/decompose_matrix.outputs:quaternion>
+                token node:type = "omni.graph.nodes.BreakVector4"
+                int node:typeVersion = 1
+                custom token outputs:w
+                custom token outputs:x
+                custom token outputs:y
+                custom token outputs:z
+                uniform token ui:nodegraph:node:expansionState = "open"
+                uniform float2 ui:nodegraph:node:pos = (-640.282, 12.702885)
+            }
+
+            def OmniGraphNode "ros2_publisher" (
+                prepend apiSchemas = ["NodeGraphNodeAPI"]
+            )
+            {
+                custom uint64 inputs:context
+                prepend uint64 inputs:context.connect = </biped/Publishers/BaselinkPublisher/ros2_context.outputs:context>
+                custom uint inputs:execIn (
+                    customData = {
+                        bool isExecution = 1
+                    }
+                )
+                prepend uint inputs:execIn.connect = </biped/Publishers/BaselinkPublisher/on_playback_tick.outputs:tick>
+                custom string inputs:messageName = "Quaternion"
+                custom string inputs:messagePackage = "geometry_msgs"
+                custom string inputs:messageSubfolder
+                custom string inputs:nodeNamespace
+                custom string inputs:qosProfile
+                custom uint64 inputs:queueSize
+                custom string inputs:topicName = "/baselink/quat"
+                custom double inputs:w
+                prepend double inputs:w.connect = </biped/Publishers/BaselinkPublisher/break_4_vector.outputs:w>
+                custom double inputs:x
+                prepend double inputs:x.connect = </biped/Publishers/BaselinkPublisher/break_4_vector.outputs:x>
+                custom double inputs:y
+                prepend double inputs:y.connect = </biped/Publishers/BaselinkPublisher/break_4_vector.outputs:y>
+                custom double inputs:z
+                prepend double inputs:z.connect = </biped/Publishers/BaselinkPublisher/break_4_vector.outputs:z>
+                token node:type = "isaacsim.ros2.bridge.ROS2Publisher"
+                int node:typeVersion = 1
+                custom uint outputs:execOut (
+                    customData = {
+                        bool isExecution = 1
+                    }
+                )
+                uniform token ui:nodegraph:node:expansionState = "open"
+                uniform float2 ui:nodegraph:node:pos = (-362.91232, -184.7201)
+            }
+
+            def OmniGraphNode "on_playback_tick" (
+                prepend apiSchemas = ["NodeGraphNodeAPI"]
+            )
+            {
+                token node:type = "omni.graph.action.OnPlaybackTick"
+                int node:typeVersion = 2
+                custom double outputs:deltaSeconds
+                custom double outputs:frame
+                custom uint outputs:tick (
+                    customData = {
+                        bool isExecution = 1
+                    }
+                )
+                custom double outputs:time
+                uniform token ui:nodegraph:node:expansionState = "open"
+                uniform float2 ui:nodegraph:node:pos = (-1192.9767, 14.99955)
+            }
+
+            def OmniGraphNode "get_xform" (
+                prepend apiSchemas = ["NodeGraphNodeAPI"]
+            )
+            {
+                custom rel inputs:prim = </biped/base_link> (
+                    customData = {
+                        dictionary omni = {
+                            dictionary graph = {
+                                string relType = "bundle"
+                            }
+                        }
+                    }
+                )
+                custom double inputs:usdTimecode
+                custom bool inputs:useLocal
+                token node:type = "omni.anim.GetXform"
+                int node:typeVersion = 1
+                custom matrix4d outputs:transform = ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 0, 0, 1) )
+                uniform token ui:nodegraph:node:expansionState = "open"
+                uniform float2 ui:nodegraph:node:pos = (-1174.3524, 202.2335)
+            }
+
+            def OmniGraphNode "ros2_publisher_01" (
+                prepend apiSchemas = ["NodeGraphNodeAPI"]
+            )
+            {
+                custom uint64 inputs:context
+                prepend uint64 inputs:context.connect = </biped/Publishers/BaselinkPublisher/ros2_context.outputs:context>
+                custom uint inputs:execIn (
+                    customData = {
+                        bool isExecution = 1
+                    }
+                )
+                prepend uint inputs:execIn.connect = </biped/Publishers/BaselinkPublisher/on_playback_tick.outputs:tick>
+                custom string inputs:messageName = "Vector3"
+                custom string inputs:messagePackage = "geometry_msgs"
+                custom string inputs:messageSubfolder
+                custom string inputs:nodeNamespace
+                custom string inputs:qosProfile
+                custom uint64 inputs:queueSize
+                custom string inputs:topicName = "/baselink/translate"
+                custom double inputs:x
+                prepend double inputs:x.connect = </biped/Publishers/BaselinkPublisher/break_3_vector.outputs:x>
+                custom double inputs:y
+                prepend double inputs:y.connect = </biped/Publishers/BaselinkPublisher/break_3_vector.outputs:y>
+                custom double inputs:z
+                prepend double inputs:z.connect = </biped/Publishers/BaselinkPublisher/break_3_vector.outputs:z>
+                token node:type = "isaacsim.ros2.bridge.ROS2Publisher"
+                int node:typeVersion = 1
+                custom uint outputs:execOut (
+                    customData = {
+                        bool isExecution = 1
+                    }
+                )
+                uniform token ui:nodegraph:node:expansionState = "open"
+                uniform float2 ui:nodegraph:node:pos = (-363.3905, 196.35254)
+            }
+
+            def OmniGraphNode "break_3_vector" (
+                prepend apiSchemas = ["NodeGraphNodeAPI"]
+            )
+            {
+                custom token inputs:tuple
+                prepend token inputs:tuple.connect = </biped/Publishers/BaselinkPublisher/decompose_matrix.outputs:translate>
+                token node:type = "omni.graph.nodes.BreakVector3"
+                int node:typeVersion = 1
+                custom token outputs:x
+                custom token outputs:y
+                custom token outputs:z
+                uniform token ui:nodegraph:node:expansionState = "open"
+                uniform float2 ui:nodegraph:node:pos = (-678.2251, 308.21182)
+            }
         }
 
-        def OmniGraphNode "ros2_context" (
-            prepend apiSchemas = ["NodeGraphNodeAPI"]
-        )
+        def OmniGraph "LHipPublisher"
         {
-            custom uchar inputs:domain_id = 1
-            custom bool inputs:useDomainIDEnvVar
-            token node:type = "isaacsim.ros2.bridge.ROS2Context"
-            int node:typeVersion = 2
-            custom uint64 outputs:context
-            uniform token ui:nodegraph:node:expansionState = "open"
-            uniform float2 ui:nodegraph:node:pos = (-1165.3273, 239.28653)
+            token evaluationMode = "Automatic"
+            token evaluator:type = "execution"
+            token fabricCacheBacking = "Shared"
+            int2 fileFormatVersion = (1, 9)
+            token pipelineStage = "pipelineStageSimulation"
+
+            def OmniGraphNode "ros2_context" (
+                prepend apiSchemas = ["NodeGraphNodeAPI"]
+            )
+            {
+                custom uchar inputs:domain_id = 1
+                custom bool inputs:useDomainIDEnvVar
+                token node:type = "isaacsim.ros2.bridge.ROS2Context"
+                int node:typeVersion = 2
+                custom uint64 outputs:context
+                uniform token ui:nodegraph:node:expansionState = "open"
+                uniform float2 ui:nodegraph:node:pos = (-1158.7665, -122.98352)
+            }
+
+            def OmniGraphNode "on_playback_tick" (
+                prepend apiSchemas = ["NodeGraphNodeAPI"]
+            )
+            {
+                token node:type = "omni.graph.action.OnPlaybackTick"
+                int node:typeVersion = 2
+                custom double outputs:deltaSeconds
+                custom double outputs:frame
+                custom uint outputs:tick (
+                    customData = {
+                        bool isExecution = 1
+                    }
+                )
+                custom double outputs:time
+                uniform token ui:nodegraph:node:expansionState = "open"
+                uniform float2 ui:nodegraph:node:pos = (-1159.0055, 37.16687)
+            }
+
+            def OmniGraphNode "get_xform" (
+                prepend apiSchemas = ["NodeGraphNodeAPI"]
+            )
+            {
+                custom rel inputs:prim = </biped/l_hip_1> (
+                    customData = {
+                        dictionary omni = {
+                            dictionary graph = {
+                                string relType = "bundle"
+                            }
+                        }
+                    }
+                )
+                custom double inputs:usdTimecode
+                custom bool inputs:useLocal
+                token node:type = "omni.anim.GetXform"
+                int node:typeVersion = 1
+                custom matrix4d outputs:transform = ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 0, 0, 1) )
+                uniform token ui:nodegraph:node:expansionState = "open"
+                uniform float2 ui:nodegraph:node:pos = (-1157.1381, 225.88853)
+            }
+
+            def OmniGraphNode "ros2_publisher_01" (
+                prepend apiSchemas = ["NodeGraphNodeAPI"]
+            )
+            {
+                custom uint64 inputs:context
+                prepend uint64 inputs:context.connect = [
+                    </biped/Publishers/BaselinkPublisher/ros2_context.outputs:context>,
+                    </biped/Publishers/LHipPublisher/ros2_context.outputs:context>,
+                ]
+                custom uint inputs:execIn (
+                    customData = {
+                        bool isExecution = 1
+                    }
+                )
+                prepend uint inputs:execIn.connect = [
+                    </biped/Publishers/BaselinkPublisher/on_playback_tick.outputs:tick>,
+                    </biped/Publishers/LHipPublisher/on_playback_tick.outputs:tick>,
+                ]
+                custom string inputs:messageName = "Vector3"
+                custom string inputs:messagePackage = "geometry_msgs"
+                custom string inputs:messageSubfolder
+                custom string inputs:nodeNamespace
+                custom string inputs:qosProfile
+                custom uint64 inputs:queueSize
+                custom string inputs:topicName = "/l_hip/translate"
+                custom double inputs:x
+                prepend double inputs:x.connect = [
+                    </biped/Publishers/BaselinkPublisher/break_3_vector.outputs:x>,
+                    </biped/Publishers/LHipPublisher/break_3_vector.outputs:x>,
+                ]
+                custom double inputs:y
+                prepend double inputs:y.connect = [
+                    </biped/Publishers/BaselinkPublisher/break_3_vector.outputs:y>,
+                    </biped/Publishers/LHipPublisher/break_3_vector.outputs:y>,
+                ]
+                custom double inputs:z
+                prepend double inputs:z.connect = [
+                    </biped/Publishers/BaselinkPublisher/break_3_vector.outputs:z>,
+                    </biped/Publishers/LHipPublisher/break_3_vector.outputs:z>,
+                ]
+                token node:type = "isaacsim.ros2.bridge.ROS2Publisher"
+                int node:typeVersion = 1
+                custom uint outputs:execOut (
+                    customData = {
+                        bool isExecution = 1
+                    }
+                )
+                uniform token ui:nodegraph:node:expansionState = "open"
+                uniform float2 ui:nodegraph:node:pos = (-462.67657, -9.721905)
+            }
+
+            def OmniGraphNode "break_3_vector" (
+                prepend apiSchemas = ["NodeGraphNodeAPI"]
+            )
+            {
+                custom token inputs:tuple
+                prepend token inputs:tuple.connect = [
+                    </biped/Publishers/BaselinkPublisher/decompose_matrix.outputs:translate>,
+                    </biped/Publishers/LHipPublisher/decompose_matrix.outputs:translate>,
+                ]
+                token node:type = "omni.graph.nodes.BreakVector3"
+                int node:typeVersion = 1
+                custom token outputs:x
+                custom token outputs:y
+                custom token outputs:z
+                uniform token ui:nodegraph:node:expansionState = "open"
+                uniform float2 ui:nodegraph:node:pos = (-695.27594, 98.64831)
+            }
+
+            def OmniGraphNode "decompose_matrix" (
+                prepend apiSchemas = ["NodeGraphNodeAPI"]
+            )
+            {
+                custom matrix4d inputs:matrix
+                prepend matrix4d inputs:matrix.connect = </biped/Publishers/LHipPublisher/get_xform.outputs:transform>
+                custom int inputs:rotateOrder
+                token node:type = "omni.anim.DecomposeMatrix"
+                int node:typeVersion = 1
+                custom double4 outputs:quaternion
+                custom double3 outputs:rotate
+                custom double3 outputs:scale
+                custom double3 outputs:translate
+                uniform token ui:nodegraph:node:expansionState = "open"
+                uniform float2 ui:nodegraph:node:pos = (-919.6734, 119.40233)
+            }
         }
 
-        def OmniGraphNode "make_array" (
-            prepend apiSchemas = ["NodeGraphNodeAPI"]
-        )
+        def OmniGraph "RHipPublisher"
         {
-            custom int inputs:arraySize = 12
-            custom token inputs:arrayType = "token[]" (
-                allowedTokens = ["auto", "bool[]", "double[]", "float[]", "half[]", "int[]", "int64[]", "token[]", "uchar[]", "uint[]", "uint64[]", "double[2][]", "double[3][]", "double[4][]", "matrixd[2][]", "matrixd[3][]", "matrixd[4][]", "float[2][]", "float[3][]", "float[4][]", "half[2][]", "half[3][]", "half[4][]", "int[2][]", "int[3][]", "int[4][]", "timecode[]", "frame[4][]", "colord[3][]", "colorf[3][]", "colorh[3][]", "colord[4][]", "colorf[4][]", "colorh[4][]", "normald[3][]", "normalf[3][]", "normalh[3][]", "pointd[3][]", "pointf[3][]", "pointh[3][]", "quatd[4][]", "quatf[4][]", "quath[4][]", "texcoordd[2][]", "texcoordf[2][]", "texcoordh[2][]", "texcoordd[3][]", "texcoordf[3][]", "texcoordh[3][]", "vectord[3][]", "vectorf[3][]", "vectorh[3][]"]
+            token evaluationMode = "Automatic"
+            token evaluator:type = "execution"
+            token fabricCacheBacking = "Shared"
+            int2 fileFormatVersion = (1, 9)
+            token pipelineStage = "pipelineStageSimulation"
+
+            def OmniGraphNode "ros2_context" (
+                prepend apiSchemas = ["NodeGraphNodeAPI"]
             )
-            custom token inputs:input0 = "back" (
-                customData = {
-                    dictionary omni = {
-                        dictionary graph = {
-                            token attrValue = "back"
-                            string resolvedType = "token"
+            {
+                custom uchar inputs:domain_id = 1
+                custom bool inputs:useDomainIDEnvVar
+                token node:type = "isaacsim.ros2.bridge.ROS2Context"
+                int node:typeVersion = 2
+                custom uint64 outputs:context
+                uniform token ui:nodegraph:node:expansionState = "open"
+                uniform float2 ui:nodegraph:node:pos = (-1158.7665, -122.98352)
+            }
+
+            def OmniGraphNode "on_playback_tick" (
+                prepend apiSchemas = ["NodeGraphNodeAPI"]
+            )
+            {
+                token node:type = "omni.graph.action.OnPlaybackTick"
+                int node:typeVersion = 2
+                custom double outputs:deltaSeconds
+                custom double outputs:frame
+                custom uint outputs:tick (
+                    customData = {
+                        bool isExecution = 1
+                    }
+                )
+                custom double outputs:time
+                uniform token ui:nodegraph:node:expansionState = "open"
+                uniform float2 ui:nodegraph:node:pos = (-1159.0055, 37.16687)
+            }
+
+            def OmniGraphNode "get_xform" (
+                prepend apiSchemas = ["NodeGraphNodeAPI"]
+            )
+            {
+                custom rel inputs:prim = </biped/r_hip_1> (
+                    customData = {
+                        dictionary omni = {
+                            dictionary graph = {
+                                string relType = "bundle"
+                            }
                         }
                     }
-                }
+                )
+                custom double inputs:usdTimecode
+                custom bool inputs:useLocal
+                token node:type = "omni.anim.GetXform"
+                int node:typeVersion = 1
+                custom matrix4d outputs:transform = ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 0, 0, 1) )
+                uniform token ui:nodegraph:node:expansionState = "open"
+                uniform float2 ui:nodegraph:node:pos = (-1157.1381, 225.88853)
+            }
+
+            def OmniGraphNode "ros2_publisher_01" (
+                prepend apiSchemas = ["NodeGraphNodeAPI"]
             )
-            custom token inputs:input1 = "sacrum" (
-                customData = {
-                    string ExtendedAttributeType = "Union-->bool,colord[3],colord[4],colorf[3],colorf[4],colorh[3],colorh[4],double,double[2],double[3],double[4],float,float[2],float[3],float[4],frame[4],half,half[2],half[3],half[4],int,int64,int[2],int[3],int[4],matrixd[2],matrixd[3],matrixd[4],normald[3],normalf[3],normalh[3],pointd[3],pointf[3],pointh[3],quatd[4],quatf[4],quath[4],texcoordd[2],texcoordd[3],texcoordf[2],texcoordf[3],texcoordh[2],texcoordh[3],timecode,token,transform[4],uchar,uint,uint64,vectord[3],vectorf[3],vectorh[3]"
-                    dictionary omni = {
-                        dictionary graph = {
-                            string attrType = "Union-->bool,colord[3],colord[4],colorf[3],colorf[4],colorh[3],colorh[4],double,double[2],double[3],double[4],float,float[2],float[3],float[4],frame[4],half,half[2],half[3],half[4],int,int64,int[2],int[3],int[4],matrixd[2],matrixd[3],matrixd[4],normald[3],normalf[3],normalh[3],pointd[3],pointf[3],pointh[3],quatd[4],quatf[4],quath[4],texcoordd[2],texcoordd[3],texcoordf[2],texcoordf[3],texcoordh[2],texcoordh[3],timecode,token,transform[4],uchar,uint,uint64,vectord[3],vectorf[3],vectorh[3]"
-                            token attrValue = "sacrum"
-                            string resolvedType = "token"
-                        }
+            {
+                custom uint64 inputs:context
+                prepend uint64 inputs:context.connect = [
+                    </biped/Publishers/BaselinkPublisher/ros2_context.outputs:context>,
+                    </biped/Publishers/LHipPublisher/ros2_context.outputs:context>,
+                    </biped/Publishers/RHipPublisher/ros2_context.outputs:context>,
+                ]
+                custom uint inputs:execIn (
+                    customData = {
+                        bool isExecution = 1
                     }
-                }
-            )
-            custom token inputs:input2 = "l_hip" (
-                customData = {
-                    string ExtendedAttributeType = "Union-->bool,colord[3],colord[4],colorf[3],colorf[4],colorh[3],colorh[4],double,double[2],double[3],double[4],float,float[2],float[3],float[4],frame[4],half,half[2],half[3],half[4],int,int64,int[2],int[3],int[4],matrixd[2],matrixd[3],matrixd[4],normald[3],normalf[3],normalh[3],pointd[3],pointf[3],pointh[3],quatd[4],quatf[4],quath[4],texcoordd[2],texcoordd[3],texcoordf[2],texcoordf[3],texcoordh[2],texcoordh[3],timecode,token,transform[4],uchar,uint,uint64,vectord[3],vectorf[3],vectorh[3]"
-                    dictionary omni = {
-                        dictionary graph = {
-                            string attrType = "Union-->bool,colord[3],colord[4],colorf[3],colorf[4],colorh[3],colorh[4],double,double[2],double[3],double[4],float,float[2],float[3],float[4],frame[4],half,half[2],half[3],half[4],int,int64,int[2],int[3],int[4],matrixd[2],matrixd[3],matrixd[4],normald[3],normalf[3],normalh[3],pointd[3],pointf[3],pointh[3],quatd[4],quatf[4],quath[4],texcoordd[2],texcoordd[3],texcoordf[2],texcoordf[3],texcoordh[2],texcoordh[3],timecode,token,transform[4],uchar,uint,uint64,vectord[3],vectorf[3],vectorh[3]"
-                            token attrValue = "l_hip"
-                            string resolvedType = "token"
-                        }
+                )
+                prepend uint inputs:execIn.connect = [
+                    </biped/Publishers/BaselinkPublisher/on_playback_tick.outputs:tick>,
+                    </biped/Publishers/LHipPublisher/on_playback_tick.outputs:tick>,
+                    </biped/Publishers/RHipPublisher/on_playback_tick.outputs:tick>,
+                ]
+                custom string inputs:messageName = "Vector3"
+                custom string inputs:messagePackage = "geometry_msgs"
+                custom string inputs:messageSubfolder
+                custom string inputs:nodeNamespace
+                custom string inputs:qosProfile
+                custom uint64 inputs:queueSize
+                custom string inputs:topicName = "/r_hip/translate"
+                custom double inputs:x
+                prepend double inputs:x.connect = [
+                    </biped/Publishers/BaselinkPublisher/break_3_vector.outputs:x>,
+                    </biped/Publishers/LHipPublisher/break_3_vector.outputs:x>,
+                    </biped/Publishers/RHipPublisher/break_3_vector.outputs:x>,
+                ]
+                custom double inputs:y
+                prepend double inputs:y.connect = [
+                    </biped/Publishers/BaselinkPublisher/break_3_vector.outputs:y>,
+                    </biped/Publishers/LHipPublisher/break_3_vector.outputs:y>,
+                    </biped/Publishers/RHipPublisher/break_3_vector.outputs:y>,
+                ]
+                custom double inputs:z
+                prepend double inputs:z.connect = [
+                    </biped/Publishers/BaselinkPublisher/break_3_vector.outputs:z>,
+                    </biped/Publishers/LHipPublisher/break_3_vector.outputs:z>,
+                    </biped/Publishers/RHipPublisher/break_3_vector.outputs:z>,
+                ]
+                token node:type = "isaacsim.ros2.bridge.ROS2Publisher"
+                int node:typeVersion = 1
+                custom uint outputs:execOut (
+                    customData = {
+                        bool isExecution = 1
                     }
-                }
+                )
+                uniform token ui:nodegraph:node:expansionState = "open"
+                uniform float2 ui:nodegraph:node:pos = (-462.67657, -9.721905)
+            }
+
+            def OmniGraphNode "break_3_vector" (
+                prepend apiSchemas = ["NodeGraphNodeAPI"]
             )
-            custom token inputs:input3 = "r_hip" (
-                customData = {
-                    string ExtendedAttributeType = "Union-->bool,colord[3],colord[4],colorf[3],colorf[4],colorh[3],colorh[4],double,double[2],double[3],double[4],float,float[2],float[3],float[4],frame[4],half,half[2],half[3],half[4],int,int64,int[2],int[3],int[4],matrixd[2],matrixd[3],matrixd[4],normald[3],normalf[3],normalh[3],pointd[3],pointf[3],pointh[3],quatd[4],quatf[4],quath[4],texcoordd[2],texcoordd[3],texcoordf[2],texcoordf[3],texcoordh[2],texcoordh[3],timecode,token,transform[4],uchar,uint,uint64,vectord[3],vectorf[3],vectorh[3]"
-                    dictionary omni = {
-                        dictionary graph = {
-                            string attrType = "Union-->bool,colord[3],colord[4],colorf[3],colorf[4],colorh[3],colorh[4],double,double[2],double[3],double[4],float,float[2],float[3],float[4],frame[4],half,half[2],half[3],half[4],int,int64,int[2],int[3],int[4],matrixd[2],matrixd[3],matrixd[4],normald[3],normalf[3],normalh[3],pointd[3],pointf[3],pointh[3],quatd[4],quatf[4],quath[4],texcoordd[2],texcoordd[3],texcoordf[2],texcoordf[3],texcoordh[2],texcoordh[3],timecode,token,transform[4],uchar,uint,uint64,vectord[3],vectorf[3],vectorh[3]"
-                            token attrValue = "r_hip"
-                            string resolvedType = "token"
-                        }
-                    }
-                }
+            {
+                custom token inputs:tuple
+                prepend token inputs:tuple.connect = [
+                    </biped/Publishers/BaselinkPublisher/decompose_matrix.outputs:translate>,
+                    </biped/Publishers/LHipPublisher/decompose_matrix.outputs:translate>,
+                    </biped/Publishers/RHipPublisher/decompose_matrix.outputs:translate>,
+                ]
+                token node:type = "omni.graph.nodes.BreakVector3"
+                int node:typeVersion = 1
+                custom token outputs:x
+                custom token outputs:y
+                custom token outputs:z
+                uniform token ui:nodegraph:node:expansionState = "open"
+                uniform float2 ui:nodegraph:node:pos = (-710.7912, 110.71568)
+            }
+
+            def OmniGraphNode "decompose_matrix" (
+                prepend apiSchemas = ["NodeGraphNodeAPI"]
             )
-            custom token inputs:input4 = "l_thigh" (
-                customData = {
-                    string ExtendedAttributeType = "Union-->bool,colord[3],colord[4],colorf[3],colorf[4],colorh[3],colorh[4],double,double[2],double[3],double[4],float,float[2],float[3],float[4],frame[4],half,half[2],half[3],half[4],int,int64,int[2],int[3],int[4],matrixd[2],matrixd[3],matrixd[4],normald[3],normalf[3],normalh[3],pointd[3],pointf[3],pointh[3],quatd[4],quatf[4],quath[4],texcoordd[2],texcoordd[3],texcoordf[2],texcoordf[3],texcoordh[2],texcoordh[3],timecode,token,transform[4],uchar,uint,uint64,vectord[3],vectorf[3],vectorh[3]"
-                    dictionary omni = {
-                        dictionary graph = {
-                            string attrType = "Union-->bool,colord[3],colord[4],colorf[3],colorf[4],colorh[3],colorh[4],double,double[2],double[3],double[4],float,float[2],float[3],float[4],frame[4],half,half[2],half[3],half[4],int,int64,int[2],int[3],int[4],matrixd[2],matrixd[3],matrixd[4],normald[3],normalf[3],normalh[3],pointd[3],pointf[3],pointh[3],quatd[4],quatf[4],quath[4],texcoordd[2],texcoordd[3],texcoordf[2],texcoordf[3],texcoordh[2],texcoordh[3],timecode,token,transform[4],uchar,uint,uint64,vectord[3],vectorf[3],vectorh[3]"
-                            token attrValue = "l_thigh"
-                            string resolvedType = "token"
-                        }
-                    }
-                }
-            )
-            custom token inputs:input5 = "r_thigh" (
-                customData = {
-                    string ExtendedAttributeType = "Union-->bool,colord[3],colord[4],colorf[3],colorf[4],colorh[3],colorh[4],double,double[2],double[3],double[4],float,float[2],float[3],float[4],frame[4],half,half[2],half[3],half[4],int,int64,int[2],int[3],int[4],matrixd[2],matrixd[3],matrixd[4],normald[3],normalf[3],normalh[3],pointd[3],pointf[3],pointh[3],quatd[4],quatf[4],quath[4],texcoordd[2],texcoordd[3],texcoordf[2],texcoordf[3],texcoordh[2],texcoordh[3],timecode,token,transform[4],uchar,uint,uint64,vectord[3],vectorf[3],vectorh[3]"
-                    dictionary omni = {
-                        dictionary graph = {
-                            string attrType = "Union-->bool,colord[3],colord[4],colorf[3],colorf[4],colorh[3],colorh[4],double,double[2],double[3],double[4],float,float[2],float[3],float[4],frame[4],half,half[2],half[3],half[4],int,int64,int[2],int[3],int[4],matrixd[2],matrixd[3],matrixd[4],normald[3],normalf[3],normalh[3],pointd[3],pointf[3],pointh[3],quatd[4],quatf[4],quath[4],texcoordd[2],texcoordd[3],texcoordf[2],texcoordf[3],texcoordh[2],texcoordh[3],timecode,token,transform[4],uchar,uint,uint64,vectord[3],vectorf[3],vectorh[3]"
-                            token attrValue = "r_thigh"
-                            string resolvedType = "token"
-                        }
-                    }
-                }
-            )
-            custom token inputs:input6 = "l_calf" (
-                customData = {
-                    string ExtendedAttributeType = "Union-->bool,colord[3],colord[4],colorf[3],colorf[4],colorh[3],colorh[4],double,double[2],double[3],double[4],float,float[2],float[3],float[4],frame[4],half,half[2],half[3],half[4],int,int64,int[2],int[3],int[4],matrixd[2],matrixd[3],matrixd[4],normald[3],normalf[3],normalh[3],pointd[3],pointf[3],pointh[3],quatd[4],quatf[4],quath[4],texcoordd[2],texcoordd[3],texcoordf[2],texcoordf[3],texcoordh[2],texcoordh[3],timecode,token,transform[4],uchar,uint,uint64,vectord[3],vectorf[3],vectorh[3]"
-                    dictionary omni = {
-                        dictionary graph = {
-                            string attrType = "Union-->bool,colord[3],colord[4],colorf[3],colorf[4],colorh[3],colorh[4],double,double[2],double[3],double[4],float,float[2],float[3],float[4],frame[4],half,half[2],half[3],half[4],int,int64,int[2],int[3],int[4],matrixd[2],matrixd[3],matrixd[4],normald[3],normalf[3],normalh[3],pointd[3],pointf[3],pointh[3],quatd[4],quatf[4],quath[4],texcoordd[2],texcoordd[3],texcoordf[2],texcoordf[3],texcoordh[2],texcoordh[3],timecode,token,transform[4],uchar,uint,uint64,vectord[3],vectorf[3],vectorh[3]"
-                            token attrValue = "l_calf"
-                            string resolvedType = "token"
-                        }
-                    }
-                }
-            )
-            custom token inputs:input7 = "r_calf" (
-                customData = {
-                    string ExtendedAttributeType = "Union-->bool,colord[3],colord[4],colorf[3],colorf[4],colorh[3],colorh[4],double,double[2],double[3],double[4],float,float[2],float[3],float[4],frame[4],half,half[2],half[3],half[4],int,int64,int[2],int[3],int[4],matrixd[2],matrixd[3],matrixd[4],normald[3],normalf[3],normalh[3],pointd[3],pointf[3],pointh[3],quatd[4],quatf[4],quath[4],texcoordd[2],texcoordd[3],texcoordf[2],texcoordf[3],texcoordh[2],texcoordh[3],timecode,token,transform[4],uchar,uint,uint64,vectord[3],vectorf[3],vectorh[3]"
-                    dictionary omni = {
-                        dictionary graph = {
-                            string attrType = "Union-->bool,colord[3],colord[4],colorf[3],colorf[4],colorh[3],colorh[4],double,double[2],double[3],double[4],float,float[2],float[3],float[4],frame[4],half,half[2],half[3],half[4],int,int64,int[2],int[3],int[4],matrixd[2],matrixd[3],matrixd[4],normald[3],normalf[3],normalh[3],pointd[3],pointf[3],pointh[3],quatd[4],quatf[4],quath[4],texcoordd[2],texcoordd[3],texcoordf[2],texcoordf[3],texcoordh[2],texcoordh[3],timecode,token,transform[4],uchar,uint,uint64,vectord[3],vectorf[3],vectorh[3]"
-                            token attrValue = "r_calf"
-                            string resolvedType = "token"
-                        }
-                    }
-                }
-            )
-            custom token inputs:input8 = "l_ankle" (
-                customData = {
-                    string ExtendedAttributeType = "Union-->bool,colord[3],colord[4],colorf[3],colorf[4],colorh[3],colorh[4],double,double[2],double[3],double[4],float,float[2],float[3],float[4],frame[4],half,half[2],half[3],half[4],int,int64,int[2],int[3],int[4],matrixd[2],matrixd[3],matrixd[4],normald[3],normalf[3],normalh[3],pointd[3],pointf[3],pointh[3],quatd[4],quatf[4],quath[4],texcoordd[2],texcoordd[3],texcoordf[2],texcoordf[3],texcoordh[2],texcoordh[3],timecode,token,transform[4],uchar,uint,uint64,vectord[3],vectorf[3],vectorh[3]"
-                    dictionary omni = {
-                        dictionary graph = {
-                            string attrType = "Union-->bool,colord[3],colord[4],colorf[3],colorf[4],colorh[3],colorh[4],double,double[2],double[3],double[4],float,float[2],float[3],float[4],frame[4],half,half[2],half[3],half[4],int,int64,int[2],int[3],int[4],matrixd[2],matrixd[3],matrixd[4],normald[3],normalf[3],normalh[3],pointd[3],pointf[3],pointh[3],quatd[4],quatf[4],quath[4],texcoordd[2],texcoordd[3],texcoordf[2],texcoordf[3],texcoordh[2],texcoordh[3],timecode,token,transform[4],uchar,uint,uint64,vectord[3],vectorf[3],vectorh[3]"
-                            token attrValue = "l_ankle"
-                            string resolvedType = "token"
-                        }
-                    }
-                }
-            )
-            custom token inputs:input9 = "r_ankle" (
-                customData = {
-                    string ExtendedAttributeType = "Union-->bool,colord[3],colord[4],colorf[3],colorf[4],colorh[3],colorh[4],double,double[2],double[3],double[4],float,float[2],float[3],float[4],frame[4],half,half[2],half[3],half[4],int,int64,int[2],int[3],int[4],matrixd[2],matrixd[3],matrixd[4],normald[3],normalf[3],normalh[3],pointd[3],pointf[3],pointh[3],quatd[4],quatf[4],quath[4],texcoordd[2],texcoordd[3],texcoordf[2],texcoordf[3],texcoordh[2],texcoordh[3],timecode,token,transform[4],uchar,uint,uint64,vectord[3],vectorf[3],vectorh[3]"
-                    dictionary omni = {
-                        dictionary graph = {
-                            string attrType = "Union-->bool,colord[3],colord[4],colorf[3],colorf[4],colorh[3],colorh[4],double,double[2],double[3],double[4],float,float[2],float[3],float[4],frame[4],half,half[2],half[3],half[4],int,int64,int[2],int[3],int[4],matrixd[2],matrixd[3],matrixd[4],normald[3],normalf[3],normalh[3],pointd[3],pointf[3],pointh[3],quatd[4],quatf[4],quath[4],texcoordd[2],texcoordd[3],texcoordf[2],texcoordf[3],texcoordh[2],texcoordh[3],timecode,token,transform[4],uchar,uint,uint64,vectord[3],vectorf[3],vectorh[3]"
-                            token attrValue = "r_ankle"
-                            string resolvedType = "token"
-                        }
-                    }
-                }
-            )
-            custom token inputs:input10 = "l_foot" (
-                customData = {
-                    string ExtendedAttributeType = "Union-->bool,colord[3],colord[4],colorf[3],colorf[4],colorh[3],colorh[4],double,double[2],double[3],double[4],float,float[2],float[3],float[4],frame[4],half,half[2],half[3],half[4],int,int64,int[2],int[3],int[4],matrixd[2],matrixd[3],matrixd[4],normald[3],normalf[3],normalh[3],pointd[3],pointf[3],pointh[3],quatd[4],quatf[4],quath[4],texcoordd[2],texcoordd[3],texcoordf[2],texcoordf[3],texcoordh[2],texcoordh[3],timecode,token,transform[4],uchar,uint,uint64,vectord[3],vectorf[3],vectorh[3]"
-                    dictionary omni = {
-                        dictionary graph = {
-                            string attrType = "Union-->bool,colord[3],colord[4],colorf[3],colorf[4],colorh[3],colorh[4],double,double[2],double[3],double[4],float,float[2],float[3],float[4],frame[4],half,half[2],half[3],half[4],int,int64,int[2],int[3],int[4],matrixd[2],matrixd[3],matrixd[4],normald[3],normalf[3],normalh[3],pointd[3],pointf[3],pointh[3],quatd[4],quatf[4],quath[4],texcoordd[2],texcoordd[3],texcoordf[2],texcoordf[3],texcoordh[2],texcoordh[3],timecode,token,transform[4],uchar,uint,uint64,vectord[3],vectorf[3],vectorh[3]"
-                            token attrValue = "l_foot"
-                            string resolvedType = "token"
-                        }
-                    }
-                }
-            )
-            custom token inputs:input11 = "r_foot" (
-                customData = {
-                    string ExtendedAttributeType = "Union-->bool,colord[3],colord[4],colorf[3],colorf[4],colorh[3],colorh[4],double,double[2],double[3],double[4],float,float[2],float[3],float[4],frame[4],half,half[2],half[3],half[4],int,int64,int[2],int[3],int[4],matrixd[2],matrixd[3],matrixd[4],normald[3],normalf[3],normalh[3],pointd[3],pointf[3],pointh[3],quatd[4],quatf[4],quath[4],texcoordd[2],texcoordd[3],texcoordf[2],texcoordf[3],texcoordh[2],texcoordh[3],timecode,token,transform[4],uchar,uint,uint64,vectord[3],vectorf[3],vectorh[3]"
-                    dictionary omni = {
-                        dictionary graph = {
-                            string attrType = "Union-->bool,colord[3],colord[4],colorf[3],colorf[4],colorh[3],colorh[4],double,double[2],double[3],double[4],float,float[2],float[3],float[4],frame[4],half,half[2],half[3],half[4],int,int64,int[2],int[3],int[4],matrixd[2],matrixd[3],matrixd[4],normald[3],normalf[3],normalh[3],pointd[3],pointf[3],pointh[3],quatd[4],quatf[4],quath[4],texcoordd[2],texcoordd[3],texcoordf[2],texcoordf[3],texcoordh[2],texcoordh[3],timecode,token,transform[4],uchar,uint,uint64,vectord[3],vectorf[3],vectorh[3]"
-                            token attrValue = "r_foot"
-                            string resolvedType = "token"
-                        }
-                    }
-                }
-            )
-            token node:type = "omni.graph.nodes.ConstructArray"
-            int node:typeVersion = 1
-            custom token outputs:array
-            uniform token ui:nodegraph:node:expansionState = "open"
-            uniform float2 ui:nodegraph:node:pos = (-951.6488, -199.85312)
+            {
+                custom matrix4d inputs:matrix
+                prepend matrix4d inputs:matrix.connect = [
+                    </biped/Publishers/LHipPublisher/get_xform.outputs:transform>,
+                    </biped/Publishers/RHipPublisher/get_xform.outputs:transform>,
+                ]
+                custom int inputs:rotateOrder
+                token node:type = "omni.anim.DecomposeMatrix"
+                int node:typeVersion = 1
+                custom double4 outputs:quaternion
+                custom double3 outputs:rotate
+                custom double3 outputs:scale
+                custom double3 outputs:translate
+                uniform token ui:nodegraph:node:expansionState = "open"
+                uniform float2 ui:nodegraph:node:pos = (-919.6734, 119.40233)
+            }
         }
 
-        def OmniGraphNode "ros2_subscriber" (
-            prepend apiSchemas = ["NodeGraphNodeAPI"]
-        )
+        def OmniGraph "LFootPublisher"
         {
-            custom uint64 inputs:context
-            prepend uint64 inputs:context.connect = </biped/JointAngleSubscriber/ros2_context.outputs:context>
-            custom uint inputs:execIn (
-                customData = {
-                    bool isExecution = 1
-                }
-            )
-            prepend uint inputs:execIn.connect = </biped/JointAngleSubscriber/on_playback_tick.outputs:tick>
-            custom string inputs:messageName = "Float64MultiArray"
-            custom string inputs:messagePackage = "std_msgs"
-            custom string inputs:messageSubfolder
-            custom string inputs:nodeNamespace
-            custom string inputs:qosProfile
-            custom uint64 inputs:queueSize
-            custom string inputs:topicName = "/biped/joint_target"
-            token node:type = "isaacsim.ros2.bridge.ROS2Subscriber"
-            int node:typeVersion = 1
-            custom double[] outputs:data
-            custom uint outputs:execOut (
-                customData = {
-                    bool isExecution = 1
-                }
-            )
-            custom uint outputs:layout:data_offset
-            custom token[] outputs:layout:dim
-            uniform token ui:nodegraph:node:expansionState = "open"
-            uniform float2 ui:nodegraph:node:pos = (-953.21704, 151.61885)
-        }
+            token evaluationMode = "Automatic"
+            token evaluator:type = "execution"
+            token fabricCacheBacking = "Shared"
+            int2 fileFormatVersion = (1, 9)
+            token pipelineStage = "pipelineStageSimulation"
 
-        def OmniGraphNode "articulation_controller" (
-            prepend apiSchemas = ["NodeGraphNodeAPI"]
-        )
-        {
-            custom double[] inputs:effortCommand
-            custom uint inputs:execIn (
-                customData = {
-                    bool isExecution = 1
-                }
+            def OmniGraphNode "ros2_context" (
+                prepend apiSchemas = ["NodeGraphNodeAPI"]
             )
-            prepend uint inputs:execIn.connect = </biped/JointAngleSubscriber/on_playback_tick.outputs:tick>
-            custom int[] inputs:jointIndices
-            custom token[] inputs:jointNames
-            prepend token[] inputs:jointNames.connect = </biped/JointAngleSubscriber/make_array.outputs:array>
-            custom double[] inputs:positionCommand
-            prepend double[] inputs:positionCommand.connect = </biped/JointAngleSubscriber/ros2_subscriber.outputs:data>
-            custom string inputs:robotPath = "/biped/base_link"
-            custom rel inputs:targetPrim (
-                customData = {
-                    dictionary omni = {
-                        dictionary graph = {
-                            string relType = "target"
+            {
+                custom uchar inputs:domain_id = 1
+                custom bool inputs:useDomainIDEnvVar
+                token node:type = "isaacsim.ros2.bridge.ROS2Context"
+                int node:typeVersion = 2
+                custom uint64 outputs:context
+                uniform token ui:nodegraph:node:expansionState = "open"
+                uniform float2 ui:nodegraph:node:pos = (-1158.7665, -122.98352)
+            }
+
+            def OmniGraphNode "on_playback_tick" (
+                prepend apiSchemas = ["NodeGraphNodeAPI"]
+            )
+            {
+                token node:type = "omni.graph.action.OnPlaybackTick"
+                int node:typeVersion = 2
+                custom double outputs:deltaSeconds
+                custom double outputs:frame
+                custom uint outputs:tick (
+                    customData = {
+                        bool isExecution = 1
+                    }
+                )
+                custom double outputs:time
+                uniform token ui:nodegraph:node:expansionState = "open"
+                uniform float2 ui:nodegraph:node:pos = (-1159.0055, 37.16687)
+            }
+
+            def OmniGraphNode "get_xform" (
+                prepend apiSchemas = ["NodeGraphNodeAPI"]
+            )
+            {
+                custom rel inputs:prim = </biped/l_foot_1> (
+                    customData = {
+                        dictionary omni = {
+                            dictionary graph = {
+                                string relType = "bundle"
+                            }
                         }
                     }
-                }
+                )
+                custom double inputs:usdTimecode
+                custom bool inputs:useLocal
+                token node:type = "omni.anim.GetXform"
+                int node:typeVersion = 1
+                custom matrix4d outputs:transform = ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 0, 0, 1) )
+                uniform token ui:nodegraph:node:expansionState = "open"
+                uniform float2 ui:nodegraph:node:pos = (-1157.1381, 225.88853)
+            }
+
+            def OmniGraphNode "ros2_publisher_01" (
+                prepend apiSchemas = ["NodeGraphNodeAPI"]
             )
-            custom double[] inputs:velocityCommand
-            token node:type = "isaacsim.core.nodes.IsaacArticulationController"
-            int node:typeVersion = 1
-            uniform token ui:nodegraph:node:expansionState = "open"
-            uniform float2 ui:nodegraph:node:pos = (-674.7016, 66.546936)
+            {
+                custom uint64 inputs:context
+                prepend uint64 inputs:context.connect = [
+                    </biped/Publishers/BaselinkPublisher/ros2_context.outputs:context>,
+                    </biped/Publishers/LFootPublisher/ros2_context.outputs:context>,
+                ]
+                custom uint inputs:execIn (
+                    customData = {
+                        bool isExecution = 1
+                    }
+                )
+                prepend uint inputs:execIn.connect = [
+                    </biped/Publishers/BaselinkPublisher/on_playback_tick.outputs:tick>,
+                    </biped/Publishers/LFootPublisher/on_playback_tick.outputs:tick>,
+                ]
+                custom string inputs:messageName = "Vector3"
+                custom string inputs:messagePackage = "geometry_msgs"
+                custom string inputs:messageSubfolder
+                custom string inputs:nodeNamespace
+                custom string inputs:qosProfile
+                custom uint64 inputs:queueSize
+                custom string inputs:topicName = "/l_foot/translate"
+                custom double inputs:x
+                prepend double inputs:x.connect = [
+                    </biped/Publishers/BaselinkPublisher/break_3_vector.outputs:x>,
+                    </biped/Publishers/LFootPublisher/break_3_vector.outputs:x>,
+                ]
+                custom double inputs:y
+                prepend double inputs:y.connect = [
+                    </biped/Publishers/BaselinkPublisher/break_3_vector.outputs:y>,
+                    </biped/Publishers/LFootPublisher/break_3_vector.outputs:y>,
+                ]
+                custom double inputs:z
+                prepend double inputs:z.connect = [
+                    </biped/Publishers/BaselinkPublisher/break_3_vector.outputs:z>,
+                    </biped/Publishers/LFootPublisher/break_3_vector.outputs:z>,
+                ]
+                token node:type = "isaacsim.ros2.bridge.ROS2Publisher"
+                int node:typeVersion = 1
+                custom uint outputs:execOut (
+                    customData = {
+                        bool isExecution = 1
+                    }
+                )
+                uniform token ui:nodegraph:node:expansionState = "open"
+                uniform float2 ui:nodegraph:node:pos = (-420.1914, -77.31881)
+            }
+
+            def OmniGraphNode "break_3_vector" (
+                prepend apiSchemas = ["NodeGraphNodeAPI"]
+            )
+            {
+                custom token inputs:tuple
+                prepend token inputs:tuple.connect = [
+                    </biped/Publishers/BaselinkPublisher/decompose_matrix.outputs:translate>,
+                    </biped/Publishers/LFootPublisher/decompose_matrix.outputs:translate>,
+                ]
+                token node:type = "omni.graph.nodes.BreakVector3"
+                int node:typeVersion = 1
+                custom token outputs:x
+                custom token outputs:y
+                custom token outputs:z
+                uniform token ui:nodegraph:node:expansionState = "open"
+                uniform float2 ui:nodegraph:node:pos = (-695.27594, 98.64831)
+            }
+
+            def OmniGraphNode "decompose_matrix" (
+                prepend apiSchemas = ["NodeGraphNodeAPI"]
+            )
+            {
+                custom matrix4d inputs:matrix
+                prepend matrix4d inputs:matrix.connect = </biped/Publishers/LFootPublisher/get_xform.outputs:transform>
+                custom int inputs:rotateOrder
+                token node:type = "omni.anim.DecomposeMatrix"
+                int node:typeVersion = 1
+                custom double4 outputs:quaternion
+                custom double3 outputs:rotate
+                custom double3 outputs:scale
+                custom double3 outputs:translate
+                uniform token ui:nodegraph:node:expansionState = "open"
+                uniform float2 ui:nodegraph:node:pos = (-919.6734, 119.40233)
+            }
+
+            def OmniGraphNode "break_4_vector" (
+                prepend apiSchemas = ["NodeGraphNodeAPI"]
+            )
+            {
+                custom token inputs:tuple
+                prepend token inputs:tuple.connect = </biped/Publishers/LFootPublisher/decompose_matrix.outputs:quaternion>
+                token node:type = "omni.graph.nodes.BreakVector4"
+                int node:typeVersion = 1
+                custom token outputs:w
+                custom token outputs:x
+                custom token outputs:y
+                custom token outputs:z
+                uniform token ui:nodegraph:node:expansionState = "open"
+                uniform float2 ui:nodegraph:node:pos = (-703.29785, 348.77042)
+            }
+
+            def OmniGraphNode "ros2_publisher" (
+                prepend apiSchemas = ["NodeGraphNodeAPI"]
+            )
+            {
+                custom uint64 inputs:context
+                prepend uint64 inputs:context.connect = </biped/Publishers/LFootPublisher/ros2_context.outputs:context>
+                custom uint inputs:execIn (
+                    customData = {
+                        bool isExecution = 1
+                    }
+                )
+                prepend uint inputs:execIn.connect = </biped/Publishers/LFootPublisher/on_playback_tick.outputs:tick>
+                custom string inputs:messageName = "Quaternion"
+                custom string inputs:messagePackage = "geometry_msgs"
+                custom string inputs:messageSubfolder
+                custom string inputs:nodeNamespace
+                custom string inputs:qosProfile
+                custom uint64 inputs:queueSize
+                custom string inputs:topicName = "/l_foot/quat"
+                custom double inputs:w
+                prepend double inputs:w.connect = </biped/Publishers/LFootPublisher/break_4_vector.outputs:w>
+                custom double inputs:x
+                prepend double inputs:x.connect = </biped/Publishers/LFootPublisher/break_4_vector.outputs:x>
+                custom double inputs:y
+                delete double inputs:y.connect = </biped/Publishers/LFootPublisher/break_4_vector.outputs:x>
+                prepend double inputs:y.connect = </biped/Publishers/LFootPublisher/break_4_vector.outputs:y>
+                custom double inputs:z
+                prepend double inputs:z.connect = </biped/Publishers/LFootPublisher/break_4_vector.outputs:z>
+                token node:type = "isaacsim.ros2.bridge.ROS2Publisher"
+                int node:typeVersion = 1
+                custom uint outputs:execOut (
+                    customData = {
+                        bool isExecution = 1
+                    }
+                )
+                uniform token ui:nodegraph:node:expansionState = "open"
+                uniform float2 ui:nodegraph:node:pos = (-411.4074, 259.76593)
+            }
+        }
+
+        def OmniGraph "RFootPublisher"
+        {
+            token evaluationMode = "Automatic"
+            token evaluator:type = "execution"
+            token fabricCacheBacking = "Shared"
+            int2 fileFormatVersion = (1, 9)
+            token pipelineStage = "pipelineStageSimulation"
+
+            def OmniGraphNode "ros2_context" (
+                prepend apiSchemas = ["NodeGraphNodeAPI"]
+            )
+            {
+                custom uchar inputs:domain_id = 1
+                custom bool inputs:useDomainIDEnvVar
+                token node:type = "isaacsim.ros2.bridge.ROS2Context"
+                int node:typeVersion = 2
+                custom uint64 outputs:context
+                uniform token ui:nodegraph:node:expansionState = "open"
+                uniform float2 ui:nodegraph:node:pos = (-1158.7665, -122.98352)
+            }
+
+            def OmniGraphNode "on_playback_tick" (
+                prepend apiSchemas = ["NodeGraphNodeAPI"]
+            )
+            {
+                token node:type = "omni.graph.action.OnPlaybackTick"
+                int node:typeVersion = 2
+                custom double outputs:deltaSeconds
+                custom double outputs:frame
+                custom uint outputs:tick (
+                    customData = {
+                        bool isExecution = 1
+                    }
+                )
+                custom double outputs:time
+                uniform token ui:nodegraph:node:expansionState = "open"
+                uniform float2 ui:nodegraph:node:pos = (-1159.0055, 37.16687)
+            }
+
+            def OmniGraphNode "get_xform" (
+                prepend apiSchemas = ["NodeGraphNodeAPI"]
+            )
+            {
+                custom rel inputs:prim = </biped/r_foot_1> (
+                    customData = {
+                        dictionary omni = {
+                            dictionary graph = {
+                                string relType = "bundle"
+                            }
+                        }
+                    }
+                )
+                custom double inputs:usdTimecode
+                custom bool inputs:useLocal
+                token node:type = "omni.anim.GetXform"
+                int node:typeVersion = 1
+                custom matrix4d outputs:transform = ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 0, 0, 1) )
+                uniform token ui:nodegraph:node:expansionState = "open"
+                uniform float2 ui:nodegraph:node:pos = (-1157.1381, 225.88853)
+            }
+
+            def OmniGraphNode "ros2_publisher_01" (
+                prepend apiSchemas = ["NodeGraphNodeAPI"]
+            )
+            {
+                custom uint64 inputs:context
+                prepend uint64 inputs:context.connect = [
+                    </biped/Publishers/BaselinkPublisher/ros2_context.outputs:context>,
+                    </biped/Publishers/LFootPublisher/ros2_context.outputs:context>,
+                    </biped/Publishers/RFootPublisher/ros2_context.outputs:context>,
+                ]
+                custom uint inputs:execIn (
+                    customData = {
+                        bool isExecution = 1
+                    }
+                )
+                prepend uint inputs:execIn.connect = [
+                    </biped/Publishers/BaselinkPublisher/on_playback_tick.outputs:tick>,
+                    </biped/Publishers/LFootPublisher/on_playback_tick.outputs:tick>,
+                    </biped/Publishers/RFootPublisher/on_playback_tick.outputs:tick>,
+                ]
+                custom string inputs:messageName = "Vector3"
+                custom string inputs:messagePackage = "geometry_msgs"
+                custom string inputs:messageSubfolder
+                custom string inputs:nodeNamespace
+                custom string inputs:qosProfile
+                custom uint64 inputs:queueSize
+                custom string inputs:topicName = "/r_foot/translate"
+                custom double inputs:x
+                prepend double inputs:x.connect = [
+                    </biped/Publishers/BaselinkPublisher/break_3_vector.outputs:x>,
+                    </biped/Publishers/LFootPublisher/break_3_vector.outputs:x>,
+                    </biped/Publishers/RFootPublisher/break_3_vector.outputs:x>,
+                ]
+                custom double inputs:y
+                prepend double inputs:y.connect = [
+                    </biped/Publishers/BaselinkPublisher/break_3_vector.outputs:y>,
+                    </biped/Publishers/LFootPublisher/break_3_vector.outputs:y>,
+                    </biped/Publishers/RFootPublisher/break_3_vector.outputs:y>,
+                ]
+                custom double inputs:z
+                prepend double inputs:z.connect = [
+                    </biped/Publishers/BaselinkPublisher/break_3_vector.outputs:z>,
+                    </biped/Publishers/LFootPublisher/break_3_vector.outputs:z>,
+                    </biped/Publishers/RFootPublisher/break_3_vector.outputs:z>,
+                ]
+                token node:type = "isaacsim.ros2.bridge.ROS2Publisher"
+                int node:typeVersion = 1
+                custom uint outputs:execOut (
+                    customData = {
+                        bool isExecution = 1
+                    }
+                )
+                uniform token ui:nodegraph:node:expansionState = "open"
+                uniform float2 ui:nodegraph:node:pos = (-437.01663, -9.721905)
+            }
+
+            def OmniGraphNode "break_3_vector" (
+                prepend apiSchemas = ["NodeGraphNodeAPI"]
+            )
+            {
+                custom token inputs:tuple
+                prepend token inputs:tuple.connect = [
+                    </biped/Publishers/BaselinkPublisher/decompose_matrix.outputs:translate>,
+                    </biped/Publishers/LFootPublisher/decompose_matrix.outputs:translate>,
+                    </biped/Publishers/RFootPublisher/decompose_matrix.outputs:translate>,
+                ]
+                token node:type = "omni.graph.nodes.BreakVector3"
+                int node:typeVersion = 1
+                custom token outputs:x
+                custom token outputs:y
+                custom token outputs:z
+                uniform token ui:nodegraph:node:expansionState = "open"
+                uniform float2 ui:nodegraph:node:pos = (-695.27594, 98.64831)
+            }
+
+            def OmniGraphNode "decompose_matrix" (
+                prepend apiSchemas = ["NodeGraphNodeAPI"]
+            )
+            {
+                custom matrix4d inputs:matrix
+                prepend matrix4d inputs:matrix.connect = [
+                    </biped/Publishers/LFootPublisher/get_xform.outputs:transform>,
+                    </biped/Publishers/RFootPublisher/get_xform.outputs:transform>,
+                ]
+                custom int inputs:rotateOrder
+                token node:type = "omni.anim.DecomposeMatrix"
+                int node:typeVersion = 1
+                custom double4 outputs:quaternion
+                custom double3 outputs:rotate
+                custom double3 outputs:scale
+                custom double3 outputs:translate
+                uniform token ui:nodegraph:node:expansionState = "open"
+                uniform float2 ui:nodegraph:node:pos = (-919.6734, 119.40233)
+            }
+
+            def OmniGraphNode "ros2_publisher" (
+                prepend apiSchemas = ["NodeGraphNodeAPI"]
+            )
+            {
+                custom uint64 inputs:context
+                prepend uint64 inputs:context.connect = </biped/Publishers/RFootPublisher/ros2_context.outputs:context>
+                custom uint inputs:execIn (
+                    customData = {
+                        bool isExecution = 1
+                    }
+                )
+                prepend uint inputs:execIn.connect = </biped/Publishers/RFootPublisher/on_playback_tick.outputs:tick>
+                custom string inputs:messageName = "Quaternion"
+                custom string inputs:messagePackage = "geometry_msgs"
+                custom string inputs:messageSubfolder
+                custom string inputs:nodeNamespace
+                custom string inputs:qosProfile
+                custom uint64 inputs:queueSize
+                custom string inputs:topicName = "/r_foot/quat"
+                custom double inputs:w
+                prepend double inputs:w.connect = </biped/Publishers/RFootPublisher/break_4_vector.outputs:w>
+                custom double inputs:x
+                prepend double inputs:x.connect = </biped/Publishers/RFootPublisher/break_4_vector.outputs:x>
+                custom double inputs:y
+                prepend double inputs:y.connect = </biped/Publishers/RFootPublisher/break_4_vector.outputs:y>
+                custom double inputs:z
+                prepend double inputs:z.connect = </biped/Publishers/RFootPublisher/break_4_vector.outputs:z>
+                token node:type = "isaacsim.ros2.bridge.ROS2Publisher"
+                int node:typeVersion = 1
+                custom uint outputs:execOut (
+                    customData = {
+                        bool isExecution = 1
+                    }
+                )
+                uniform token ui:nodegraph:node:expansionState = "open"
+                uniform float2 ui:nodegraph:node:pos = (-397.63925, -382.48627)
+            }
+
+            def OmniGraphNode "break_4_vector" (
+                prepend apiSchemas = ["NodeGraphNodeAPI"]
+            )
+            {
+                custom token inputs:tuple
+                prepend token inputs:tuple.connect = </biped/Publishers/RFootPublisher/decompose_matrix.outputs:quaternion>
+                token node:type = "omni.graph.nodes.BreakVector4"
+                int node:typeVersion = 1
+                custom token outputs:w
+                custom token outputs:x
+                custom token outputs:y
+                custom token outputs:z
+                uniform token ui:nodegraph:node:expansionState = "open"
+                uniform float2 ui:nodegraph:node:pos = (-692.43756, -135.04996)
+            }
         }
     }
 
-    def OmniGraph "BaselinkPublisher"
+    def Scope "COMPublisher"
     {
-        token evaluationMode = "Automatic"
-        token evaluator:type = "execution"
-        token fabricCacheBacking = "Shared"
-        int2 fileFormatVersion = (1, 9)
-        token pipelineStage = "pipelineStageSimulation"
-
-        def OmniGraphNode "ros2_context" (
-            prepend apiSchemas = ["NodeGraphNodeAPI"]
-        )
+        def OmniGraph "COMPublisher"
         {
-            custom uchar inputs:domain_id = 1
-            custom bool inputs:useDomainIDEnvVar
-            token node:type = "isaacsim.ros2.bridge.ROS2Context"
-            int node:typeVersion = 2
-            custom uint64 outputs:context
-            uniform token ui:nodegraph:node:expansionState = "open"
-            uniform float2 ui:nodegraph:node:pos = (-893.7184, -138.9979)
-        }
+            token evaluationMode = "Automatic"
+            token evaluator:type = "execution"
+            token fabricCacheBacking = "Shared"
+            int2 fileFormatVersion = (1, 9)
+            token pipelineStage = "pipelineStageSimulation"
 
-        def OmniGraphNode "decompose_matrix" (
-            prepend apiSchemas = ["NodeGraphNodeAPI"]
-        )
-        {
-            custom matrix4d inputs:matrix
-            prepend matrix4d inputs:matrix.connect = [
-                </biped/BaselinkPublisher/get_joint_xform.outputs:transform>,
-                </biped/BaselinkPublisher/get_xform.outputs:transform>,
-            ]
-            custom int inputs:rotateOrder = 0
-            token node:type = "omni.anim.DecomposeMatrix"
-            int node:typeVersion = 1
-            custom double4 outputs:quaternion
-            custom double3 outputs:rotate
-            custom double3 outputs:scale
-            custom double3 outputs:translate
-            uniform token ui:nodegraph:node:expansionState = "open"
-            uniform float2 ui:nodegraph:node:pos = (-931.2966, 176.47081)
-        }
-
-        def OmniGraphNode "break_4_vector" (
-            prepend apiSchemas = ["NodeGraphNodeAPI"]
-        )
-        {
-            custom token inputs:tuple
-            prepend token inputs:tuple.connect = </biped/BaselinkPublisher/decompose_matrix.outputs:quaternion>
-            token node:type = "omni.graph.nodes.BreakVector4"
-            int node:typeVersion = 1
-            custom token outputs:w
-            custom token outputs:x
-            custom token outputs:y
-            custom token outputs:z
-            uniform token ui:nodegraph:node:expansionState = "open"
-            uniform float2 ui:nodegraph:node:pos = (-598.3738, 23.179935)
-        }
-
-        def OmniGraphNode "ros2_publisher" (
-            prepend apiSchemas = ["NodeGraphNodeAPI"]
-        )
-        {
-            custom uint64 inputs:context
-            prepend uint64 inputs:context.connect = </biped/BaselinkPublisher/ros2_context.outputs:context>
-            custom uint inputs:execIn (
-                customData = {
-                    bool isExecution = 1
-                }
+            def OmniGraphNode "ros2_context" (
+                prepend apiSchemas = ["NodeGraphNodeAPI"]
             )
-            prepend uint inputs:execIn.connect = </biped/BaselinkPublisher/on_playback_tick.outputs:tick>
-            custom string inputs:messageName = "Quaternion"
-            custom string inputs:messagePackage = "geometry_msgs"
-            custom string inputs:messageSubfolder
-            custom string inputs:nodeNamespace
-            custom string inputs:qosProfile
-            custom uint64 inputs:queueSize
-            custom string inputs:topicName = "/baselink/quat"
-            custom double inputs:w
-            prepend double inputs:w.connect = </biped/BaselinkPublisher/break_4_vector.outputs:w>
-            custom double inputs:x
-            prepend double inputs:x.connect = </biped/BaselinkPublisher/break_4_vector.outputs:x>
-            custom double inputs:y
-            prepend double inputs:y.connect = </biped/BaselinkPublisher/break_4_vector.outputs:y>
-            custom double inputs:z
-            prepend double inputs:z.connect = </biped/BaselinkPublisher/break_4_vector.outputs:z>
-            token node:type = "isaacsim.ros2.bridge.ROS2Publisher"
-            int node:typeVersion = 1
-            custom uint outputs:execOut (
-                customData = {
-                    bool isExecution = 1
-                }
-            )
-            uniform token ui:nodegraph:node:expansionState = "open"
-            uniform float2 ui:nodegraph:node:pos = (-362.91232, -184.7201)
-        }
+            {
+                custom uchar inputs:domain_id = 1
+                custom bool inputs:useDomainIDEnvVar
+                token node:type = "isaacsim.ros2.bridge.ROS2Context"
+                int node:typeVersion = 2
+                custom uint64 outputs:context
+                uniform token ui:nodegraph:node:expansionState = "minimized"
+                uniform float2 ui:nodegraph:node:pos = (-836.9676, -341.32584)
+            }
 
-        def OmniGraphNode "on_playback_tick" (
-            prepend apiSchemas = ["NodeGraphNodeAPI"]
-        )
-        {
-            token node:type = "omni.graph.action.OnPlaybackTick"
-            int node:typeVersion = 2
-            custom double outputs:deltaSeconds
-            custom double outputs:frame
-            custom uint outputs:tick (
-                customData = {
-                    bool isExecution = 1
-                }
+            def OmniGraphNode "on_playback_tick" (
+                prepend apiSchemas = ["NodeGraphNodeAPI"]
             )
-            custom double outputs:time
-            uniform token ui:nodegraph:node:expansionState = "open"
-            uniform float2 ui:nodegraph:node:pos = (-1194.2864, 16.309181)
-        }
+            {
+                token node:type = "omni.graph.action.OnPlaybackTick"
+                int node:typeVersion = 2
+                custom double outputs:deltaSeconds
+                custom double outputs:frame
+                custom uint outputs:tick (
+                    customData = {
+                        bool isExecution = 1
+                    }
+                )
+                custom double outputs:time
+                uniform token ui:nodegraph:node:expansionState = "minimized"
+                uniform float2 ui:nodegraph:node:pos = (-1135.2356, -311.388)
+            }
 
-        def OmniGraphNode "get_xform" (
-            prepend apiSchemas = ["NodeGraphNodeAPI"]
-        )
-        {
-            custom rel inputs:prim = </biped/base_link> (
-                customData = {
-                    dictionary omni = {
-                        dictionary graph = {
-                            string relType = "bundle"
+            def OmniGraphNode "ros2_publisher_01" (
+                prepend apiSchemas = ["NodeGraphNodeAPI"]
+            )
+            {
+                custom uint64 inputs:context
+                prepend uint64 inputs:context.connect = [
+                    </biped/Publishers/BaselinkPublisher/ros2_context.outputs:context>,
+                    </biped/COMPublisher/COMPublisher/ros2_context.outputs:context>,
+                ]
+                custom double[] inputs:data
+                prepend double[] inputs:data.connect = [
+                    </biped/COMPublisher/COMPublisher/script_node.outputs:data>,
+                    </biped/COMPublisher/COMPublisher/script_node.outputs:com_array>,
+                ]
+                custom uint inputs:execIn (
+                    customData = {
+                        bool isExecution = 1
+                    }
+                )
+                prepend uint inputs:execIn.connect = [
+                    </biped/Publishers/BaselinkPublisher/on_playback_tick.outputs:tick>,
+                    </biped/COMPublisher/COMPublisher/on_playback_tick.outputs:tick>,
+                ]
+                custom uint inputs:layout:data_offset
+                custom token[] inputs:layout:dim
+                custom string inputs:messageName = "Float64MultiArray"
+                custom string inputs:messagePackage = "std_msgs"
+                custom string inputs:messageSubfolder
+                custom string inputs:nodeNamespace
+                custom string inputs:qosProfile
+                custom uint64 inputs:queueSize
+                custom string inputs:topicName = "/com"
+                token node:type = "isaacsim.ros2.bridge.ROS2Publisher"
+                int node:typeVersion = 1
+                custom uint outputs:execOut (
+                    customData = {
+                        bool isExecution = 1
+                    }
+                )
+                uniform token ui:nodegraph:node:expansionState = "minimized"
+                uniform float2 ui:nodegraph:node:pos = (-465.771, -77.6067)
+            }
+
+            def OmniGraphNode "get_rigid_body_properties" (
+                prepend apiSchemas = ["NodeGraphNodeAPI"]
+            )
+            {
+                custom rel inputs:prim = </biped/back_1> (
+                    customData = {
+                        dictionary omni = {
+                            dictionary graph = {
+                                string relType = "target"
+                            }
                         }
                     }
-                }
+                )
+                custom int inputs:timeout
+                custom bool inputs:use_local_frame
+                token node:type = "omni.physx.graph.PropertyQueryRigidBody"
+                int node:typeVersion = 1
+                custom float3 outputs:AABBMax
+                custom float3 outputs:AABBMin
+                custom float3 outputs:centerOfMass
+                custom float3 outputs:diagonalInertia
+                custom float outputs:mass
+                custom float4 outputs:principalAxes
+                uniform token ui:nodegraph:node:expansionState = "minimized"
+                uniform float2 ui:nodegraph:node:pos = (-1330.0148, -164.23859)
+            }
+
+            def OmniGraphNode "script_node" (
+                prepend apiSchemas = ["NodeGraphNodeAPI"]
             )
-            custom double inputs:usdTimecode
-            custom bool inputs:useLocal
-            token node:type = "omni.anim.GetXform"
-            int node:typeVersion = 1
-            custom matrix4d outputs:transform = ( (1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 0, 0, 1) )
-            uniform token ui:nodegraph:node:expansionState = "open"
-            uniform float2 ui:nodegraph:node:pos = (-1206.2996, 200.22107)
+            {
+                custom float3 inputs:back_com
+                prepend float3 inputs:back_com.connect = </biped/COMPublisher/COMPublisher/get_rigid_body_properties.outputs:centerOfMass>
+                custom float3 inputs:baselink_com
+                prepend float3 inputs:baselink_com.connect = </biped/COMPublisher/COMPublisher/get_rigid_body_properties_01.outputs:centerOfMass>
+                custom uint inputs:execIn (
+                    customData = {
+                        bool isExecution = 1
+                    }
+                )
+                prepend uint inputs:execIn.connect = </biped/COMPublisher/COMPublisher/on_playback_tick.outputs:tick>
+                custom float3 inputs:l_ankle_com
+                prepend float3 inputs:l_ankle_com.connect = </biped/COMPublisher/COMPublisher/get_rigid_body_properties_09.outputs:centerOfMass>
+                custom float3 inputs:l_calf_com
+                prepend float3 inputs:l_calf_com.connect = </biped/COMPublisher/COMPublisher/get_rigid_body_properties_07.outputs:centerOfMass>
+                custom float3 inputs:l_foot_com
+                prepend float3 inputs:l_foot_com.connect = </biped/COMPublisher/COMPublisher/get_rigid_body_properties_11.outputs:centerOfMass>
+                custom float3 inputs:l_hip_com
+                prepend float3 inputs:l_hip_com.connect = </biped/COMPublisher/COMPublisher/get_rigid_body_properties_03.outputs:centerOfMass>
+                custom float3 inputs:l_thigh_com
+                prepend float3 inputs:l_thigh_com.connect = </biped/COMPublisher/COMPublisher/get_rigid_body_properties_05.outputs:centerOfMass>
+                custom float3 inputs:r_ankle_com
+                prepend float3 inputs:r_ankle_com.connect = </biped/COMPublisher/COMPublisher/get_rigid_body_properties_10.outputs:centerOfMass>
+                custom float3 inputs:r_calf_com
+                prepend float3 inputs:r_calf_com.connect = </biped/COMPublisher/COMPublisher/get_rigid_body_properties_08.outputs:centerOfMass>
+                custom float3 inputs:r_foot_com
+                prepend float3 inputs:r_foot_com.connect = </biped/COMPublisher/COMPublisher/get_rigid_body_properties_12.outputs:centerOfMass>
+                custom float3 inputs:r_hip_com
+                prepend float3 inputs:r_hip_com.connect = </biped/COMPublisher/COMPublisher/get_rigid_body_properties_04.outputs:centerOfMass>
+                custom float3 inputs:r_thigh_com
+                prepend float3 inputs:r_thigh_com.connect = </biped/COMPublisher/COMPublisher/get_rigid_body_properties_06.outputs:centerOfMass>
+                custom float3 inputs:sacrum_com
+                prepend float3 inputs:sacrum_com.connect = </biped/COMPublisher/COMPublisher/get_rigid_body_properties_02.outputs:centerOfMass>
+                custom string inputs:script = """# This script is executed the first time the script node computes, or the next time
+# it computes after this script is modified or the 'Reset' button is pressed.
+#
+# The following callback functions may be defined in this script:
+#     setup(db): Called immediately after this script is executed
+#     compute(db): Called every time the node computes (should always be defined)
+#     cleanup(db): Called when the node is deleted or the reset button is pressed
+# Available variables:
+#    db: og.Database The node interface - attributes are exposed in a namespace like db.inputs.foo and db.outputs.bar.
+#                    Use db.log_error, db.log_warning to report problems in the"""
+                custom token inputs:scriptPath = "./scripts/make_com_array_node.py"
+                custom bool inputs:usePath = 1
+                token node:type = "omni.graph.scriptnode.ScriptNode"
+                int node:typeVersion = 2
+                custom double[] outputs:com_array
+                custom uint outputs:execOut (
+                    customData = {
+                        bool isExecution = 1
+                    }
+                )
+                custom bool state:omni_initialized
+                uniform token ui:nodegraph:node:expansionState = "open"
+                uniform float2 ui:nodegraph:node:pos = (-818.9298, -105.581955)
+            }
+
+            def OmniGraphNode "get_rigid_body_properties_01" (
+                prepend apiSchemas = ["NodeGraphNodeAPI"]
+            )
+            {
+                custom rel inputs:prim = </biped/base_link> (
+                    customData = {
+                        dictionary omni = {
+                            dictionary graph = {
+                                string relType = "target"
+                            }
+                        }
+                    }
+                )
+                custom int inputs:timeout
+                custom bool inputs:use_local_frame
+                token node:type = "omni.physx.graph.PropertyQueryRigidBody"
+                int node:typeVersion = 1
+                custom float3 outputs:AABBMax
+                custom float3 outputs:AABBMin
+                custom float3 outputs:centerOfMass
+                custom float3 outputs:diagonalInertia
+                custom float outputs:mass
+                custom float4 outputs:principalAxes
+                uniform token ui:nodegraph:node:expansionState = "minimized"
+                uniform float2 ui:nodegraph:node:pos = (-1297.615, -72.69683)
+            }
+
+            def OmniGraphNode "get_rigid_body_properties_02" (
+                prepend apiSchemas = ["NodeGraphNodeAPI"]
+            )
+            {
+                custom rel inputs:prim = </biped/sacrum_1> (
+                    customData = {
+                        dictionary omni = {
+                            dictionary graph = {
+                                string relType = "target"
+                            }
+                        }
+                    }
+                )
+                custom int inputs:timeout
+                custom bool inputs:use_local_frame
+                token node:type = "omni.physx.graph.PropertyQueryRigidBody"
+                int node:typeVersion = 1
+                custom float3 outputs:AABBMax
+                custom float3 outputs:AABBMin
+                custom float3 outputs:centerOfMass
+                custom float3 outputs:diagonalInertia
+                custom float outputs:mass
+                custom float4 outputs:principalAxes
+                uniform token ui:nodegraph:node:expansionState = "minimized"
+                uniform float2 ui:nodegraph:node:pos = (-1232.5648, 327.91394)
+            }
+
+            def OmniGraphNode "get_rigid_body_properties_03" (
+                prepend apiSchemas = ["NodeGraphNodeAPI"]
+            )
+            {
+                custom rel inputs:prim = </biped/l_hip_1> (
+                    customData = {
+                        dictionary omni = {
+                            dictionary graph = {
+                                string relType = "target"
+                            }
+                        }
+                    }
+                )
+                custom int inputs:timeout
+                custom bool inputs:use_local_frame
+                token node:type = "omni.physx.graph.PropertyQueryRigidBody"
+                int node:typeVersion = 1
+                custom float3 outputs:AABBMax
+                custom float3 outputs:AABBMin
+                custom float3 outputs:centerOfMass
+                custom float3 outputs:diagonalInertia
+                custom float outputs:mass
+                custom float4 outputs:principalAxes
+                uniform token ui:nodegraph:node:expansionState = "minimized"
+                uniform float2 ui:nodegraph:node:pos = (-1317.7312, 35.53469)
+            }
+
+            def OmniGraphNode "get_rigid_body_properties_04" (
+                prepend apiSchemas = ["NodeGraphNodeAPI"]
+            )
+            {
+                custom rel inputs:prim = </biped/r_hip_1> (
+                    customData = {
+                        dictionary omni = {
+                            dictionary graph = {
+                                string relType = "target"
+                            }
+                        }
+                    }
+                )
+                custom int inputs:timeout
+                custom bool inputs:use_local_frame
+                token node:type = "omni.physx.graph.PropertyQueryRigidBody"
+                int node:typeVersion = 1
+                custom float3 outputs:AABBMax
+                custom float3 outputs:AABBMin
+                custom float3 outputs:centerOfMass
+                custom float3 outputs:diagonalInertia
+                custom float outputs:mass
+                custom float4 outputs:principalAxes
+                uniform token ui:nodegraph:node:expansionState = "minimized"
+                uniform float2 ui:nodegraph:node:pos = (-1190.3531, 174.07646)
+            }
+
+            def OmniGraphNode "get_rigid_body_properties_05" (
+                prepend apiSchemas = ["NodeGraphNodeAPI"]
+            )
+            {
+                custom rel inputs:prim = </biped/l_thigh_1> (
+                    customData = {
+                        dictionary omni = {
+                            dictionary graph = {
+                                string relType = "target"
+                            }
+                        }
+                    }
+                )
+                custom int inputs:timeout
+                custom bool inputs:use_local_frame
+                token node:type = "omni.physx.graph.PropertyQueryRigidBody"
+                int node:typeVersion = 1
+                custom float3 outputs:AABBMax
+                custom float3 outputs:AABBMin
+                custom float3 outputs:centerOfMass
+                custom float3 outputs:diagonalInertia
+                custom float outputs:mass
+                custom float4 outputs:principalAxes
+                uniform token ui:nodegraph:node:expansionState = "minimized"
+                uniform float2 ui:nodegraph:node:pos = (-1365.5896, 61.88304)
+            }
+
+            def OmniGraphNode "get_rigid_body_properties_06" (
+                prepend apiSchemas = ["NodeGraphNodeAPI"]
+            )
+            {
+                custom rel inputs:prim = </biped/r_thigh_1> (
+                    customData = {
+                        dictionary omni = {
+                            dictionary graph = {
+                                string relType = "target"
+                            }
+                        }
+                    }
+                )
+                custom int inputs:timeout
+                custom bool inputs:use_local_frame
+                token node:type = "omni.physx.graph.PropertyQueryRigidBody"
+                int node:typeVersion = 1
+                custom float3 outputs:AABBMax
+                custom float3 outputs:AABBMin
+                custom float3 outputs:centerOfMass
+                custom float3 outputs:diagonalInertia
+                custom float outputs:mass
+                custom float4 outputs:principalAxes
+                uniform token ui:nodegraph:node:expansionState = "minimized"
+                uniform float2 ui:nodegraph:node:pos = (-1152.8175, 304.2239)
+            }
+
+            def OmniGraphNode "get_rigid_body_properties_07" (
+                prepend apiSchemas = ["NodeGraphNodeAPI"]
+            )
+            {
+                custom rel inputs:prim = </biped/l_calf_1> (
+                    customData = {
+                        dictionary omni = {
+                            dictionary graph = {
+                                string relType = "target"
+                            }
+                        }
+                    }
+                )
+                custom int inputs:timeout
+                custom bool inputs:use_local_frame
+                token node:type = "omni.physx.graph.PropertyQueryRigidBody"
+                int node:typeVersion = 1
+                custom float3 outputs:AABBMax
+                custom float3 outputs:AABBMin
+                custom float3 outputs:centerOfMass
+                custom float3 outputs:diagonalInertia
+                custom float outputs:mass
+                custom float4 outputs:principalAxes
+                uniform token ui:nodegraph:node:expansionState = "minimized"
+                uniform float2 ui:nodegraph:node:pos = (-1161.9214, 344.30978)
+            }
+
+            def OmniGraphNode "get_rigid_body_properties_08" (
+                prepend apiSchemas = ["NodeGraphNodeAPI"]
+            )
+            {
+                custom rel inputs:prim = </biped/r_calf_1> (
+                    customData = {
+                        dictionary omni = {
+                            dictionary graph = {
+                                string relType = "target"
+                            }
+                        }
+                    }
+                )
+                custom int inputs:timeout
+                custom bool inputs:use_local_frame
+                token node:type = "omni.physx.graph.PropertyQueryRigidBody"
+                int node:typeVersion = 1
+                custom float3 outputs:AABBMax
+                custom float3 outputs:AABBMin
+                custom float3 outputs:centerOfMass
+                custom float3 outputs:diagonalInertia
+                custom float outputs:mass
+                custom float4 outputs:principalAxes
+                uniform token ui:nodegraph:node:expansionState = "minimized"
+                uniform float2 ui:nodegraph:node:pos = (-1167.3903, 382.42923)
+            }
+
+            def OmniGraphNode "get_rigid_body_properties_09" (
+                prepend apiSchemas = ["NodeGraphNodeAPI"]
+            )
+            {
+                custom rel inputs:prim = </biped/l_ankle_1> (
+                    customData = {
+                        dictionary omni = {
+                            dictionary graph = {
+                                string relType = "target"
+                            }
+                        }
+                    }
+                )
+                custom int inputs:timeout
+                custom bool inputs:use_local_frame
+                token node:type = "omni.physx.graph.PropertyQueryRigidBody"
+                int node:typeVersion = 1
+                custom float3 outputs:AABBMax
+                custom float3 outputs:AABBMin
+                custom float3 outputs:centerOfMass
+                custom float3 outputs:diagonalInertia
+                custom float outputs:mass
+                custom float4 outputs:principalAxes
+                uniform token ui:nodegraph:node:expansionState = "minimized"
+                uniform float2 ui:nodegraph:node:pos = (-1174.5726, 413.6226)
+            }
+
+            def OmniGraphNode "get_rigid_body_properties_10" (
+                prepend apiSchemas = ["NodeGraphNodeAPI"]
+            )
+            {
+                custom rel inputs:prim = </biped/r_ankle_1> (
+                    customData = {
+                        dictionary omni = {
+                            dictionary graph = {
+                                string relType = "target"
+                            }
+                        }
+                    }
+                )
+                custom int inputs:timeout
+                custom bool inputs:use_local_frame
+                token node:type = "omni.physx.graph.PropertyQueryRigidBody"
+                int node:typeVersion = 1
+                custom float3 outputs:AABBMax
+                custom float3 outputs:AABBMin
+                custom float3 outputs:centerOfMass
+                custom float3 outputs:diagonalInertia
+                custom float outputs:mass
+                custom float4 outputs:principalAxes
+                uniform token ui:nodegraph:node:expansionState = "minimized"
+                uniform float2 ui:nodegraph:node:pos = (-1181.5059, 451.9434)
+            }
+
+            def OmniGraphNode "get_rigid_body_properties_11" (
+                prepend apiSchemas = ["NodeGraphNodeAPI"]
+            )
+            {
+                custom rel inputs:prim = </biped/l_foot_1> (
+                    customData = {
+                        dictionary omni = {
+                            dictionary graph = {
+                                string relType = "target"
+                            }
+                        }
+                    }
+                )
+                custom int inputs:timeout
+                custom bool inputs:use_local_frame
+                token node:type = "omni.physx.graph.PropertyQueryRigidBody"
+                int node:typeVersion = 1
+                custom float3 outputs:AABBMax
+                custom float3 outputs:AABBMin
+                custom float3 outputs:centerOfMass
+                custom float3 outputs:diagonalInertia
+                custom float outputs:mass
+                custom float4 outputs:principalAxes
+                uniform token ui:nodegraph:node:expansionState = "minimized"
+                uniform float2 ui:nodegraph:node:pos = (-1197.9027, 456.55978)
+            }
+
+            def OmniGraphNode "get_rigid_body_properties_12" (
+                prepend apiSchemas = ["NodeGraphNodeAPI"]
+            )
+            {
+                custom rel inputs:prim = </biped/r_foot_1> (
+                    customData = {
+                        dictionary omni = {
+                            dictionary graph = {
+                                string relType = "target"
+                            }
+                        }
+                    }
+                )
+                custom int inputs:timeout
+                custom bool inputs:use_local_frame
+                token node:type = "omni.physx.graph.PropertyQueryRigidBody"
+                int node:typeVersion = 1
+                custom float3 outputs:AABBMax
+                custom float3 outputs:AABBMin
+                custom float3 outputs:centerOfMass
+                custom float3 outputs:diagonalInertia
+                custom float outputs:mass
+                custom float4 outputs:principalAxes
+                uniform token ui:nodegraph:node:expansionState = "minimized"
+                uniform float2 ui:nodegraph:node:pos = (-1199.0817, 529.62744)
+            }
+        }
+    }
+
+    def Scope "Subscribers"
+    {
+        def OmniGraph "JointAngleSubscriber"
+        {
+            token evaluationMode = "Automatic"
+            token evaluator:type = "execution"
+            token fabricCacheBacking = "StageWithoutHistory"
+            int2 fileFormatVersion = (1, 9)
+            token pipelineStage = "pipelineStageSimulation"
+
+            def OmniGraphNode "on_playback_tick" (
+                prepend apiSchemas = ["NodeGraphNodeAPI"]
+            )
+            {
+                token node:type = "omni.graph.action.OnPlaybackTick"
+                int node:typeVersion = 2
+                custom double outputs:deltaSeconds
+                custom double outputs:frame
+                custom uint outputs:tick (
+                    customData = {
+                        bool isExecution = 1
+                    }
+                )
+                custom double outputs:time
+                uniform token ui:nodegraph:node:expansionState = "open"
+                uniform float2 ui:nodegraph:node:pos = (-1192.7631, 73.469086)
+            }
+
+            def OmniGraphNode "ros2_context" (
+                prepend apiSchemas = ["NodeGraphNodeAPI"]
+            )
+            {
+                custom uchar inputs:domain_id = 1
+                custom bool inputs:useDomainIDEnvVar
+                token node:type = "isaacsim.ros2.bridge.ROS2Context"
+                int node:typeVersion = 2
+                custom uint64 outputs:context
+                uniform token ui:nodegraph:node:expansionState = "open"
+                uniform float2 ui:nodegraph:node:pos = (-1195.0604, 242.8906)
+            }
+
+            def OmniGraphNode "make_array" (
+                prepend apiSchemas = ["NodeGraphNodeAPI"]
+            )
+            {
+                custom int inputs:arraySize = 10
+                custom token inputs:arrayType = "token[]" (
+                    allowedTokens = ["auto", "bool[]", "double[]", "float[]", "half[]", "int[]", "int64[]", "token[]", "uchar[]", "uint[]", "uint64[]", "double[2][]", "double[3][]", "double[4][]", "matrixd[2][]", "matrixd[3][]", "matrixd[4][]", "float[2][]", "float[3][]", "float[4][]", "half[2][]", "half[3][]", "half[4][]", "int[2][]", "int[3][]", "int[4][]", "timecode[]", "frame[4][]", "colord[3][]", "colorf[3][]", "colorh[3][]", "colord[4][]", "colorf[4][]", "colorh[4][]", "normald[3][]", "normalf[3][]", "normalh[3][]", "pointd[3][]", "pointf[3][]", "pointh[3][]", "quatd[4][]", "quatf[4][]", "quath[4][]", "texcoordd[2][]", "texcoordf[2][]", "texcoordh[2][]", "texcoordd[3][]", "texcoordf[3][]", "texcoordh[3][]", "vectord[3][]", "vectorf[3][]", "vectorh[3][]"]
+                )
+                custom token inputs:input0 = "l_hip" (
+                    customData = {
+                        dictionary omni = {
+                            dictionary graph = {
+                                token attrValue = "l_hip"
+                                string resolvedType = "token"
+                            }
+                        }
+                    }
+                )
+                custom token inputs:input1 = "r_hip" (
+                    customData = {
+                        string ExtendedAttributeType = "Union-->bool,colord[3],colord[4],colorf[3],colorf[4],colorh[3],colorh[4],double,double[2],double[3],double[4],float,float[2],float[3],float[4],frame[4],half,half[2],half[3],half[4],int,int64,int[2],int[3],int[4],matrixd[2],matrixd[3],matrixd[4],normald[3],normalf[3],normalh[3],pointd[3],pointf[3],pointh[3],quatd[4],quatf[4],quath[4],texcoordd[2],texcoordd[3],texcoordf[2],texcoordf[3],texcoordh[2],texcoordh[3],timecode,token,transform[4],uchar,uint,uint64,vectord[3],vectorf[3],vectorh[3]"
+                        dictionary omni = {
+                            dictionary graph = {
+                                string attrType = "Union-->bool,colord[3],colord[4],colorf[3],colorf[4],colorh[3],colorh[4],double,double[2],double[3],double[4],float,float[2],float[3],float[4],frame[4],half,half[2],half[3],half[4],int,int64,int[2],int[3],int[4],matrixd[2],matrixd[3],matrixd[4],normald[3],normalf[3],normalh[3],pointd[3],pointf[3],pointh[3],quatd[4],quatf[4],quath[4],texcoordd[2],texcoordd[3],texcoordf[2],texcoordf[3],texcoordh[2],texcoordh[3],timecode,token,transform[4],uchar,uint,uint64,vectord[3],vectorf[3],vectorh[3]"
+                                token attrValue = "r_hip"
+                                string resolvedType = "token"
+                            }
+                        }
+                    }
+                )
+                custom token inputs:input2 = "l_thigh" (
+                    customData = {
+                        string ExtendedAttributeType = "Union-->bool,colord[3],colord[4],colorf[3],colorf[4],colorh[3],colorh[4],double,double[2],double[3],double[4],float,float[2],float[3],float[4],frame[4],half,half[2],half[3],half[4],int,int64,int[2],int[3],int[4],matrixd[2],matrixd[3],matrixd[4],normald[3],normalf[3],normalh[3],pointd[3],pointf[3],pointh[3],quatd[4],quatf[4],quath[4],texcoordd[2],texcoordd[3],texcoordf[2],texcoordf[3],texcoordh[2],texcoordh[3],timecode,token,transform[4],uchar,uint,uint64,vectord[3],vectorf[3],vectorh[3]"
+                        dictionary omni = {
+                            dictionary graph = {
+                                string attrType = "Union-->bool,colord[3],colord[4],colorf[3],colorf[4],colorh[3],colorh[4],double,double[2],double[3],double[4],float,float[2],float[3],float[4],frame[4],half,half[2],half[3],half[4],int,int64,int[2],int[3],int[4],matrixd[2],matrixd[3],matrixd[4],normald[3],normalf[3],normalh[3],pointd[3],pointf[3],pointh[3],quatd[4],quatf[4],quath[4],texcoordd[2],texcoordd[3],texcoordf[2],texcoordf[3],texcoordh[2],texcoordh[3],timecode,token,transform[4],uchar,uint,uint64,vectord[3],vectorf[3],vectorh[3]"
+                                token attrValue = "l_thigh"
+                                string resolvedType = "token"
+                            }
+                        }
+                    }
+                )
+                custom token inputs:input3 = "r_thigh" (
+                    customData = {
+                        string ExtendedAttributeType = "Union-->bool,colord[3],colord[4],colorf[3],colorf[4],colorh[3],colorh[4],double,double[2],double[3],double[4],float,float[2],float[3],float[4],frame[4],half,half[2],half[3],half[4],int,int64,int[2],int[3],int[4],matrixd[2],matrixd[3],matrixd[4],normald[3],normalf[3],normalh[3],pointd[3],pointf[3],pointh[3],quatd[4],quatf[4],quath[4],texcoordd[2],texcoordd[3],texcoordf[2],texcoordf[3],texcoordh[2],texcoordh[3],timecode,token,transform[4],uchar,uint,uint64,vectord[3],vectorf[3],vectorh[3]"
+                        dictionary omni = {
+                            dictionary graph = {
+                                string attrType = "Union-->bool,colord[3],colord[4],colorf[3],colorf[4],colorh[3],colorh[4],double,double[2],double[3],double[4],float,float[2],float[3],float[4],frame[4],half,half[2],half[3],half[4],int,int64,int[2],int[3],int[4],matrixd[2],matrixd[3],matrixd[4],normald[3],normalf[3],normalh[3],pointd[3],pointf[3],pointh[3],quatd[4],quatf[4],quath[4],texcoordd[2],texcoordd[3],texcoordf[2],texcoordf[3],texcoordh[2],texcoordh[3],timecode,token,transform[4],uchar,uint,uint64,vectord[3],vectorf[3],vectorh[3]"
+                                token attrValue = "r_thigh"
+                                string resolvedType = "token"
+                            }
+                        }
+                    }
+                )
+                custom token inputs:input4 = "l_calf" (
+                    customData = {
+                        string ExtendedAttributeType = "Union-->bool,colord[3],colord[4],colorf[3],colorf[4],colorh[3],colorh[4],double,double[2],double[3],double[4],float,float[2],float[3],float[4],frame[4],half,half[2],half[3],half[4],int,int64,int[2],int[3],int[4],matrixd[2],matrixd[3],matrixd[4],normald[3],normalf[3],normalh[3],pointd[3],pointf[3],pointh[3],quatd[4],quatf[4],quath[4],texcoordd[2],texcoordd[3],texcoordf[2],texcoordf[3],texcoordh[2],texcoordh[3],timecode,token,transform[4],uchar,uint,uint64,vectord[3],vectorf[3],vectorh[3]"
+                        dictionary omni = {
+                            dictionary graph = {
+                                string attrType = "Union-->bool,colord[3],colord[4],colorf[3],colorf[4],colorh[3],colorh[4],double,double[2],double[3],double[4],float,float[2],float[3],float[4],frame[4],half,half[2],half[3],half[4],int,int64,int[2],int[3],int[4],matrixd[2],matrixd[3],matrixd[4],normald[3],normalf[3],normalh[3],pointd[3],pointf[3],pointh[3],quatd[4],quatf[4],quath[4],texcoordd[2],texcoordd[3],texcoordf[2],texcoordf[3],texcoordh[2],texcoordh[3],timecode,token,transform[4],uchar,uint,uint64,vectord[3],vectorf[3],vectorh[3]"
+                                token attrValue = "l_calf"
+                                string resolvedType = "token"
+                            }
+                        }
+                    }
+                )
+                custom token inputs:input5 = "r_calf" (
+                    customData = {
+                        string ExtendedAttributeType = "Union-->bool,colord[3],colord[4],colorf[3],colorf[4],colorh[3],colorh[4],double,double[2],double[3],double[4],float,float[2],float[3],float[4],frame[4],half,half[2],half[3],half[4],int,int64,int[2],int[3],int[4],matrixd[2],matrixd[3],matrixd[4],normald[3],normalf[3],normalh[3],pointd[3],pointf[3],pointh[3],quatd[4],quatf[4],quath[4],texcoordd[2],texcoordd[3],texcoordf[2],texcoordf[3],texcoordh[2],texcoordh[3],timecode,token,transform[4],uchar,uint,uint64,vectord[3],vectorf[3],vectorh[3]"
+                        dictionary omni = {
+                            dictionary graph = {
+                                string attrType = "Union-->bool,colord[3],colord[4],colorf[3],colorf[4],colorh[3],colorh[4],double,double[2],double[3],double[4],float,float[2],float[3],float[4],frame[4],half,half[2],half[3],half[4],int,int64,int[2],int[3],int[4],matrixd[2],matrixd[3],matrixd[4],normald[3],normalf[3],normalh[3],pointd[3],pointf[3],pointh[3],quatd[4],quatf[4],quath[4],texcoordd[2],texcoordd[3],texcoordf[2],texcoordf[3],texcoordh[2],texcoordh[3],timecode,token,transform[4],uchar,uint,uint64,vectord[3],vectorf[3],vectorh[3]"
+                                token attrValue = "r_calf"
+                                string resolvedType = "token"
+                            }
+                        }
+                    }
+                )
+                custom token inputs:input6 = "l_ankle" (
+                    customData = {
+                        string ExtendedAttributeType = "Union-->bool,colord[3],colord[4],colorf[3],colorf[4],colorh[3],colorh[4],double,double[2],double[3],double[4],float,float[2],float[3],float[4],frame[4],half,half[2],half[3],half[4],int,int64,int[2],int[3],int[4],matrixd[2],matrixd[3],matrixd[4],normald[3],normalf[3],normalh[3],pointd[3],pointf[3],pointh[3],quatd[4],quatf[4],quath[4],texcoordd[2],texcoordd[3],texcoordf[2],texcoordf[3],texcoordh[2],texcoordh[3],timecode,token,transform[4],uchar,uint,uint64,vectord[3],vectorf[3],vectorh[3]"
+                        dictionary omni = {
+                            dictionary graph = {
+                                string attrType = "Union-->bool,colord[3],colord[4],colorf[3],colorf[4],colorh[3],colorh[4],double,double[2],double[3],double[4],float,float[2],float[3],float[4],frame[4],half,half[2],half[3],half[4],int,int64,int[2],int[3],int[4],matrixd[2],matrixd[3],matrixd[4],normald[3],normalf[3],normalh[3],pointd[3],pointf[3],pointh[3],quatd[4],quatf[4],quath[4],texcoordd[2],texcoordd[3],texcoordf[2],texcoordf[3],texcoordh[2],texcoordh[3],timecode,token,transform[4],uchar,uint,uint64,vectord[3],vectorf[3],vectorh[3]"
+                                token attrValue = "l_ankle"
+                                string resolvedType = "token"
+                            }
+                        }
+                    }
+                )
+                custom token inputs:input7 = "r_ankle" (
+                    customData = {
+                        string ExtendedAttributeType = "Union-->bool,colord[3],colord[4],colorf[3],colorf[4],colorh[3],colorh[4],double,double[2],double[3],double[4],float,float[2],float[3],float[4],frame[4],half,half[2],half[3],half[4],int,int64,int[2],int[3],int[4],matrixd[2],matrixd[3],matrixd[4],normald[3],normalf[3],normalh[3],pointd[3],pointf[3],pointh[3],quatd[4],quatf[4],quath[4],texcoordd[2],texcoordd[3],texcoordf[2],texcoordf[3],texcoordh[2],texcoordh[3],timecode,token,transform[4],uchar,uint,uint64,vectord[3],vectorf[3],vectorh[3]"
+                        dictionary omni = {
+                            dictionary graph = {
+                                string attrType = "Union-->bool,colord[3],colord[4],colorf[3],colorf[4],colorh[3],colorh[4],double,double[2],double[3],double[4],float,float[2],float[3],float[4],frame[4],half,half[2],half[3],half[4],int,int64,int[2],int[3],int[4],matrixd[2],matrixd[3],matrixd[4],normald[3],normalf[3],normalh[3],pointd[3],pointf[3],pointh[3],quatd[4],quatf[4],quath[4],texcoordd[2],texcoordd[3],texcoordf[2],texcoordf[3],texcoordh[2],texcoordh[3],timecode,token,transform[4],uchar,uint,uint64,vectord[3],vectorf[3],vectorh[3]"
+                                token attrValue = "r_ankle"
+                                string resolvedType = "token"
+                            }
+                        }
+                    }
+                )
+                custom token inputs:input8 = "l_foot" (
+                    customData = {
+                        string ExtendedAttributeType = "Union-->bool,colord[3],colord[4],colorf[3],colorf[4],colorh[3],colorh[4],double,double[2],double[3],double[4],float,float[2],float[3],float[4],frame[4],half,half[2],half[3],half[4],int,int64,int[2],int[3],int[4],matrixd[2],matrixd[3],matrixd[4],normald[3],normalf[3],normalh[3],pointd[3],pointf[3],pointh[3],quatd[4],quatf[4],quath[4],texcoordd[2],texcoordd[3],texcoordf[2],texcoordf[3],texcoordh[2],texcoordh[3],timecode,token,transform[4],uchar,uint,uint64,vectord[3],vectorf[3],vectorh[3]"
+                        dictionary omni = {
+                            dictionary graph = {
+                                string attrType = "Union-->bool,colord[3],colord[4],colorf[3],colorf[4],colorh[3],colorh[4],double,double[2],double[3],double[4],float,float[2],float[3],float[4],frame[4],half,half[2],half[3],half[4],int,int64,int[2],int[3],int[4],matrixd[2],matrixd[3],matrixd[4],normald[3],normalf[3],normalh[3],pointd[3],pointf[3],pointh[3],quatd[4],quatf[4],quath[4],texcoordd[2],texcoordd[3],texcoordf[2],texcoordf[3],texcoordh[2],texcoordh[3],timecode,token,transform[4],uchar,uint,uint64,vectord[3],vectorf[3],vectorh[3]"
+                                token attrValue = "l_foot"
+                                string resolvedType = "token"
+                            }
+                        }
+                    }
+                )
+                custom token inputs:input9 = "r_foot" (
+                    customData = {
+                        string ExtendedAttributeType = "Union-->bool,colord[3],colord[4],colorf[3],colorf[4],colorh[3],colorh[4],double,double[2],double[3],double[4],float,float[2],float[3],float[4],frame[4],half,half[2],half[3],half[4],int,int64,int[2],int[3],int[4],matrixd[2],matrixd[3],matrixd[4],normald[3],normalf[3],normalh[3],pointd[3],pointf[3],pointh[3],quatd[4],quatf[4],quath[4],texcoordd[2],texcoordd[3],texcoordf[2],texcoordf[3],texcoordh[2],texcoordh[3],timecode,token,transform[4],uchar,uint,uint64,vectord[3],vectorf[3],vectorh[3]"
+                        dictionary omni = {
+                            dictionary graph = {
+                                string attrType = "Union-->bool,colord[3],colord[4],colorf[3],colorf[4],colorh[3],colorh[4],double,double[2],double[3],double[4],float,float[2],float[3],float[4],frame[4],half,half[2],half[3],half[4],int,int64,int[2],int[3],int[4],matrixd[2],matrixd[3],matrixd[4],normald[3],normalf[3],normalh[3],pointd[3],pointf[3],pointh[3],quatd[4],quatf[4],quath[4],texcoordd[2],texcoordd[3],texcoordf[2],texcoordf[3],texcoordh[2],texcoordh[3],timecode,token,transform[4],uchar,uint,uint64,vectord[3],vectorf[3],vectorh[3]"
+                                token attrValue = "r_foot"
+                                string resolvedType = "token"
+                            }
+                        }
+                    }
+                )
+                token node:type = "omni.graph.nodes.ConstructArray"
+                int node:typeVersion = 1
+                custom token outputs:array
+                uniform token ui:nodegraph:node:expansionState = "open"
+                uniform float2 ui:nodegraph:node:pos = (-951.6488, -199.85312)
+            }
+
+            def OmniGraphNode "ros2_subscriber" (
+                prepend apiSchemas = ["NodeGraphNodeAPI"]
+            )
+            {
+                custom uint64 inputs:context
+                prepend uint64 inputs:context.connect = </biped/Subscribers/JointAngleSubscriber/ros2_context.outputs:context>
+                custom uint inputs:execIn (
+                    customData = {
+                        bool isExecution = 1
+                    }
+                )
+                prepend uint inputs:execIn.connect = </biped/Subscribers/JointAngleSubscriber/on_playback_tick.outputs:tick>
+                custom string inputs:messageName = "Float64MultiArray"
+                custom string inputs:messagePackage = "std_msgs"
+                custom string inputs:messageSubfolder
+                custom string inputs:nodeNamespace
+                custom string inputs:qosProfile
+                custom uint64 inputs:queueSize
+                custom string inputs:topicName = "/biped/joint_target"
+                token node:type = "isaacsim.ros2.bridge.ROS2Subscriber"
+                int node:typeVersion = 1
+                custom double[] outputs:data
+                custom uint outputs:execOut (
+                    customData = {
+                        bool isExecution = 1
+                    }
+                )
+                custom uint outputs:layout:data_offset
+                custom token[] outputs:layout:dim
+                uniform token ui:nodegraph:node:expansionState = "open"
+                uniform float2 ui:nodegraph:node:pos = (-943.30585, 154.3219)
+            }
+
+            def OmniGraphNode "articulation_controller" (
+                prepend apiSchemas = ["NodeGraphNodeAPI"]
+            )
+            {
+                custom double[] inputs:effortCommand
+                custom uint inputs:execIn (
+                    customData = {
+                        bool isExecution = 1
+                    }
+                )
+                prepend uint inputs:execIn.connect = </biped/Subscribers/JointAngleSubscriber/on_playback_tick.outputs:tick>
+                custom int[] inputs:jointIndices
+                custom token[] inputs:jointNames
+                prepend token[] inputs:jointNames.connect = </biped/Subscribers/JointAngleSubscriber/make_array.outputs:array>
+                custom double[] inputs:positionCommand
+                prepend double[] inputs:positionCommand.connect = </biped/Subscribers/JointAngleSubscriber/ros2_subscriber.outputs:data>
+                custom string inputs:robotPath = "/biped/base_link"
+                custom rel inputs:targetPrim (
+                    customData = {
+                        dictionary omni = {
+                            dictionary graph = {
+                                string relType = "target"
+                            }
+                        }
+                    }
+                )
+                custom double[] inputs:velocityCommand
+                token node:type = "isaacsim.core.nodes.IsaacArticulationController"
+                int node:typeVersion = 1
+                uniform token ui:nodegraph:node:expansionState = "open"
+                uniform float2 ui:nodegraph:node:pos = (-632.3539, 65.64592)
+            }
         }
 
-        def OmniGraphNode "ros2_publisher_01" (
-            prepend apiSchemas = ["NodeGraphNodeAPI"]
-        )
+        def OmniGraph "CounterweightAngleSubscriber"
         {
-            custom uint64 inputs:context
-            prepend uint64 inputs:context.connect = </biped/BaselinkPublisher/ros2_context.outputs:context>
-            custom uint inputs:execIn (
-                customData = {
-                    bool isExecution = 1
-                }
-            )
-            prepend uint inputs:execIn.connect = </biped/BaselinkPublisher/on_playback_tick.outputs:tick>
-            custom string inputs:messageName = "Vector3"
-            custom string inputs:messagePackage = "geometry_msgs"
-            custom string inputs:messageSubfolder
-            custom string inputs:nodeNamespace
-            custom string inputs:qosProfile
-            custom uint64 inputs:queueSize
-            custom string inputs:topicName = "/baselink/translate"
-            custom double inputs:x
-            prepend double inputs:x.connect = </biped/BaselinkPublisher/break_3_vector.outputs:x>
-            custom double inputs:y
-            prepend double inputs:y.connect = </biped/BaselinkPublisher/break_3_vector.outputs:y>
-            custom double inputs:z
-            prepend double inputs:z.connect = </biped/BaselinkPublisher/break_3_vector.outputs:z>
-            token node:type = "isaacsim.ros2.bridge.ROS2Publisher"
-            int node:typeVersion = 1
-            custom uint outputs:execOut (
-                customData = {
-                    bool isExecution = 1
-                }
-            )
-            uniform token ui:nodegraph:node:expansionState = "open"
-            uniform float2 ui:nodegraph:node:pos = (-363.38727, 194.19466)
-        }
+            token evaluationMode = "Automatic"
+            token evaluator:type = "execution"
+            token fabricCacheBacking = "StageWithoutHistory"
+            int2 fileFormatVersion = (1, 9)
+            token pipelineStage = "pipelineStageSimulation"
 
-        def OmniGraphNode "break_3_vector" (
-            prepend apiSchemas = ["NodeGraphNodeAPI"]
-        )
-        {
-            custom token inputs:tuple
-            prepend token inputs:tuple.connect = </biped/BaselinkPublisher/decompose_matrix.outputs:translate>
-            token node:type = "omni.graph.nodes.BreakVector3"
-            int node:typeVersion = 1
-            custom token outputs:x
-            custom token outputs:y
-            custom token outputs:z
-            uniform token ui:nodegraph:node:expansionState = "open"
-            uniform float2 ui:nodegraph:node:pos = (-678.2251, 308.21182)
+            def OmniGraphNode "on_playback_tick" (
+                prepend apiSchemas = ["NodeGraphNodeAPI"]
+            )
+            {
+                token node:type = "omni.graph.action.OnPlaybackTick"
+                int node:typeVersion = 2
+                custom double outputs:deltaSeconds
+                custom double outputs:frame
+                custom uint outputs:tick (
+                    customData = {
+                        bool isExecution = 1
+                    }
+                )
+                custom double outputs:time
+                uniform token ui:nodegraph:node:expansionState = "open"
+                uniform float2 ui:nodegraph:node:pos = (-1204.8934, 58.030445)
+            }
+
+            def OmniGraphNode "ros2_context" (
+                prepend apiSchemas = ["NodeGraphNodeAPI"]
+            )
+            {
+                custom uchar inputs:domain_id = 1
+                custom bool inputs:useDomainIDEnvVar
+                token node:type = "isaacsim.ros2.bridge.ROS2Context"
+                int node:typeVersion = 2
+                custom uint64 outputs:context
+                uniform token ui:nodegraph:node:expansionState = "open"
+                uniform float2 ui:nodegraph:node:pos = (-1195.0604, 242.8906)
+            }
+
+            def OmniGraphNode "make_array" (
+                prepend apiSchemas = ["NodeGraphNodeAPI"]
+            )
+            {
+                custom int inputs:arraySize = 2
+                custom token inputs:arrayType = "token[]" (
+                    allowedTokens = ["auto", "bool[]", "double[]", "float[]", "half[]", "int[]", "int64[]", "token[]", "uchar[]", "uint[]", "uint64[]", "double[2][]", "double[3][]", "double[4][]", "matrixd[2][]", "matrixd[3][]", "matrixd[4][]", "float[2][]", "float[3][]", "float[4][]", "half[2][]", "half[3][]", "half[4][]", "int[2][]", "int[3][]", "int[4][]", "timecode[]", "frame[4][]", "colord[3][]", "colorf[3][]", "colorh[3][]", "colord[4][]", "colorf[4][]", "colorh[4][]", "normald[3][]", "normalf[3][]", "normalh[3][]", "pointd[3][]", "pointf[3][]", "pointh[3][]", "quatd[4][]", "quatf[4][]", "quath[4][]", "texcoordd[2][]", "texcoordf[2][]", "texcoordh[2][]", "texcoordd[3][]", "texcoordf[3][]", "texcoordh[3][]", "vectord[3][]", "vectorf[3][]", "vectorh[3][]"]
+                )
+                custom token inputs:input0 = "back" (
+                    customData = {
+                        dictionary omni = {
+                            dictionary graph = {
+                                token attrValue = "back"
+                                string resolvedType = "token"
+                            }
+                        }
+                    }
+                )
+                custom token inputs:input1 = "sacrum" (
+                    customData = {
+                        string ExtendedAttributeType = "Union-->bool,colord[3],colord[4],colorf[3],colorf[4],colorh[3],colorh[4],double,double[2],double[3],double[4],float,float[2],float[3],float[4],frame[4],half,half[2],half[3],half[4],int,int64,int[2],int[3],int[4],matrixd[2],matrixd[3],matrixd[4],normald[3],normalf[3],normalh[3],pointd[3],pointf[3],pointh[3],quatd[4],quatf[4],quath[4],texcoordd[2],texcoordd[3],texcoordf[2],texcoordf[3],texcoordh[2],texcoordh[3],timecode,token,transform[4],uchar,uint,uint64,vectord[3],vectorf[3],vectorh[3]"
+                        dictionary omni = {
+                            dictionary graph = {
+                                string attrType = "Union-->bool,colord[3],colord[4],colorf[3],colorf[4],colorh[3],colorh[4],double,double[2],double[3],double[4],float,float[2],float[3],float[4],frame[4],half,half[2],half[3],half[4],int,int64,int[2],int[3],int[4],matrixd[2],matrixd[3],matrixd[4],normald[3],normalf[3],normalh[3],pointd[3],pointf[3],pointh[3],quatd[4],quatf[4],quath[4],texcoordd[2],texcoordd[3],texcoordf[2],texcoordf[3],texcoordh[2],texcoordh[3],timecode,token,transform[4],uchar,uint,uint64,vectord[3],vectorf[3],vectorh[3]"
+                                token attrValue = "sacrum"
+                                string resolvedType = "token"
+                            }
+                        }
+                    }
+                )
+                token node:type = "omni.graph.nodes.ConstructArray"
+                int node:typeVersion = 1
+                custom token outputs:array
+                uniform token ui:nodegraph:node:expansionState = "open"
+                uniform float2 ui:nodegraph:node:pos = (-895.5803, -106.2092)
+            }
+
+            def OmniGraphNode "ros2_subscriber" (
+                prepend apiSchemas = ["NodeGraphNodeAPI"]
+            )
+            {
+                custom uint64 inputs:context
+                prepend uint64 inputs:context.connect = [
+                    </biped/Subscribers/JointAngleSubscriber/ros2_context.outputs:context>,
+                    </biped/Subscribers/CounterweightAngleSubscriber/ros2_context.outputs:context>,
+                ]
+                custom uint inputs:execIn (
+                    customData = {
+                        bool isExecution = 1
+                    }
+                )
+                prepend uint inputs:execIn.connect = [
+                    </biped/Subscribers/JointAngleSubscriber/on_playback_tick.outputs:tick>,
+                    </biped/Subscribers/CounterweightAngleSubscriber/on_playback_tick.outputs:tick>,
+                ]
+                custom string inputs:messageName = "Float64MultiArray"
+                custom string inputs:messagePackage = "std_msgs"
+                custom string inputs:messageSubfolder
+                custom string inputs:nodeNamespace
+                custom string inputs:qosProfile
+                custom uint64 inputs:queueSize
+                custom string inputs:topicName = "/counterweight/joint_targets"
+                token node:type = "isaacsim.ros2.bridge.ROS2Subscriber"
+                int node:typeVersion = 1
+                custom double[] outputs:data
+                custom uint outputs:execOut (
+                    customData = {
+                        bool isExecution = 1
+                    }
+                )
+                custom uint outputs:layout:data_offset
+                custom token[] outputs:layout:dim
+                uniform token ui:nodegraph:node:expansionState = "open"
+                uniform float2 ui:nodegraph:node:pos = (-874.6597, 159.50017)
+            }
+
+            def OmniGraphNode "articulation_controller" (
+                prepend apiSchemas = ["NodeGraphNodeAPI"]
+            )
+            {
+                custom double[] inputs:effortCommand
+                custom uint inputs:execIn (
+                    customData = {
+                        bool isExecution = 1
+                    }
+                )
+                prepend uint inputs:execIn.connect = [
+                    </biped/Subscribers/JointAngleSubscriber/on_playback_tick.outputs:tick>,
+                    </biped/Subscribers/CounterweightAngleSubscriber/on_playback_tick.outputs:tick>,
+                ]
+                custom int[] inputs:jointIndices
+                custom token[] inputs:jointNames
+                prepend token[] inputs:jointNames.connect = [
+                    </biped/Subscribers/JointAngleSubscriber/make_array.outputs:array>,
+                    </biped/Subscribers/CounterweightAngleSubscriber/make_array.outputs:array>,
+                ]
+                custom double[] inputs:positionCommand
+                prepend double[] inputs:positionCommand.connect = [
+                    </biped/Subscribers/JointAngleSubscriber/ros2_subscriber.outputs:data>,
+                    </biped/Subscribers/CounterweightAngleSubscriber/ros2_subscriber.outputs:data>,
+                ]
+                custom string inputs:robotPath = "/biped/base_link"
+                custom rel inputs:targetPrim (
+                    customData = {
+                        dictionary omni = {
+                            dictionary graph = {
+                                string relType = "target"
+                            }
+                        }
+                    }
+                )
+                custom double[] inputs:velocityCommand
+                token node:type = "isaacsim.core.nodes.IsaacArticulationController"
+                int node:typeVersion = 1
+                uniform token ui:nodegraph:node:expansionState = "open"
+                uniform float2 ui:nodegraph:node:pos = (-562.7117, -3.13307)
+            }
         }
     }
 }
