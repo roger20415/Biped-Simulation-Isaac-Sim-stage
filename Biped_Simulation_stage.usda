@@ -7,8 +7,8 @@
                 double radius = 5
             }
             dictionary Perspective = {
-                double3 position = (0.12866999928041495, 0.19398111432053175, 0.04942168641600247)
-                double3 target = (-0.04767386836471951, -0.9692319224264988, -0.21699310394643)
+                double3 position = (0.7506608516250137, 0.438701508959385, 0.07327340364261709)
+                double3 target = (-0.8300400860597903, -0.5145141210053561, -0.048654043374955325)
             }
             dictionary Right = {
                 double3 position = (0, -5, 0)
@@ -3262,6 +3262,159 @@ def Xform "biped" (
                 int node:typeVersion = 1
                 uniform token ui:nodegraph:node:expansionState = "open"
                 uniform float2 ui:nodegraph:node:pos = (-632.3539, 65.64592)
+            }
+        }
+    }
+
+    def Scope "CollectExpertData"
+    {
+        def OmniGraph "BaselinkPublisher"
+        {
+            token evaluationMode = "Automatic"
+            token evaluator:type = "execution"
+            token fabricCacheBacking = "Shared"
+            int2 fileFormatVersion = (1, 9)
+            token pipelineStage = "pipelineStageSimulation"
+
+            def OmniGraphNode "ros2_context" (
+                prepend apiSchemas = ["NodeGraphNodeAPI"]
+            )
+            {
+                custom uchar inputs:domain_id = 1
+                custom bool inputs:useDomainIDEnvVar
+                token node:type = "isaacsim.ros2.bridge.ROS2Context"
+                int node:typeVersion = 2
+                custom uint64 outputs:context
+                uniform token ui:nodegraph:node:expansionState = "open"
+                uniform float2 ui:nodegraph:node:pos = (-934.31696, -138.9979)
+            }
+
+            def OmniGraphNode "on_playback_tick" (
+                prepend apiSchemas = ["NodeGraphNodeAPI"]
+            )
+            {
+                token node:type = "omni.graph.action.OnPlaybackTick"
+                int node:typeVersion = 2
+                custom double outputs:deltaSeconds
+                custom double outputs:frame
+                custom uint outputs:tick (
+                    customData = {
+                        bool isExecution = 1
+                    }
+                )
+                custom double outputs:time
+                uniform token ui:nodegraph:node:expansionState = "open"
+                uniform float2 ui:nodegraph:node:pos = (-1432.2146, -53.105988)
+            }
+
+            def OmniGraphNode "isaac_compute_odometry_node" (
+                prepend apiSchemas = ["NodeGraphNodeAPI"]
+            )
+            {
+                custom rel inputs:chassisPrim = </biped/base_link> (
+                    customData = {
+                        dictionary omni = {
+                            dictionary graph = {
+                                string relType = "target"
+                            }
+                        }
+                    }
+                )
+                custom uint inputs:execIn (
+                    customData = {
+                        bool isExecution = 1
+                    }
+                )
+                prepend uint inputs:execIn.connect = </biped/CollectExpertData/BaselinkPublisher/on_playback_tick.outputs:tick>
+                token node:type = "isaacsim.core.nodes.IsaacComputeOdometry"
+                int node:typeVersion = 1
+                custom vector3d outputs:angularAcceleration
+                custom vector3d outputs:angularVelocity
+                custom uint outputs:execOut (
+                    customData = {
+                        bool isExecution = 1
+                    }
+                )
+                custom vector3d outputs:globalLinearAcceleration
+                custom vector3d outputs:globalLinearVelocity
+                custom vector3d outputs:linearAcceleration
+                custom vector3d outputs:linearVelocity
+                custom quatd outputs:orientation
+                custom vector3d outputs:position
+                uniform token ui:nodegraph:node:expansionState = "open"
+                uniform float2 ui:nodegraph:node:pos = (-1103.9772, 54.044777)
+            }
+
+            def OmniGraphNode "ros2_publisher" (
+                prepend apiSchemas = ["NodeGraphNodeAPI"]
+            )
+            {
+                custom double inputs:angular:x
+                prepend double inputs:angular:x.connect = </biped/CollectExpertData/BaselinkPublisher/break_3_vector_01.outputs:x>
+                custom double inputs:angular:y
+                prepend double inputs:angular:y.connect = </biped/CollectExpertData/BaselinkPublisher/break_3_vector_01.outputs:y>
+                custom double inputs:angular:z
+                prepend double inputs:angular:z.connect = </biped/CollectExpertData/BaselinkPublisher/break_3_vector_01.outputs:z>
+                custom uint64 inputs:context
+                prepend uint64 inputs:context.connect = </biped/CollectExpertData/BaselinkPublisher/ros2_context.outputs:context>
+                custom uint inputs:execIn (
+                    customData = {
+                        bool isExecution = 1
+                    }
+                )
+                prepend uint inputs:execIn.connect = </biped/CollectExpertData/BaselinkPublisher/on_playback_tick.outputs:tick>
+                custom double inputs:linear:x
+                prepend double inputs:linear:x.connect = </biped/CollectExpertData/BaselinkPublisher/break_3_vector.outputs:x>
+                custom double inputs:linear:y
+                prepend double inputs:linear:y.connect = </biped/CollectExpertData/BaselinkPublisher/break_3_vector.outputs:y>
+                custom double inputs:linear:z
+                prepend double inputs:linear:z.connect = </biped/CollectExpertData/BaselinkPublisher/break_3_vector.outputs:z>
+                custom string inputs:messageName = "Twist"
+                custom string inputs:messagePackage = "geometry_msgs"
+                custom string inputs:messageSubfolder
+                custom string inputs:nodeNamespace
+                custom string inputs:qosProfile
+                custom uint64 inputs:queueSize
+                custom string inputs:topicName = "/biped/twist"
+                token node:type = "isaacsim.ros2.bridge.ROS2Publisher"
+                int node:typeVersion = 1
+                custom uint outputs:execOut (
+                    customData = {
+                        bool isExecution = 1
+                    }
+                )
+                uniform token ui:nodegraph:node:expansionState = "open"
+                uniform float2 ui:nodegraph:node:pos = (-617.08246, 32.346527)
+            }
+
+            def OmniGraphNode "break_3_vector" (
+                prepend apiSchemas = ["NodeGraphNodeAPI"]
+            )
+            {
+                custom token inputs:tuple
+                prepend token inputs:tuple.connect = </biped/CollectExpertData/BaselinkPublisher/isaac_compute_odometry_node.outputs:globalLinearVelocity>
+                token node:type = "omni.graph.nodes.BreakVector3"
+                int node:typeVersion = 1
+                custom token outputs:x
+                custom token outputs:y
+                custom token outputs:z
+                uniform token ui:nodegraph:node:expansionState = "open"
+                uniform float2 ui:nodegraph:node:pos = (-844.0765, 207.08269)
+            }
+
+            def OmniGraphNode "break_3_vector_01" (
+                prepend apiSchemas = ["NodeGraphNodeAPI"]
+            )
+            {
+                custom token inputs:tuple
+                prepend token inputs:tuple.connect = </biped/CollectExpertData/BaselinkPublisher/isaac_compute_odometry_node.outputs:angularVelocity>
+                token node:type = "omni.graph.nodes.BreakVector3"
+                int node:typeVersion = 1
+                custom token outputs:x
+                custom token outputs:y
+                custom token outputs:z
+                uniform token ui:nodegraph:node:expansionState = "open"
+                uniform float2 ui:nodegraph:node:pos = (-840.0845, 35.409725)
             }
         }
     }
