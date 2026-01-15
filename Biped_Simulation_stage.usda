@@ -7,8 +7,8 @@
                 double radius = 5
             }
             dictionary Perspective = {
-                double3 position = (0.12361909938384107, 0.06057432207215318, 0.024906506273548554)
-                double3 target = (-0.8300400860597906, -0.5145141210053563, -0.0486540433749553)
+                double3 position = (0.091872654671222, 0.04209779136863293, 0.032242970957254445)
+                double3 target = (-0.8308851455919914, -0.5143560810324789, -0.03893399877772478)
             }
             dictionary Right = {
                 double3 position = (0, -5, 0)
@@ -3276,120 +3276,8 @@ def Xform "biped" (
             int2 fileFormatVersion = (1, 9)
             token pipelineStage = "pipelineStageSimulation"
 
-            def OmniGraphNode "on_playback_tick" (
-                prepend apiSchemas = ["NodeGraphNodeAPI"]
-            )
-            {
-                token node:type = "omni.graph.action.OnPlaybackTick"
-                int node:typeVersion = 2
-                custom double outputs:deltaSeconds
-                custom double outputs:frame
-                custom uint outputs:tick (
-                    customData = {
-                        bool isExecution = 1
-                    }
-                )
-                custom double outputs:time
-                uniform token ui:nodegraph:node:expansionState = "open"
-                uniform float2 ui:nodegraph:node:pos = (-1173.785, -118.28347)
-            }
-
-            def OmniGraphNode "articulation_state" (
-                prepend apiSchemas = ["NodeGraphNodeAPI"]
-            )
-            {
-                custom uint inputs:execIn (
-                    customData = {
-                        bool isExecution = 1
-                    }
-                )
-                prepend uint inputs:execIn.connect = </biped/CollectExpertData/BaselinkTwistPublisher/on_playback_tick.outputs:tick>
-                custom int[] inputs:jointIndices
-                custom token[] inputs:jointNames = ["sacrum", "l_hip", "l_thigh", "l_calf", "l_ankle", "l_foot", "r_hip", "r_thigh", "r_calf", "r_ankle", "r_foot"]
-                custom string inputs:robotPath
-                custom rel inputs:targetPrim = </biped> (
-                    customData = {
-                        dictionary omni = {
-                            dictionary graph = {
-                                string relType = "target"
-                            }
-                        }
-                    }
-                )
-                token node:type = "isaacsim.core.nodes.IsaacArticulationState"
-                int node:typeVersion = 1
-                custom token[] outputs:jointNames
-                custom double[] outputs:jointPositions
-                custom double[] outputs:jointVelocities
-                custom double[] outputs:measuredJointEfforts
-                custom double3[] outputs:measuredJointForces
-                custom double3[] outputs:measuredJointTorques
-                uniform token ui:nodegraph:node:expansionState = "open"
-                uniform float2 ui:nodegraph:node:pos = (-920.6164, -82.15331)
-            }
-
             def OmniGraphNode "ros2_context" (
-                prepend apiSchemas = ["NodeGraphNodeAPI"]
-            )
-            {
-                custom uchar inputs:domain_id = 188
-                custom bool inputs:useDomainIDEnvVar
-                token node:type = "isaacsim.ros2.bridge.ROS2Context"
-                int node:typeVersion = 2
-                custom uint64 outputs:context
-                uniform token ui:nodegraph:node:expansionState = "open"
-                uniform float2 ui:nodegraph:node:pos = (-921.11346, -215.06125)
-            }
-
-            def OmniGraphNode "ros2_publisher" (
-                prepend apiSchemas = ["NodeGraphNodeAPI"]
-            )
-            {
-                custom uint64 inputs:context
-                prepend uint64 inputs:context.connect = </biped/CollectExpertData/BaselinkTwistPublisher/ros2_context.outputs:context>
-                custom double[] inputs:effort
-                custom uint inputs:execIn (
-                    customData = {
-                        bool isExecution = 1
-                    }
-                )
-                prepend uint inputs:execIn.connect = </biped/CollectExpertData/BaselinkTwistPublisher/on_playback_tick.outputs:tick>
-                custom token inputs:header:frame_id
-                custom uint inputs:header:stamp:nanosec
-                custom int inputs:header:stamp:sec
-                custom string inputs:messageName = "JointState"
-                custom string inputs:messagePackage = "sensor_msgs"
-                custom string inputs:messageSubfolder
-                custom token[] inputs:name
-                custom string inputs:nodeNamespace
-                custom double[] inputs:position
-                prepend double[] inputs:position.connect = </biped/CollectExpertData/BaselinkTwistPublisher/articulation_state.outputs:jointPositions>
-                custom string inputs:qosProfile
-                custom uint64 inputs:queueSize
-                custom string inputs:topicName = "/biped/jointState"
-                custom double[] inputs:velocity
-                prepend double[] inputs:velocity.connect = </biped/CollectExpertData/BaselinkTwistPublisher/articulation_state.outputs:jointVelocities>
-                token node:type = "isaacsim.ros2.bridge.ROS2Publisher"
-                int node:typeVersion = 1
-                custom uint outputs:execOut (
-                    customData = {
-                        bool isExecution = 1
-                    }
-                )
-                uniform token ui:nodegraph:node:expansionState = "open"
-                uniform float2 ui:nodegraph:node:pos = (-635.1178, -131.04279)
-            }
-        }
-
-        def OmniGraph "JointsStatePublisher"
-        {
-            token evaluationMode = "Automatic"
-            token evaluator:type = "execution"
-            token fabricCacheBacking = "Shared"
-            int2 fileFormatVersion = (1, 9)
-            token pipelineStage = "pipelineStageSimulation"
-
-            def OmniGraphNode "ros2_context" (
+                active = true
                 prepend apiSchemas = ["NodeGraphNodeAPI"]
             )
             {
@@ -3403,6 +3291,7 @@ def Xform "biped" (
             }
 
             def OmniGraphNode "on_playback_tick" (
+                active = true
                 prepend apiSchemas = ["NodeGraphNodeAPI"]
             )
             {
@@ -3438,7 +3327,7 @@ def Xform "biped" (
                         bool isExecution = 1
                     }
                 )
-                prepend uint inputs:execIn.connect = </biped/CollectExpertData/JointsStatePublisher/on_playback_tick.outputs:tick>
+                prepend uint inputs:execIn.connect = </biped/CollectExpertData/BaselinkTwistPublisher/on_playback_tick.outputs:tick>
                 token node:type = "isaacsim.core.nodes.IsaacComputeOdometry"
                 int node:typeVersion = 1
                 custom vector3d outputs:angularAcceleration
@@ -3459,29 +3348,30 @@ def Xform "biped" (
             }
 
             def OmniGraphNode "ros2_publisher" (
+                active = true
                 prepend apiSchemas = ["NodeGraphNodeAPI"]
             )
             {
                 custom double inputs:angular:x
-                prepend double inputs:angular:x.connect = </biped/CollectExpertData/JointsStatePublisher/break_3_vector_01.outputs:x>
+                prepend double inputs:angular:x.connect = </biped/CollectExpertData/BaselinkTwistPublisher/break_3_vector_01.outputs:x>
                 custom double inputs:angular:y
-                prepend double inputs:angular:y.connect = </biped/CollectExpertData/JointsStatePublisher/break_3_vector_01.outputs:y>
+                prepend double inputs:angular:y.connect = </biped/CollectExpertData/BaselinkTwistPublisher/break_3_vector_01.outputs:y>
                 custom double inputs:angular:z
-                prepend double inputs:angular:z.connect = </biped/CollectExpertData/JointsStatePublisher/break_3_vector_01.outputs:z>
+                prepend double inputs:angular:z.connect = </biped/CollectExpertData/BaselinkTwistPublisher/break_3_vector_01.outputs:z>
                 custom uint64 inputs:context
-                prepend uint64 inputs:context.connect = </biped/CollectExpertData/JointsStatePublisher/ros2_context.outputs:context>
+                prepend uint64 inputs:context.connect = </biped/CollectExpertData/BaselinkTwistPublisher/ros2_context.outputs:context>
                 custom uint inputs:execIn (
                     customData = {
                         bool isExecution = 1
                     }
                 )
-                prepend uint inputs:execIn.connect = </biped/CollectExpertData/JointsStatePublisher/on_playback_tick.outputs:tick>
+                prepend uint inputs:execIn.connect = </biped/CollectExpertData/BaselinkTwistPublisher/on_playback_tick.outputs:tick>
                 custom double inputs:linear:x
-                prepend double inputs:linear:x.connect = </biped/CollectExpertData/JointsStatePublisher/break_3_vector.outputs:x>
+                prepend double inputs:linear:x.connect = </biped/CollectExpertData/BaselinkTwistPublisher/break_3_vector.outputs:x>
                 custom double inputs:linear:y
-                prepend double inputs:linear:y.connect = </biped/CollectExpertData/JointsStatePublisher/break_3_vector.outputs:y>
+                prepend double inputs:linear:y.connect = </biped/CollectExpertData/BaselinkTwistPublisher/break_3_vector.outputs:y>
                 custom double inputs:linear:z
-                prepend double inputs:linear:z.connect = </biped/CollectExpertData/JointsStatePublisher/break_3_vector.outputs:z>
+                prepend double inputs:linear:z.connect = </biped/CollectExpertData/BaselinkTwistPublisher/break_3_vector.outputs:z>
                 custom string inputs:messageName = "Twist"
                 custom string inputs:messagePackage = "geometry_msgs"
                 custom string inputs:messageSubfolder
@@ -3505,7 +3395,7 @@ def Xform "biped" (
             )
             {
                 custom token inputs:tuple
-                prepend token inputs:tuple.connect = </biped/CollectExpertData/JointsStatePublisher/isaac_compute_odometry_node.outputs:globalLinearVelocity>
+                prepend token inputs:tuple.connect = </biped/CollectExpertData/BaselinkTwistPublisher/isaac_compute_odometry_node.outputs:globalLinearVelocity>
                 token node:type = "omni.graph.nodes.BreakVector3"
                 int node:typeVersion = 1
                 custom token outputs:x
@@ -3520,7 +3410,7 @@ def Xform "biped" (
             )
             {
                 custom token inputs:tuple
-                prepend token inputs:tuple.connect = </biped/CollectExpertData/JointsStatePublisher/isaac_compute_odometry_node.outputs:angularVelocity>
+                prepend token inputs:tuple.connect = </biped/CollectExpertData/BaselinkTwistPublisher/isaac_compute_odometry_node.outputs:angularVelocity>
                 token node:type = "omni.graph.nodes.BreakVector3"
                 int node:typeVersion = 1
                 custom token outputs:x
@@ -3528,6 +3418,122 @@ def Xform "biped" (
                 custom token outputs:z
                 uniform token ui:nodegraph:node:expansionState = "open"
                 uniform float2 ui:nodegraph:node:pos = (-840.0845, 35.409725)
+            }
+        }
+
+        def OmniGraph "JointsStatePublisher"
+        {
+            token evaluationMode = "Automatic"
+            token evaluator:type = "execution"
+            token fabricCacheBacking = "Shared"
+            int2 fileFormatVersion = (1, 9)
+            token pipelineStage = "pipelineStageSimulation"
+
+            def OmniGraphNode "on_playback_tick" (
+                active = true
+                prepend apiSchemas = ["NodeGraphNodeAPI"]
+            )
+            {
+                token node:type = "omni.graph.action.OnPlaybackTick"
+                int node:typeVersion = 2
+                custom double outputs:deltaSeconds
+                custom double outputs:frame
+                custom uint outputs:tick (
+                    customData = {
+                        bool isExecution = 1
+                    }
+                )
+                custom double outputs:time
+                uniform token ui:nodegraph:node:expansionState = "open"
+                uniform float2 ui:nodegraph:node:pos = (-1173.785, -118.28347)
+            }
+
+            def OmniGraphNode "articulation_state" (
+                prepend apiSchemas = ["NodeGraphNodeAPI"]
+            )
+            {
+                custom uint inputs:execIn (
+                    customData = {
+                        bool isExecution = 1
+                    }
+                )
+                prepend uint inputs:execIn.connect = </biped/CollectExpertData/JointsStatePublisher/on_playback_tick.outputs:tick>
+                custom int[] inputs:jointIndices
+                custom token[] inputs:jointNames = ["sacrum", "l_hip", "l_thigh", "l_calf", "l_ankle", "l_foot", "r_hip", "r_thigh", "r_calf", "r_ankle", "r_foot"]
+                custom string inputs:robotPath
+                custom rel inputs:targetPrim = </biped> (
+                    customData = {
+                        dictionary omni = {
+                            dictionary graph = {
+                                string relType = "target"
+                            }
+                        }
+                    }
+                )
+                token node:type = "isaacsim.core.nodes.IsaacArticulationState"
+                int node:typeVersion = 1
+                custom token[] outputs:jointNames
+                custom double[] outputs:jointPositions
+                custom double[] outputs:jointVelocities
+                custom double[] outputs:measuredJointEfforts
+                custom double3[] outputs:measuredJointForces
+                custom double3[] outputs:measuredJointTorques
+                uniform token ui:nodegraph:node:expansionState = "open"
+                uniform float2 ui:nodegraph:node:pos = (-920.6164, -82.15331)
+            }
+
+            def OmniGraphNode "ros2_context" (
+                active = true
+                prepend apiSchemas = ["NodeGraphNodeAPI"]
+            )
+            {
+                custom uchar inputs:domain_id = 188
+                custom bool inputs:useDomainIDEnvVar
+                token node:type = "isaacsim.ros2.bridge.ROS2Context"
+                int node:typeVersion = 2
+                custom uint64 outputs:context
+                uniform token ui:nodegraph:node:expansionState = "open"
+                uniform float2 ui:nodegraph:node:pos = (-921.11346, -215.06125)
+            }
+
+            def OmniGraphNode "ros2_publisher" (
+                active = true
+                prepend apiSchemas = ["NodeGraphNodeAPI"]
+            )
+            {
+                custom uint64 inputs:context
+                prepend uint64 inputs:context.connect = </biped/CollectExpertData/JointsStatePublisher/ros2_context.outputs:context>
+                custom double[] inputs:effort
+                custom uint inputs:execIn (
+                    customData = {
+                        bool isExecution = 1
+                    }
+                )
+                prepend uint inputs:execIn.connect = </biped/CollectExpertData/JointsStatePublisher/on_playback_tick.outputs:tick>
+                custom token inputs:header:frame_id
+                custom uint inputs:header:stamp:nanosec
+                custom int inputs:header:stamp:sec
+                custom string inputs:messageName = "JointState"
+                custom string inputs:messagePackage = "sensor_msgs"
+                custom string inputs:messageSubfolder
+                custom token[] inputs:name
+                custom string inputs:nodeNamespace
+                custom double[] inputs:position
+                prepend double[] inputs:position.connect = </biped/CollectExpertData/JointsStatePublisher/articulation_state.outputs:jointPositions>
+                custom string inputs:qosProfile
+                custom uint64 inputs:queueSize
+                custom string inputs:topicName = "/biped/jointState"
+                custom double[] inputs:velocity
+                prepend double[] inputs:velocity.connect = </biped/CollectExpertData/JointsStatePublisher/articulation_state.outputs:jointVelocities>
+                token node:type = "isaacsim.ros2.bridge.ROS2Publisher"
+                int node:typeVersion = 1
+                custom uint outputs:execOut (
+                    customData = {
+                        bool isExecution = 1
+                    }
+                )
+                uniform token ui:nodegraph:node:expansionState = "open"
+                uniform float2 ui:nodegraph:node:pos = (-635.1178, -131.04279)
             }
         }
     }
